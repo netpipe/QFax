@@ -1,0 +1,74 @@
+#!/bin/sh
+
+getVersions()
+{
+    MODEMVER="iaxmodem-`cat VERSION`"
+    STEP1=`grep @VERSION@ lib/spandsp/config.status | sed 's/;.*//g'`
+    DSPVER=`echo "@VERSION@" | sed $STEP1`
+    if [ -n "$DSPVER" ]; then
+	DSPVER="spandsp-$DSPVER-snapshot-20080725"
+    fi
+    STEP1=`grep @VERSION@ lib/libiax2/config.status | sed 's/;.*//g'`
+    IAXVER=`echo "@VERSION@" | sed $STEP1`
+    if [ -n "$IAXVER" ]; then
+	IAXVER="libiax2-$IAXVER-SVN-20071223+"
+    fi
+}
+
+PTYUSE="-DUSE_UNIX98_PTY"
+if [ "$1" = "-bsdptys" ]; then
+    PTYUSE=""
+    shift
+fi
+
+LLIBS="-lutil"
+if [ "`uname`" = "SunOS" ]; then
+    PATH=$PATH:/usr/sfw/bin; export PATH
+    MAKE="gmake"; export MAKE
+    CFLAGS="-DSOLARIS"; export CFLAGS
+    AR="gar"; export AR
+    LLIBS="-lsocket -lnsl"
+fi
+
+if [ "$1" = "static" ]; then
+    cd lib/libiax2 && \
+    ./configure --disable-shared && \
+    ${MAKE-make} && \
+    cd ../spandsp && \
+    ./configure --disable-shared && \
+    if [ "`uname`" = "SunOS" ]; then
+	grep -v HAVE_TGMATH_H src/config.h > src/config.h.new && \
+	mv -f src/config.h.new src/config.h && \
+        grep -v HAVE_TGMATH_H config-h.in > config-h.in.new && \
+        mv -f config-h.in.new config-h.in
+    fi && \
+    ${MAKE-make} && \
+    cd ../.. && \
+    getVersions && \
+    gcc -Wall -g $PTYUSE $CFLAGS -DMODEMVER=\"$MODEMVER\" -DDSPVER=\"$DSPVER\" -DIAXVER=\"$IAXVER\" -DSTATICLIBS \
+	-std=c99 -Ilib/libiax2/src -Ilib/spandsp/src -c -o iaxmodem.o iaxmodem.c && \
+    gcc -lm $LLIBS -ltiff -o iaxmodem iaxmodem.o lib/spandsp/src/.libs/libspandsp.a lib/libiax2/src/.libs/libiax.a
+else
+    getVersions && \
+    gcc -Wall -g $PTYUSE -DMODEMVER=\"$MODEMVER\" -DDSPVER=\"$DSPVER\" -DIAXVER=\"$IAXVER\" \
+	-lm -liax -lutil -lspandsp -ltiff -o iaxmodem iaxmodem.c
+fi
+if [ -n "`ls /etc/iaxmodem-cfg.* 2>/dev/null`" ]; then
+    echo "You appear to have some old-style configuration files (/etc/iaxmodem-cfg.*)."
+    echo "As of version 0.1.0 these need to be renamed and stored in /etc/iaxmodem/*."
+    read -p "May I move these configuration files for you? [Y/n] "
+    case "$REPLY" in
+	N|n|no|NO)
+	    echo "Okay, I will leave things alone."
+	    ;;
+	*)
+	    if [ ! -d /etc/iaxmodem ]; then
+		mkdir /etc/iaxmodem
+	    fi
+	    for config in `ls /etc/iaxmodem-cfg.*`; do
+		mv "$config" "/etc/iaxmodem/`echo $config | sed 's/.*\/iaxmodem-cfg\.//'`"
+	    done
+	    echo "The configuration files have been renamed and moved to /etc/iaxmodem."
+	    ;;
+    esac
+fi

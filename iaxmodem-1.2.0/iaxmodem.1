@@ -1,0 +1,40 @@
+.\"                                      Hey, EMACS: -*- nroff -*-
+.\" First parameter, NAME, should be all caps
+.\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
+.\" other parameters are allowed: see man(7), man(1)
+.TH IAXMODEM 1 "February 27, 2006"
+.\" Please adjust this date whenever revising the manpage.
+.\"
+.\" Some roff macros, for reference:
+.\" .nh        disable hyphenation
+.\" .hy        enable hyphenation
+.\" .ad l      left justify
+.\" .ad b      justify to both left and right margins
+.\" .nf        disable filling
+.\" .fi        enable filling
+.\" .br        insert line break
+.\" .sp <n>    insert n+1 empty lines
+.\" for manpage-specific macros, see man(7)
+.SH NAME
+iaxmodem \- software modem with IAX2 connectivity
+.SH SYNOPSIS
+.B iaxmodem
+.RI [configname]
+.SH DESCRIPTION
+
+.\" TeX users may be more comfortable with the \fB<whatever>\fP and
+.\" \fI<whatever>\fP escape sequences to invode bold face and italics, 
+.\" respectively.
+\fBiaxmodem\fP is a software modem with IAX2 connectivity designed to
+connect fax software like HylaFAX or efax to a PBX system such as Asterisk.
+.SH OPTIONS
+\fBiaxmodem\fP runs as a standalone daemon when no \fIconfigname\fP is
+specified on the command line, spawning one process per config file
+found under \fI/etc/iaxmodem/*\fP. Otherwise,
+\fBiaxmodem\fP runs as a single soft modem using the specified
+\fIconfigname\fP (\fI/etc/iaxmodem/configname\fP).
+.SH AUTHOR
+iaxmodem was written by Lee Howard <faxguy@howardsilvan.com>.
+.PP
+This manual page was written by Julien BLACHE <julien.blache@linbox.com>
+and contributed to the Debian project, but may be used by others.

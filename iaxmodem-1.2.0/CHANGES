@@ -1,0 +1,230 @@
+1.2.0
+	improve skew behavior, especially for faulty RTC; add "skew" config feature
+	add support for command-dial (ATD...;) in spandsp
+	add support for ATA for CED when off-hook and connected to a call
+	add support for ATD for CNG when off-hook and connected to a call
+	fix the ordering of the seteuid()/setegid() (Julien BLACHE)
+	update spandsp to 20080725 snapshot
+
+1.1.1
+	fix unaligned errors in libiax2 (Gus Bourg)
+	improve training in spandsp V.27ter receive (Steve Underwood)
+	fix a potential crash (divide by zero) in spandsp V.17 receive (Steve Underwood)
+1.1.0
+	kill -HUP now makes the modems wait to restart when they're on-hook
+	improve IAX2 call rejection when the modem is busy by using
+	    REJECT instead of ACCEPT+CONGSTN+HANGUP
+	add "nodaemon" config file feature
+	add "iax2debug" and "dspdebug" config file features
+	update spandsp to 20080110 snapshot
+	update libiax2 to current iaxclient/lib/libiax2 + patches
+1.0.0
+	provide strndup for Solaris
+0.3.2
+	support dialing of DTMF and commas
+	support Solaris (thanks, Bruce McAlister)
+	fix receive aborts when carrier is connected
+	fix +FRH:3 from appearing at improper times
+	set hang-up timer on unexpected disconnections as well
+	stop fast looping on registration rejection
+	fix numerous training issues with V.17 rx
+	update spandsp to snapshot 20070802
+0.3.1
+	add -F option to prevent detachment (Francesco P. Sileno)
+	update spandsp to snapshot 20070619
+	fix possible initial failure to register
+0.3.0
+	skip non-regular files in /etc/iaxmodem (Julien BLACHE)
+	take caution against bad refresh negotiations from the server
+	update spandsp to snapshot 20070502 (adds V.17 rx support)
+	improve the ability to detect quiet signalling (spandsp: fsk min_power)
+	improve the sensitivity to carrier loss (spandsp: power_meter)
+	improve tcflushing when getty not reading pty and buffer fills,
+	    prevents fast looping when buffer is filled
+0.2.1
+	update spandsp to snapshot 20070123
+	on startup rotate log files larger than 1GB, open with O_LARGEFILE
+	use power level of detected signalling in silence identification
+0.2.0
+	add CDID, USER, and PASS (context, username, password) in
+	    call identification information
+	add feature-usage of posix_openpt (Julien BLACHE)
+	fix the error of CONNECT appearing when in command-mode (spandsp)
+	update spandsp to snapshot 20061217
+	add nojitterbuffer configuration option
+	fix jitterbuffer to send non-null audio
+	fix some array size off-by-one counting problems (Hans Petter Selasky)
+0.1.16
+	update spandsp to snapshot 20061116
+	fix some select racing due to invalid selects and just before NO ANSWERs
+	add "restart modem" feature (kill -HUP) for individual modems
+	fix problem of sending DTE data after a final-frame HDLC
+	    message but before the OK and carrier drop
+	add jitterbuffer
+0.1.15
+	attempt to compensate for received jitter
+	rename recorded files to "old" when done recording
+	update spandsp to snapshot 20060907 (and fix spandsp)
+	improve audio file closing
+	add configure and Makefile.in (contrib: Anish Mistry)
+	fix library versioning for static builds
+0.1.14
+	take measures to avoid detecting echo as signalling
+	ignore spandsp "on hook" handler messages
+	ignore DTMF when not received in command-mode
+	more finely tune V.29 and V.27ter rx training (spandsp)
+0.1.13
+	properly terminate Phase C reception data when an unexpected
+	    disconnection occurs there
+	fix idle-busy condition (report: Francesco Romano, Olaf Ferger)
+	flush pty buffer if it fills
+0.1.12
+	cause the AT command interpreter to be more strict (spandsp)
+	fix condition where DTE input would not be passed on to spandsp
+	    when it should have been
+	enable data flow if flow control is off on hangup (spandsp)
+	add IAX2 DTMF recognition and reporting
+	fix V.21 HDLC flags threshold detection (spandsp)
+0.1.11
+	update spandsp to 0.0.3-snapshot-20060707
+	add support for comments begun by ";" in the config files
+	fix "Setting refresh" output information
+0.1.10
+	add 5-second automatic busy-out after hangups
+	ensure use of iax_destroy(session) after iax_hangups
+	removed -O2 from build script as reports claim it helps stability
+	implement an inactivity timeout in stuffed tx mode (spandsp)
+	fix -V version output for libiax2 and spandsp
+0.1.9
+	configure and make libs automatically with 'build static'
+	apply fix for CORE-2006-0327 libiax2 vulnerability
+	properly place the modem on-hook on a hangup (spandsp)
+	don't skew due to incoming audio before the call is answered
+0.1.8
+	log received IAX2 jitter
+	fix a logic error that could cause fast looping (report Lee Archer)
+	fix "no room in buffer" error messages
+	fix IAX2 timestamp interpretation on miniframes (libiax2)
+	fix md5 auth on x86-64 (from iaxclient, Steve Kann, Steve Underwood)
+	add quoting on version defines (Stefan Knoblich)
+0.1.7
+	update spandsp to 0.0.3-snapshot-20060525 (fixes CNG, report Xavier Caro)
+0.1.6
+	add support for AT+VSID="%s","%d", Caller*ID setting from DTE
+	improve V.17 rx training (spandsp, Bartek Kania, Steve Underwood)
+	update spandsp to 0.0.3-snapshot-20060523
+0.1.5
+	fix x86-64 spandsp build problem (report: Julien BLACHE, 
+	    fix: Steve Underwood)
+	re-fix potentially missing V.21 CONNECT messages (spandsp)
+0.1.4
+	handle error situation where DSP may not have any available
+	    space for more tty data (report: Martin Vit)
+	adjust iaxmodem.c and libiax2 for OpenBSD (Todd T. Fries)
+	update spandsp to 0.0.3-snapshot-20060427
+	add command-line -V (version) argument and response
+0.1.3
+	fix potentially missing V.21 CONNECT messages (spandsp)
+	ignore spandsp's ring indicator
+	add auto-answer (e.g. ATS0=1) support (spandsp)
+	make V.29 rx more sensitive (spandsp)
+0.1.2
+	improve logging features (Julien BLACHE)
+	cope with audio that is non-zero centered (spandsp, Steve Underwood)
+	fix lrintf() warning on static builds (Julien BLACHE)
+0.1.1
+	fix timeout on calling for initial carrier detection (spandsp)
+	add silent dial support (spandsp)
+	don't loop fast when not registering
+	don't exit on registration failure (request: Julien BLACHE)
+	add init script for Fedora (Erik L. Smith)
+	reduce the amount of logging by V.17 receive
+	improve the timing of OK results after
+	    AT+FRH=3 commands (spandsp)
+0.1.0
+	use new spandsp-t31 CallID methods
+	update spandsp to 0.0.3 20060226 snapshot
+	add run as daemon option (Julien BLACHE)
+	move config files to /etc/iaxmodem (Julien BLACHE)
+	add owner and mode config file options (Julien BLACHE)
+	drop privileges once the device is set up (Julien BLACHE)
+	fix various warnings and missing includes (Julien BLACHE)
+	add static library build support (Julien BLACHE)
+	add init script (Julien BLACHE)
+	add iaxmodem man page (Julien BLACHE)
+0.0.14
+	fix libiax2 to support POKE (keepalive, qualify=yes)
+	process more than one libiax2 event during a loop
+	    (this is a big fix, especially for senders)
+	add "skew" self-clocking control to try to keep the
+	    transmit window from making us transmit too fast
+	perform select even when we're behind to fix the
+	    flagging of the file descriptor checks
+	update libiax2 from iaxclient
+	reduce the amount of debugging output from libiax2
+	improve the timing of CONNECT responses after
+	    AT+FRH=3 commands (spandsp)
+0.0.13
+	fix the return value of t31_at_tx_handler to
+	    prevent lock-ups
+	ensure that DLE+ETX gets delivered upon some
+	    kinds of unexpected hangups
+0.0.12
+	make ATH1 return OK if in command mode, even
+	    if the modem is already off-hook (spandsp)
+	make ATZ put the modem on-hook state internally
+	    because it does hang-up (spandsp)
+	replace libtool symlinks with files (libiax2)
+0.0.11
+	fix flow control and buffer handling
+	    broken by 0.0.8 spandsp update (report: Russ Price)
+0.0.10
+	fix tone generation in spandsp
+	    (fix by Steve Underwood., report by Russ Price)
+0.0.9
+	update spandsp to 20060205 snapshot
+	add ATH1 (busy-out) command support
+	fix errors with pointers to call id strings
+	close the config file after reading it
+	change xon/xoff char to u_char
+	change exit() to _exit()
+0.0.8
+	add "refresh: 0" support (disable registration)
+	update spandsp to 20051220 snapshot
+0.0.7
+	update libiax2 from CVS (2005-12-02)
+	add support for ulaw and alaw
+	fix memory leaks in libiax2 usage
+0.0.6
+	use ntohs instead of swapbytes
+	improve error logging on short writes
+0.0.5
+	some code optimizing (report: Martin Vit)
+	added record and replay options
+	improve transmission of audio before hangup
+	Call ID integration into spandsp
+	fix spandsp handling of Class 1.0
+	utilize select return value (report: Martin Vit)
+0.0.4
+	add Class1AdaptRecvCmd to HylaFAX config
+	fix CPU usage of the main loop (report: Martin Vit)
+0.0.3
+	fix select error of using negative values (report: Martin Vit)
+	move HDLC transmit timeout into spandsp
+	update to spandsp-0.0.3pre3, fixing some of it
+        add AT+FAR=1 support (spandsp)
+	add proper +FCERROR reporting (spandsp)
+	result NO CARRIER if hangup occurs during AT+FRS=n (spandsp)
+	ensure RINGs don't occur after ATA
+	added ANI reporting via "ANID" response
+	change usage of iax_busy to iax_congestion
+	added iax_congestion to libiax2
+0.0.2
+	improved transmit flow control
+	improved transmit buffer recycling (spandsp)
+	enable V.17 in spandsp modify HylaFAX config to disable it on receiving
+	improved AT command-response behavior (spandsp)
+	improved timestamp syncrhonization on 16-bit overflow (libiax2)
+	improved HDLC frame preamble detection (spandsp)
+0.0.1
+	initial release

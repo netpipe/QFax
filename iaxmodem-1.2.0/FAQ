@@ -1,0 +1,182 @@
+This is a set of anticipated questions and the associated answer.
+-----------------------------------------------------------------
+Q1: IAX is VoIP.  Isn't it bad to run fax over VoIP?
+
+A1: Yes, generally it is.  The conditions of jitter, packet loss,
+and other latency issues cause problems for reassembling VoIP
+audio streams on the receiver exactly as they were disassembled
+on the sender.  However, these latency conditions can be
+controlled.  For example, these conditions should not be present
+when communicating over the localhost address (127.0.0.1) in the
+case where the Asterisk server and the system running IAXmodem
+are the same.  Other possible arrangements could be to use a
+dedicated network connection (e.g. a crossover cable) between
+the Asterisk server and the system running IAXmodem.  IAXmodem
+should also be fine to run over a local area network (LAN) that
+is well-designed and controlled.
+
+The basic point is this: if you can eliminate the mitigating factors
+of jitter and packet loss, then you can reliably use VoIP channels
+for faxing.
+-----------------------------------------------------------------
+Q2: What about T.38?  Isn't T.38 the end-all solution for faxing
+over the internet?
+
+A2: T.38 is great, and yes, it is the end-all solution for faxing
+over the internet.  However, IAXmodem isn't designed to be used
+for faxing over the internet, as the internet is not a network
+that can control the latency conditions enough for faxing to
+work.  So T.38 and IAXmodem are really trying to solve two
+different problems.
+
+Someday the PSTN may be entirely replaced by VoIP.  Someday all
+fax machines may have T.38 support.  In that day there will be
+no need for fax DSPs.  But that day is not now, and it's not
+coming in the foreseeable future.  When using VoIP, someone,
+somewhere on that VoIP chain must have a "PSTN gateway".
+Likewise, when using T.38, someone, somewhere on that chain must
+have a "T.38 gateway" (to the PSTN).  And any time fax data
+is passed through the PSTN it must be modulated, and that
+requires DSPs.
+
+IAXmodem was designed to give the fax application tight control
+of the DSP behavior (through the Class 1 interface) and the
+developers tight control of the DSP behavior (through access
+to the source code).  As long as fax DSPs are needed and
+someone using those DSPs wants tight control of how they work,
+then there is a place for IAXmodem.
+-----------------------------------------------------------------
+Q3: Why is IAXmodem open-source and licensed with the GPL?
+
+A3: Firstly, much of the value in IAXmodem comes from being able
+to control the DSP.  This cannot be done as desired without
+having the source code to the DSP.
+
+Second, having the source code allows all users the same
+opporunity to improve and enhance it, and (hopefully) by
+contributing that work back to the community IAXmodem and the
+libraries that it uses also improve.
+
+Third, IAXmodem depends heavily upon libiax2 and spandsp, both
+of which are licensed with the GPL.  Licensing IAXmodem in some
+other way would have been possible, although prohibitively
+difficult, and may not have not fostered as much community
+involvement and contribution.
+-----------------------------------------------------------------
+Q4: IAX is bad and libiax2 is even worse.  Why didn't you use
+SIP or some other channel driver?
+
+A4: The availability of libiax2 and the small set of protocol in
+IAX (compared to SIP) made it attractive for the purposes of 
+getting IAXmodem running quickly.  Although libiax2 has needed
+some bug fixes for IAXmodem to work properly, and although
+libiax2 probably will need more bug fixing in the future, it
+seemed like using it was the quickest path to a functional
+solution.
+
+If anyone is interested in enhancing IAXmodem to support SIP or
+any other channel driver, development contributions are
+always welcome.
+-----------------------------------------------------------------
+Q5: What if I really want to use IAXmodem but my Asterisk server
+is connected to my HylaFAX server only by a lossy (e.g.
+internet) connection?
+
+A5: The connection between IAXmodem and Asterisk must be clean
+and clear.  However, the connection between HylaFAX and IAXmodem
+need not be.  For example, you could run IAXmodem on the Asterisk
+server communicating on the loopback adapter, and HylaFAX would
+communicate with IAXmodem remotely using a "remote tty" service
+such as termpkg's termnetd and ttyd programs.  (A patch is
+included with IAXmodem source that will permit ttyd to be used
+for fax communications.  You'll want to use a termnetd.conf entry
+like: "64570:on:/dev/ttyIAX0:B19200 CLOCAL CREAD IGNBRK;")
+
+An alternative to termpkg is interceptty, which is reported to
+work.
+-----------------------------------------------------------------
+Q6: How do I set up my Asterisk dialplan for IAXmodem?
+
+A5: This will vary depending upon what you want, but in many
+instances it will be something like this:
+
+  exten => fax,1,Dial(IAX2/ttyIAX/${EXTEN})
+
+If you do not put ${EXTEN} there then IAXmodem will not receive
+DID information.  In this example "fax" is your fax extension number.
+If you use the Asterisk "fax" extension given by zaptel fax
+detection then ${EXTEN} will lose its meaning, and you'll need
+to use a workaround to get the correct called-number passed on
+to IAXmodem.
+
+If you want to operate multiple IAXmodem instances (to handle
+more than one fax at a time) do something like this:
+
+  exten => fax,1,Dial(IAX2/ttyIAX0/${EXTEN})
+  exten => fax,2,Dial(IAX2/ttyIAX1/${EXTEN})
+  exten => fax,3,Dial(IAX2/ttyIAX2/${EXTEN})
+  exten => fax,4,Busy
+  exten => fax,5,Hangup
+
+Each IAXmodem instance can only handle one call at a time.  Thus
+it will report as busy if it is already handling a call, and Asterisk
+will then proceed to the next entry in the dialplan.
+
+Passing ${EXTEN} or some related value in the Dial application is
+important, as that provides the DID indication for iaxmodem.  If this
+application parameter is omitted then iaxmodem will not receive DID.
+
+Also, using the ChanIsAvail command prior to dialing is known not to work
+since it issues a IAX "HANGUP" and puts the iaxmodem in a busy state.
+Therefore, the following Dial command will be rejected with the cause
+"Busy". Some Asterisk pre-packaged distributions dial extensions using
+macros containg ChanIsAvail (ie. Voiceroute's Druid) so beware of them. 
+-----------------------------------------------------------------
+Q7: I start iaxmodem and then place a call to it, and I see these
+messages appear on output:
+
+  "Unable to pass the full buffer onto the device file."
+
+What's wrong?  Is this a bug?
+
+A7: IAXmodem doesn't immediately know if anything is watching the
+modem device or not.  So when you place a call to iaxmodem it will
+instinctively pass RING messages and Call*ID to the pty.  If nothing 
+is watching the modem device then eventually the pty buffer will
+fill and the pty will begin refusing further data.  This is what is
+happening.
+
+So basically, it's nothing to worry about if you are aware that
+you're not running any modem-watching process like faxgetty.  However,
+you probably *should* be running something like faxgetty in anything
+other than a test scenario.
+-----------------------------------------------------------------
+Q8: How do I set up my Asterisk iax.conf for IAXmodem?
+
+A8: Again, this will vary somewhat depending upon what you want.
+However, here is an example:
+
+    [iaxmodem1]
+    type=friend
+    host=dynamic
+    auth=md5
+    secret=<secret password>
+    context=outbound
+    disallow=all
+    allow=ulaw
+    allow=alaw
+    jitterbuffer=no
+
+The [context] name refers to the "peername" entry in the iaxmodem
+config file.  The secret should match the "secret" entry in the same.
+The context value refers to which dialplan (extensions.conf) context
+should be used for handling calls which iaxmodem should initiate.
+The disallow and allow values ensure that the server only uses uLaw
+and alaw audio codecs when communicating with iaxmodem.  Disabling
+the PBX-side jitterbuffer is quite important to prevent it from
+disturbing the audio.
+
+-----------------------------------------------------------------
+
+See the TODO file for information regarding bugs, needed
+features, and enhancements.

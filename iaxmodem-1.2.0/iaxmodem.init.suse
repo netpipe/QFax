@@ -1,0 +1,68 @@
+#! /bin/sh
+# abcona e. K. Steinbach, Germany,
+# Free to use without guarantee
+#
+# Author: Angelo Malaguarnera <angelo@malaguarnera.de>
+#
+# /etc/init.d/iaxmodem
+#   and its symbolic link
+# /usr/sbin/iaxmodem
+#
+### BEGIN INIT INFO
+# Provides:       iaxmodem
+# Required-Stop:
+# Default-Start:  3 5
+# Default-Stop:   0 1 2 6
+# Description:    IAXMODEM for asterix to hylafax
+### END INIT INFO
+
+IAXMODEM_BIN="/usr/sbin/iaxmodem"
+PID_FILE="/var/run/iaxmodem.pid"
+
+. /etc/rc.status
+rc_reset
+
+# Check for missing binary
+if [ ! -x ${IAXMODEM_BIN} ]; then
+        echo -n >&2 "IAXmodem daemon, ${IAXMODEM_BIN} is not installed. "
+        rc_status -s
+        exit 5
+fi
+
+# be extra carefull cause connection fail if TMPDIR is not writeable
+export TMPDIR="/var/tmp"
+
+case "$1" in
+        start)
+                echo -n "Starting iaxmodem daemon "
+                checkproc -p ${PID_FILE} ${IAXMODEM_BIN}
+                case $? in
+                        0) echo -n "- Warning: daemon already running. " ;;
+                        1) echo -n "- Warning: ${PID_FILE} exists. " ;;
+                esac
+                startproc -p ${PID_FILE} ${IAXMODEM_BIN}
+                rc_status -v
+                ;;
+        stop)
+                echo -n "Shutting down iaxmodem daemon "
+                checkproc -p ${PID_FILE} ${IAXMODEM_BIN} || \
+                        echo -n " Warning: daemon not running. "
+                killproc -p ${PID_FILE} -t 10 ${IAXMODEM_BIN}
+                rc_status -v
+                ;;
+        restart)
+                $0 stop
+                $0 start
+                rc_status
+                ;;
+        status)
+                echo -n "Checking for iaxmodem daemon "
+                checkproc -p ${PID_FILE} ${IAXMODEM_BIN}
+                rc_status -v
+                ;;
+        *)
+                echo "Usage: $0 {start|stop|status|restart}"
+                exit 1
+                ;;
+esac
+rc_exit

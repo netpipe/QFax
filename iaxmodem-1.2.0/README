@@ -1,0 +1,312 @@
+		** ABOUT IAXMODEM **
+
+IAXmodem is a software modem written in C that uses an IAX channel
+(commonly provided by an Asterisk PBX system) instead of a traditional
+phone line and uses a DSP library instead of DSP hardware chipsets.
+
+To accomplish this, then, IAXmodem interfaces an IAX library known as
+libiax2 with a DSP library known as spandsp, and then IAXmodem interfaces
+the DSP library with a tty device node for interfacing with modem (fax)
+applications.
+
+IAXmodem comes with a copy of both libiax2 and spandsp.  Both of these
+libraries may have had bugs fixed or enhancements added for specific use
+with IAXmodem.  Although these changes are submitted to the library
+authors/maintainers and may be committed to the upstream repositories,
+it is recommended that the versions here be used for iaxmodem if only
+for the reason that these versions have been tested and are known to work.
+
+If you are using other applications that require a different libiax2 or
+spandsp version then iaxmodem can be statically linked to the libraries
+after building the versions here (but not installing them).  See the
+part about "build static" below.
+
+Currently supported platforms are GNU/Linux on x86 hardware.
+
+The libiax2 source was pulled from iaxclient SVN on December 23, 2007.
+
+The spandsp source is spandsp-0.0.5 snapshot 20080725.
+
+IAXmodem should usually be installed either on the same machine as the
+Asterisk server or on a system that is very close to the Asterisk server
+on a controlled network.  Do not even bother trying to use IAXmodem to
+send faxes through your IAX-supporting VoIP provider, it won't work
+reliably, if at all.
+
+Please see the FAQ file for more information regarding IAXmodem.
+
+
+		** INSTALLING IAXMODEM **
+
+There are two ways to build IAXmodem.  One way uses dynamic libraries;
+the other way uses static libraries.  If you already have an installation
+of an incompatible spandsp or libiax2 on the system, then you should
+probably build using static libraries.
+
+To install libiax2:  (if you're not going to 'build static')
+
+# cd lib/libiax2
+# ./configure
+# make
+# make install
+
+To install spandsp:  (if you're not going to 'build static')
+
+# cd lib/spandsp
+# ./configure
+# make
+# make install
+
+If you're building with dynamic libraries, make sure that your linker
+can find these libraries by having a line in your /etc/ld.so.conf file
+that is "/usr/local/lib" and running 'ldconfig' afterwards.
+
+To build IAXmodem with dynamic linking:
+
+# ./build
+
+To build IAXmodem with static linking:
+
+# ./build static
+
+This will create the iaxmodem binary.  You may run the binary from
+its present location, or you may copy it to any location that you may
+choose.
+
+The build script also accepts one other command-line option: -bsdptys.
+This option must come first, like this:
+
+# ./build -bsdptys
+
+Alternatively you can build IAXmodem with static linking by running
+the more traditional:
+
+# ./configure
+# make
+
+Create the /etc/iaxmodem directory.  The modem configuration files will
+be stored in here.  With your favorite editor edit the prototype modem
+configuration file, iaxmodem-cfg.ttyIAX.  Alter the configuration lines
+as needed and desired.
+
+The "device" entry is the full name of the device that you will be using
+in your modem application.  If running multiple instances of iaxmodem then
+you will need a different device for each instance.
+
+The "owner" entry (formatted "user:group") is the system user and group
+that IAXmodem should use for the created device.
+
+The "mode" entry is the permissions mode for the created device.
+
+The "port" entry refers to the preferred port number on which to listen
+for communications from the Asterisk server (so if you're using more than
+one IAXmodem on a single IP address you will need to have each IAXmodem
+configuration use a different port).  You should not use "4569" if Asterisk
+is already listening on port 4569.
+
+The "refresh" entry indicates the preference on how frequently to refresh
+the registration with the Asterisk server.  (However, the actual refresh
+value that is used will be negotiated between IAXmodem and the Asterisk
+server.)  By setting this to a value of "0" (zero), IAXmodem will not
+register with the server, and thus the server should be configured to
+communicate with IAXmodem on a static address.
+
+The "server", "peername", and "secret" entries refer to the server name
+(or address), the registered peer name for the IAXmodem client, and the
+registered secret (password) for the IAXmodem client.
+
+The entries "cidname" and "cidnumber" refer to the Caller*ID presentation
+that will be made by IAXmodem to the Asterisk server.
+
+The "codec" entry refers to the preferred audio codec. This can be 
+"slinear", "ulaw", or "alaw".
+
+The "record" entry causes audio files to be recorded (see below).
+
+The "replay" entry causes the audio files to be replayed back (see below).
+
+The "nojitterbuffer" entry disables the very simple iaxmodem jitterbuffer
+(see below).
+
+The "iax2debug" entry enables debugging output for IAX2.
+
+The "dspdebug" entry enables debugging output for the DSPs.
+
+The "nodaemon" entry exempts the modem from inclusion with daemon use.
+
+Comments can be placed into the IAXmodem configuration files by beginning
+them with a semicolon (";").
+
+Now copy this file to the /etc/iaxmodem directory with a unique file name.  
+The name of the file will serve as the identifier, if you choose to launch 
+iaxmodem in non-daemon mode (see below).
+
+
+		** RUNNING IAXMODEM **
+
+Now you are ready to start IAXmodem.  IAXmodem can be run in two manners,
+daemon mode, or non-daemon.  Initially you should probably run iaxmodem
+at least once in non-daemon mode, just to make sure things are working 
+(that iaxmodem registers).
+
+                      ----------
+
+In non-daemon mode, IAXmodem is started by supplying the configuration 
+identifier as the only command-line parameter, like this:
+
+  /path/to/iaxmodem ttyIAX
+
+In this example the modem configuration file is expected to be:
+
+  /etc/iaxmodem/ttyIAX
+
+You should probably run IAXmodem like this at least once to check
+to see that registration occurs properly (then press ^C to exit).
+
+In non-daemon mode IAXmodem does not detach itself from the controlling 
+tty, and it does send logging data both to standard output (informational 
+items) and to standard error (errors).  As this logging can be a bit 
+verbose, you may choose to ignore all of it by starting IAXmodem like 
+this:
+
+  /path/to/iaxmodem ttyIAX >/dev/null 2>&1
+
+Alternatively, if you wish to record this into rotated log files:
+
+  /path/to/iaxmodem ttyIAX >/tmp/iaxmodem.stdout 2>/tmp/iaxmodem.stderr
+
+You may also choose to run IAXmodem from init by placing an entry into
+the /etc/inittab file like this (and then restarting init):
+
+  IAX:2345:respawn:/path/to/iaxmodem ttyIAX
+
+                      ----------
+
+In daemon mode, IAXmodem is started by not supplying a configuration 
+identifier on the command-line, like this:
+
+  /path/to/iaxmodem
+
+This will cause iaxmodem to detach itself from the controlling tty and
+launch a separate iaxmodem instance for every modem configuration file
+found in /etc/iaxmodem.
+
+In daemon mode IAXmodem sends logging data to files in the 
+/var/log/iaxmodem directory, if available.  (The /var/log/iaxmodem 
+directory will need to be created.)
+
+You may wish to run iaxmodem in daemon mode and start it with a standard
+init.d script.  The provided iaxmodem.init files should serve this
+purpose.  (Choose the appropriate one for your distribution.)
+
+                      ----------
+
+Some people want to launch iaxmodem in a manner like daemon mode, but 
+for various reasons (like runit compatibility) need the parent process
+to not detach itself from the controlling tty.  This is done with the -F
+option like this:
+
+  /path/to/iaxmodem -F
+
+
+		** USING IAX MODEM **
+
+Once IAXmodem is running you are ready to use it with your application.
+
+If your application is HylaFAX, there is a HylaFAX modem configuration
+file included with IAXmodem (config.ttyIAX).  The config file is for
+HylaFAX version 4.2.2 and later.  Instead of running faxaddmodem,
+simply edit this config file to your liking and then copy it to
+/var/spool/hylafax/etc/.  (Run faxgetty and the rest of HylaFAX as
+usual.)
+
+If using the "record" option, IAXmodem will create two audio files in
+the /tmp/ directory.  These files are overwritten by each new audio
+call.  The file "ttyIAX-dsp.raw" is the audio that was received by
+IAXmodem from the DSP library (which IAXmodem delivered to the IAX
+library), and the file "ttyIAX-iax.raw" is the audio that was received
+by IAXmodem from the IAX library (which IAXmodem delivered to the DSP 
+library).  These audio files can be converted by sox into playable WAV
+files in this way:
+
+  sox -s -w -r 8000 -c 1 ttyIAX-iax.raw playable.wav
+
+If using the "replay" option, IAXmodem will replay the audio in the
+audio files previously recorded by "record".  So the audio that is 
+passed to the DSP comes from "ttyIAX-iax.raw" instead of from the IAX
+channel, and the audio that is passed to the IAX channel comes from
+"ttyIAX-dsp.raw" instead of from the DSP.  This feature is indended
+to provide a simple and reliable way to methodically repeat a call 
+session for debugging.  Use of "replay" will disable "record".
+
+Jitter occurs when audio is received out of sequence.  Normally this
+involves missing audio packets, but sometimes it can involve mis-
+ordered audio.  Jitter occurs because the UDP communication medium
+graciously allows packets to be dropped by the network, and so on
+collision-prone links these audio packets will be dropped when
+deemed necessary by the network equipment.  Jitter should not occur
+if iaxmodem is communicating directly with the PBX over a loopback
+or directly-wired (crossover) interface.
+
+By default iaxmodem copes with received jitter by replacing missing
+audio with "fill" from the previously-received audio packet and by
+dropping mis-ordered audio packets.  The intention behind this is to
+prevent our packet counting from falling behind the other endpoint,
+to prevent jitter from causing carrier drops or from producing a
+carrier when there shouldn't be one.  In some cases this fill behavior
+may be undesireable, and instead it would better to just skip the 
+missing audio (thus letting our packet counting fall slightly behind).
+In order to disable the jitterbuffer put "nojitterbuffer" into the
+iaxmodem config file.
+
+By default iaxmodem, when starting, will examine an existing log file
+to see if it is larger than 1GB.  If it is, then iaxmodem will rename
+that file with ".old" at the end, deleting any existing ".old" log 
+file.  The purpose in this is to prevent iaxmodem logging from 
+consuming too much disk space.  However, the astute iaxmodem 
+administrator should probably employ a system-wide logrotate service
+to rotate the iaxmodem logging independently.
+
+An appropriate logrotate.d entry for iaxmodem may look like this:
+
+/var/log/iaxmodem/*.log {
+    notifempty
+    missingok
+    postrotate
+        /bin/kill -HUP `cat /var/run/iaxmodem.pid` || true
+    endscript
+}
+
+Modems typically should be reset and reinitialized after each call 
+(in case something within the call put the modem into a bad state).
+During initialization it is difficult, if not impossible, to properly
+handle incoming calls.  For this reason IAXmodem is "busied-out" for
+five seconds after going on-hook (ATH0 or ATZ).  If the initialization
+sequence can last longer than that time it would be advisable, then,
+to take the modem off-hook (ATH1) at the outset of initialization and
+to place it back on-hook (ATH0) when done (in which case the modem
+will be busied out during the entire initialization sequence plus
+five seconds after it finishes).  For HylaFAX the five-second 
+automatic busy-out should be sufficient.
+
+
+		** CONTRIBUTING **
+
+* Bug Reports - If you use IAXmodem and encounter a problem please do
+  report it, even if you can work around the problem and even if you
+  do not intend to fix the problem.
+* Patches - If you develop a patch (bug fix or enhancement) please do
+  share it.  If you would like to develop, but don't know what to do,
+  please look at the list of items in the TODO file.
+* Commission Work - If you use or would like to use IAXmodem and need
+  some work done, hire someone to do it (the author can provide
+  suggestions) and share that work.
+* Donations - The author is always happy to accept donations of just
+  about any kind.
+
+
+		** CONTACTS and SUPPORT **
+
+Original Author:  Lee Howard <faxguy@howardsilvan.com>
+        Website:  http://iaxmodem.sourceforge.net
+   Mailing List:  iaxmodem-users@lists.sourceforge.net
