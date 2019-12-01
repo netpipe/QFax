@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/extmodem.dir/src/audiosource.cpp.o"
+  "CMakeFiles/extmodem.dir/src/audiosource_alsa.cpp.o"
+  "CMakeFiles/extmodem.dir/src/audiosource_loopback.cpp.o"
+  "CMakeFiles/extmodem.dir/src/audiosource_null.cpp.o"
+  "CMakeFiles/extmodem.dir/src/audiosource_portaudio.cpp.o"
+  "CMakeFiles/extmodem.dir/src/audiosource_wave.cpp.o"
+  "CMakeFiles/extmodem.dir/src/ax25_utils.cpp.o"
+  "CMakeFiles/extmodem.dir/src/decoder.cpp.o"
+  "CMakeFiles/extmodem.dir/src/decoder_af1200fsk.cpp.o"
+  "CMakeFiles/extmodem.dir/src/decoder_af1200mm.cpp.o"
+  "CMakeFiles/extmodem.dir/src/decoder_af1200stj.cpp.o"
+  "CMakeFiles/extmodem.dir/src/decoder_debug.cpp.o"
+  "CMakeFiles/extmodem.dir/src/decoder_dtmf.cpp.o"
+  "CMakeFiles/extmodem.dir/src/encoder.cpp.o"
+  "CMakeFiles/extmodem.dir/src/encoder_af1200stj.cpp.o"
+  "CMakeFiles/extmodem.dir/src/extconfig.cpp.o"
+  "CMakeFiles/extmodem.dir/src/extexception.cpp.o"
+  "CMakeFiles/extmodem.dir/src/extmodem.cpp.o"
+  "CMakeFiles/extmodem.dir/src/filter_chebyshev.cpp.o"
+  "CMakeFiles/extmodem.dir/src/frame.cpp.o"
+  "CMakeFiles/extmodem.dir/src/hdlc.cpp.o"
+  "CMakeFiles/extmodem.dir/src/kiss.cpp.o"
+  "CMakeFiles/extmodem.dir/src/main.cpp.o"
+  "CMakeFiles/extmodem.dir/src/multimon_utils.cpp.o"
+  "CMakeFiles/extmodem.dir/src/ptt.cpp.o"
+  "CMakeFiles/extmodem.dir/src/ptt_hamlib.cpp.o"
+  "CMakeFiles/extmodem.dir/src/ptt_serpar.cpp.o"
+  "CMakeFiles/extmodem.dir/src/tcpserver.cpp.o"
+  "CMakeFiles/extmodem.dir/src/tcpserver_agwpe.cpp.o"
+  "CMakeFiles/extmodem.dir/src/tcpserver_base.cpp.o"
+  "CMakeFiles/extmodem.dir/src/tcpserver_kiss.cpp.o"
+  "extmodem.pdb"
+  "extmodem"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/extmodem.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

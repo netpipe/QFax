@@ -1,0 +1,102 @@
+# appveyor.yml
+
+version: "{branch}-ci-{build}"
+clone_depth: 5 
+
+os: Visual Studio 2015
+
+platform:
+  - x64
+  - x86
+
+configuration:
+  - Release
+
+environment:
+  global:
+    BOOST_INCLUDEDIR: C:/Libraries/boost_1_59_0
+    BUILD_TYPE: Release
+    CMAKE_INCLUDE_PATH: C:/projects/extmodem/deps/portaudio/build/native/include
+#    CMAKE_LIBRARY_PATH: C:/projects/extmodem/deps/portaudio/build/native/lib/%PLATFORM%/v120/Release
+#    PORTAUDIO_DLL_PATH: C:/projects/extmodem/deps/portaudio.redist/build/native/bin/%PLATFORM%/v120/Release
+    EXTMODEM_ARTIFACT: extmodem-%PLATFORM%-%APPVEYOR_REPO_BRANCH%-%APPVEYOR_BUILD_NUMBER%-%APPVEYOR_JOB_ID%.zip
+
+#  matrix:
+#    - platform: x64
+#      BOOST_LIBRARYDIR: C:/Libraries/boost_1_59_0/lib64-msvc-14.0
+#      CMAKE_GENERATOR: "Visual Studio 14 2015 Win64"
+#
+#    - platform: x86
+#      BOOST_LIBRARYDIR: C:/Libraries/boost_1_59_0/lib32-msvc-14.0
+#      CMAKE_GENERATOR: "Visual Studio 14 2015"
+
+init:
+  - cmd: cmake --version
+  - cmd: msbuild /version
+  - cmd: echo %platform%
+
+before_build:
+  - mkdir deps
+  - mkdir deps\include
+  - mkdir deps\lib
+  - nuget install portaudio -OutputDirectory deps -ExcludeVersion 
+
+build_script:
+#  - dir /s /p %BOOST_ROOT%
+#  - dir /s /p deps
+  - IF "%PLATFORM%" == "x86" ( SET BOOST_LIBRARYDIR=C:/Libraries/boost_1_59_0/lib32-msvc-14.0)
+  - IF "%PLATFORM%" == "x86" ( SET CMAKE_GENERATOR="Visual Studio 14 2015")
+  - IF "%PLATFORM%" == "x86" ( SET PORTAUDIO_DLL_PATH=C:/projects/extmodem/deps/portaudio.redist/build/native/bin/Win32/v120/Release)
+  - IF "%PLATFORM%" == "x86" ( SET CMAKE_LIBRARY_PATH=C:/projects/extmodem/deps/portaudio/build/native/lib/Win32/v120/Release)
+
+  - IF "%PLATFORM%" == "x64" ( SET BOOST_LIBRARYDIR=C:/Libraries/boost_1_59_0/lib64-msvc-14.0)
+  - IF "%PLATFORM%" == "x64" ( SET CMAKE_GENERATOR="Visual Studio 14 2015 Win64")
+  - IF "%PLATFORM%" == "x64" ( SET PORTAUDIO_DLL_PATH=C:/projects/extmodem/deps/portaudio.redist/build/native/bin/x64/v120/Release)
+  - IF "%PLATFORM%" == "x64" ( SET CMAKE_LIBRARY_PATH=C:/projects/extmodem/deps/portaudio/build/native/lib/x64/v120/Release)
+
+  - echo %PLATFORM%
+  - echo %BOOST_LIBRARYDIR%
+  - echo %CMAKE_GENERATOR%
+
+  - echo %configuration%
+
+  - mkdir build
+  - pushd .
+  - cd build
+  - cmake --version
+  - cmake -G %CMAKE_GENERATOR% ..
+  - cmake --build . --config Release
+
+build:
+  parallel: true
+  verbosity: detailed
+
+after_build:
+  - cp %PORTAUDIO_DLL_PATH%/portaudio_%PLATFORM%.dll %APPVEYOR_BUILD_FOLDER%/build/Release/
+  - cp %BOOST_LIBRARYDIR%/boost_program_options-vc140-mt-1_59.dll %APPVEYOR_BUILD_FOLDER%/build/Release/
+  - cp %BOOST_LIBRARYDIR%/boost_system-vc140-mt-1_59.dll %APPVEYOR_BUILD_FOLDER%/build/Release/
+  - cp %BOOST_LIBRARYDIR%/boost_thread-vc140-mt-1_59.dll %APPVEYOR_BUILD_FOLDER%/build/Release/
+  - cp %BOOST_LIBRARYDIR%/boost_date_time-vc140-mt-1_59.dll %APPVEYOR_BUILD_FOLDER%/build/Release/
+  - cp %BOOST_LIBRARYDIR%/boost_chrono-vc140-mt-1_59.dll %APPVEYOR_BUILD_FOLDER%/build/Release/
+  - 7z a -mx=9 -xr!.git -xr!extmodem.dir -xr!*.ilk -xr!*.pdb -xr!*.nupkg -xr!deps %EXTMODEM_ARTIFACT% %APPVEYOR_BUILD_FOLDER%
+  - appveyor PushArtifact %EXTMODEM_ARTIFACT%
+
+artifacts:
+  - path: '*.zip'
+    name: extmodem
+
+deploy:
+  - provider: FTP
+    protocol: ftps
+    server:
+      secure: C6tkq+q/3l6LiQ4CGNgMhLWvzaajInbUEeruKHhC2lo=
+    username:
+      secure: rV1YaUrUXNT47IZB1YVFO/D29cj5pGxga5fox8pEy9s=
+    password:
+      secure: b0B/dtBHOEaFQAqiyT4Ysg==
+    folder: /extmodem
+    artifact: 
+
+branches:
+  only:
+    - master
