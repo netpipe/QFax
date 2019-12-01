@@ -17,6 +17,8 @@
 			<Add alias="All" targets="default;" />
 		</VirtualTargets>
 		<Compiler>
+			<Add option="-DALSA_FOUND" />
+			<Add option="-D_REENTRANT" />
 			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/include" />
 		</Compiler>
 		<Linker>
@@ -28,6 +30,10 @@
 			<Add library="boost_system" />
 			<Add library="boost_thread" />
 			<Add library="boost_program_options" />
+			<Add library="pulse" />
+			<Add library="asound" />
+			<Add library="z" />
+			<Add library="m" />
 			<Add directory="/home/Dev/libs/game/Irrlicht-SVN/lib/Linux" />
 		</Linker>
 		<Unit filename="audiosource.cpp" />
