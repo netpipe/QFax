@@ -87,7 +87,7 @@ const char *Usage =
 #include <string.h>
 #include <time.h>
 
-#include <config.h>             /* For NLS */
+#include "../config.h"             /* For NLS */
 #ifdef ENABLE_NLS
 #include <locale.h>
 #include <libintl.h>
@@ -2577,7 +2577,7 @@ void onsig ( int sig )
    locked, 2 for errors, 3 for protocol errors, 4 if no modem
    response, 5 on signal. */
 
-int main( int argc, char **argv)
+extern int mainEfax( int argc, char **argv)
 {
   int err=0, doneargs=0, c=0, i ;
   int testing=0, calling=0 ;

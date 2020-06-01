@@ -6,7 +6,7 @@
 #include <time.h>
 #include <limits.h>
 
-#include <config.h>             /* For NLS */
+#include "../config.h"            /* For NLS */
 #ifdef ENABLE_NLS
 #include <libintl.h>
 #include <glib.h>

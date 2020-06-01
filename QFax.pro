@@ -15,6 +15,11 @@ TEMPLATE = app
 #CONFIG += c++11
 #CONFIG += C++11
 
+#INCLUDEPATH +=
+#LIBS += -lgtk-3 -lgdk-3 -lpangocairo-1.0 -lpango-1.0 -latk-1.0 -lcairo-gobject -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lgobject-2.0 -lglib-2.0
+#LIBS += -lgthread-2.0 -pthread
+
+
 LIBS += -lm -L/usr/X11R6/lib -lX11
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -49,7 +54,12 @@ SOURCES += \
     linmodem/v34table.c \
     linmodem/v90table.c \
     linmodem/dtmf.c \
-    linmodem/lm.c
+    linmodem/lm.c \
+    efax-gtk-3.2.13/efax/efax.c \
+    efax-gtk-3.2.13/efax/efaxio.c \
+    efax-gtk-3.2.13/efax/efaxlib.c \
+    efax-gtk-3.2.13/efax/efaxmsg.c \
+    efax-gtk-3.2.13/efax/efaxos.c
 
 HEADERS += \
         mainwindow.h \
@@ -66,7 +76,12 @@ HEADERS += \
     linmodem/v90priv.h \
     linmodem/lm.h \
     linmodem/v34priv.h \
-    linmodem/display.h
+    linmodem/display.h \
+    efax-gtk-3.2.13/efax/efaxio.h \
+    efax-gtk-3.2.13/efax/efaxlib.h \
+    efax-gtk-3.2.13/efax/efaxmsg.h \
+    efax-gtk-3.2.13/efax/efaxos.h \
+    efax-gtk-3.2.13/config.h
 
 FORMS += \
         mainwindow.ui
