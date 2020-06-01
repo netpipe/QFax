@@ -59,7 +59,8 @@ SOURCES += \
     efax-gtk-3.2.13/efax/efaxio.c \
     efax-gtk-3.2.13/efax/efaxlib.c \
     efax-gtk-3.2.13/efax/efaxmsg.c \
-    efax-gtk-3.2.13/efax/efaxos.c
+    efax-gtk-3.2.13/efax/efaxos.c \
+    efax-gtk-3.2.13/efax-gtk-faxfilter/efax-gtk-socket-client.cpp
 
 HEADERS += \
         mainwindow.h \

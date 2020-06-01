@@ -36,7 +36,7 @@
 
 void error_msg(const char*);
 
-int main(int argc, char* argv[]) {
+extern int mainEfaxsocket(int argc, char* argv[]) {
 
   if (argc < 3) {
     error_msg("Insufficient arguments\n"
