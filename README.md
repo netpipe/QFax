@@ -4,5 +4,6 @@ Qt fax machine based on linmodem, can use soundcard with optoisolator. or usb HS
 UNDER CONSTRUCTION still
 impliment GUI
 
-![QFax ](screenshot1.png)
-![QFax ](screenshot2.png)
+![QFax Main Window v0.1 ](screenshot1.png)
+
+![QFax settings v0.1](screenshot2.png)
