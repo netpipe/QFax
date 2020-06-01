@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Efax-gtk
+Name[zh_TW]=傳真
+Name[he_IL]=תוכנת פקסים efax-gtk
+Comment=GUI front end for the efax fax program
+Comment[zh_TW]=efax 傳真軟體的 GUI 前端程式
+Comment[he_IL]=ממשק גרפי עבור תוכנת הפקסים efax
+TryExec=efax-gtk
+Exec=efax-gtk
+Icon=efax-gtk
+Terminal=false
+Type=Application
+Categories=GTK;Office;Telephony;

@@ -1,0 +1,2516 @@
+# Traditional Chinese Messages for efax-gtk
+# Copyright (C) 2006 Free Software Foundation, Inc.
+# This file is distributed under the same license as the efax-gtk package.
+# Kite Lau <kitelau@gmail.com>, 2005.
+# Wei-Lun Chao <chaoweilun@pcmail.com.tw>, 2006.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: efax 3.0.9\n"
+"Report-Msgid-Bugs-To: cvine@users.sourceforge.net\n"
+"POT-Creation-Date: 2014-04-11 11:34+0100\n"
+"PO-Revision-Date: 2006-05-24 10:56+0800\n"
+"Last-Translator: Wei-Lun Chao <chaoweilun@pcmail.com.tw>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/addressbook.cpp:86
+msgid "efax-gtk: Address book"
+msgstr "efax-gtk:  通訊錄"
+
+#: src/addressbook.cpp:133
+msgid "Name"
+msgstr "名稱"
+
+#: src/addressbook.cpp:139 src/redial_queue.cpp:167
+msgid "Number"
+msgstr "號碼"
+
+#: src/addressbook.cpp:207
+msgid "Add new address"
+msgstr "加入新地址"
+
+#: src/addressbook.cpp:208
+msgid "Delete address"
+msgstr "刪除地址"
+
+#: src/addressbook.cpp:209
+msgid "Move address up"
+msgstr "上移地址"
+
+#: src/addressbook.cpp:210
+msgid "Move address down"
+msgstr "下移地址"
+
+#: src/addressbook.cpp:322
+msgid "Delete selected address?"
+msgstr "刪除所選地址嗎？"
+
+#: src/addressbook.cpp:323
+msgid "efax-gtk: Delete address"
+msgstr "efax-gtk: 刪除地址"
+
+#: src/addressbook.cpp:578
+msgid "efax-gtk: Add address"
+msgstr "efax-gtk: 加入地址"
+
+#: src/addressbook.cpp:585
+msgid "Name:"
+msgstr "名稱："
+
+#: src/addressbook.cpp:586
+msgid "Number:"
+msgstr "號碼："
+
+#: src/dialogs.cpp:69
+msgid "efax-gtk: File to fax"
+msgstr "efax-gtk: 待傳檔案"
+
+#: src/dialogs.cpp:74 src/settings.cpp:2031
+msgid "View"
+msgstr "檢視"
+
+#: src/dialogs.cpp:289
+msgid "efax-gtk: Conditions, Notices and Disclaimers"
+msgstr "efax-gtk: 條件﹑注意和免責條款"
+
+#: src/dialogs.cpp:295
+msgid "Accept"
+msgstr "接受"
+
+#: src/dialogs.cpp:296
+msgid "Reject"
+msgstr "拒絕"
+
+#: src/dialogs.cpp:298
+msgid "Do you accept the Conditions, Notices and Disclaimers shown above?"
+msgstr "您接受以上的條件﹑注意和免責條款嗎？"
+
+#: src/dialogs.cpp:500
+msgid "About efax-gtk"
+msgstr "關於 efax-gtk"
+
+#: src/dialogs.cpp:516
+msgid "Copyright (C) 2001 - 2014 Chris Vine"
+msgstr ""
+
+#: src/dialogs.cpp:520
+msgid ""
+"This program was written by Chris Vine and is released under the GNU General "
+"Public License, version 2. It is a front end for efax. efax was written by "
+"Ed Casas"
+msgstr ""
+
+#: src/dialogs.cpp:541
+msgid "About efax"
+msgstr "關於 efax"
+
+#: src/dialogs.cpp:564
+msgid "efax is copyright (C) 1999 Ed Casas"
+msgstr ""
+
+#: src/dialogs.cpp:566
+msgid ""
+"This program (efax-gtk) is a front end for efax. efax is a program released "
+"under the GNU General Public License, version 2 by Ed Casas"
+msgstr ""
+
+#: src/efax_controller.cpp:84 src/mainwindow.cpp:2127 src/tray_icon.cpp:214
+msgid "Inactive"
+msgstr "未起動"
+
+#: src/efax_controller.cpp:85 src/efax_controller.cpp:89
+#: src/efax_controller.cpp:90
+msgid "Sending fax"
+msgstr "正在傳送傳真"
+
+#: src/efax_controller.cpp:86 src/efax_controller.cpp:87
+msgid "Answering call"
+msgstr "正在應答傳真"
+
+#: src/efax_controller.cpp:88
+msgid "Standing by to receive calls"
+msgstr "正在待機接收"
+
+#: src/efax_controller.cpp:167 src/efax_controller.cpp:241
+msgid ""
+"Cannot send fax - the modem is in use.\n"
+"Adding the fax to the redial queue\n"
+msgstr ""
+
+#: src/efax_controller.cpp:172
+msgid "Cannot send fax - a fax is being received\n"
+msgstr "不能傳送傳真－正在接收傳真中\n"
+
+#: src/efax_controller.cpp:425
+msgid "Not valid file name\n"
+msgstr "無效檔案名稱\n"
+
+#: src/efax_controller.cpp:429
+msgid "File does not exist\n"
+msgstr "檔案不存在\n"
+
+#: src/efax_controller.cpp:433
+msgid "User does not have read permission on the file\n"
+msgstr "使用者對此檔案無讀取權限\n"
+
+#: src/efax_controller.cpp:514 src/efax_controller.cpp:551
+msgid "Not valid postscript/PDF file\n"
+msgstr "無效的 postscript/PDF 檔案\n"
+
+#: src/efax_controller.cpp:589
+msgid "You don't have the $HOME environmental variable set\n"
+msgstr "您沒有設定 $HOME 環境變數\n"
+
+#: src/efax_controller.cpp:601
+msgid ""
+"SERIOUS SYSTEM ERROR: Can't create directory to save received faxes.\n"
+"Faxes cannot be received!\n"
+msgstr ""
+"嚴重系統錯誤：無法建立目錄來儲存已收傳真。\n"
+"無法接收傳真！\n"
+
+#: src/efax_controller.cpp:780
+msgid ""
+"\n"
+"*** Stopping send/receive session ***\n"
+"\n"
+msgstr ""
+"\n"
+"*** 正在停止傳送／接收作業階段 ***\n"
+"\n"
+
+#: src/efax_controller.cpp:945
+msgid ""
+"SERIOUS SYSTEM ERROR: Can't create directory to save received fax.\n"
+"This fax will not be saved!\n"
+msgstr ""
+"嚴重系統錯誤：無法建立目錄來儲存已收傳真。\n"
+"無法儲存此傳真！\n"
+
+#: src/efax_controller.cpp:965
+msgid ""
+"SERIOUS SYSTEM ERROR: Can't open received fax directory.\n"
+"This fax will not be saved!\n"
+msgstr ""
+"嚴重系統錯誤：無法開啟已收傳真目錄。\n"
+"不能儲存此傳真！\n"
+
+#: src/efax_controller.cpp:1001
+msgid ""
+"SERIOUS SYSTEM ERROR: Cannot save all of the received fax.\n"
+"All or part of the fax will be missing!\n"
+msgstr ""
+"系統嚴重錯誤：無法儲存已收的所有傳真。\n"
+"所有或部分傳真將丟失！\n"
+
+#: src/efax_controller.cpp:1039
+msgid "Invalid Utf8 received in EfaxController::read_pipe_cb()\n"
+msgstr "在 EfaxController::read_pipe_cb() 中接收到無效的 Utf8\n"
+
+#: src/efax_controller.cpp:1133
+msgid ""
+"SERIOUS SYSTEM ERROR: Can't create directory to save sent fax.\n"
+"This fax will not be saved!\n"
+msgstr ""
+"嚴重系統錯誤：無法建立目錄來儲存已收傳真。\n"
+"不能儲存此傳真！\n"
+
+#: src/efax_controller.cpp:1241
+msgid "PRINT JOB"
+msgstr "列印任務"
+
+#: src/fax_list.cpp:203
+msgid "Print page setup"
+msgstr ""
+
+#: src/fax_list.cpp:211
+msgid "Print selected fax"
+msgstr "列印所選傳真"
+
+#: src/fax_list.cpp:223
+msgid "View selected fax"
+msgstr "檢視所選傳真"
+
+#: src/fax_list.cpp:234
+msgid "Add/amend description for selected fax"
+msgstr "加入／修改所選傳真的描述"
+
+#: src/fax_list.cpp:241
+msgid "Delete selected fax"
+msgstr "刪除所選傳真"
+
+#: src/fax_list.cpp:248
+msgid "Empty trash folder"
+msgstr "清空垃圾匣"
+
+#: src/fax_list.cpp:259
+msgid "Add new folder"
+msgstr "加入新資料夾"
+
+#: src/fax_list.cpp:270
+msgid "Delete selected folder"
+msgstr "刪除所選資料夾"
+
+#: src/fax_list.cpp:325
+msgid "Reset new faxes count"
+msgstr "重置新的傳真數目"
+
+#: src/fax_list.cpp:373
+msgid "efax-gtk: Received fax list"
+msgstr "efax-gtk: 已收傳真清單"
+
+#: src/fax_list.cpp:374
+msgid "efax-gtk: Sent fax list"
+msgstr "efax-gtk: 外送傳真清單"
+
+#: src/fax_list.cpp:500
+msgid "Permanently delete selected fax?\n"
+msgstr "永久刪除所選傳真？\n"
+
+#: src/fax_list.cpp:501
+msgid ""
+"\n"
+"(NOTE: This will permanently delete the fax\n"
+"from the file system)"
+msgstr ""
+"\n"
+"（注意：這將永久從系統刪除此傳真）"
+
+#: src/fax_list.cpp:505
+msgid ""
+"Permanently delete selected faxes?\n"
+"\n"
+"(NOTE: This will permanently delete the faxes\n"
+"from the file system)"
+msgstr ""
+"永久刪除此傳真嗎？\n"
+"\n"
+"\n"
+"（注意：這將永久從系統刪除此傳真）"
+
+#: src/fax_list.cpp:510
+msgid "efax-gtk: Delete fax"
+msgstr "efax-gtk: 刪除傳真"
+
+#: src/fax_list.cpp:537
+msgid ""
+"Empty trash folder?\n"
+"\n"
+"(NOTE: This will permanently delete all the faxes\n"
+"in the Trash folder from the file system)"
+msgstr ""
+"清空垃圾匣嗎？\n"
+"\n"
+"（注意：這將永久性從系統刪除所有垃圾匣裡的傳真）"
+
+#: src/fax_list.cpp:540
+msgid "efax-gtk: Trash folder"
+msgstr "efax-gtk: 垃圾匣"
+
+#: src/fax_list.cpp:559 src/fax_list.cpp:1481
+msgid "efax-gtk: Add folder"
+msgstr "efax-gtk: 加入資料夾"
+
+#: src/fax_list.cpp:578
+msgid ""
+"Empty the folder by deleting any child folders\n"
+"and drag-and-dropping or deleting any contained\n"
+"faxes before deleting folder"
+msgstr ""
+"刪除所有子資料夾來清空資料夾\n"
+"並且在刪除資料夾前拖曳或是刪除裡面的傳真"
+
+#: src/fax_list.cpp:581 src/fax_list.cpp:595
+msgid "efax-gtk: Delete folder"
+msgstr "efax-gtk: 刪除資料夾"
+
+#: src/fax_list.cpp:589
+msgid "Delete folder: "
+msgstr "刪除資料夾："
+
+#: src/fax_list.cpp:593 src/settings.cpp:3112
+msgid "?"
+msgstr "？"
+
+#: src/fax_list.cpp:618
+msgid "Print selected fax?"
+msgstr "列印所選傳真？"
+
+#: src/fax_list.cpp:619
+msgid "efax-gtk: Print fax"
+msgstr "efax-gtk: 列印傳真"
+
+#: src/fax_list.cpp:1332 src/tray_icon.cpp:234
+msgid "New faxes:"
+msgstr "新傳真："
+
+#: src/fax_list.cpp:1473
+msgid "efax-gtk: Fax description"
+msgstr "efax-gtk: 傳真描述"
+
+#: src/fax_list.cpp:1474
+msgid "Fax description?"
+msgstr "傳真描述？"
+
+#: src/fax_list.cpp:1482
+msgid ""
+"Folder name?\n"
+"(Note this will be placed in the top\n"
+"level and can be drag-and-dropped\n"
+"into other folders)"
+msgstr ""
+"資料夾名稱？\n"
+"（注意：這個將被置於頂部\n"
+"而且可以被拖曳到其他檔案夾）"
+
+#: src/fax_list_manager.cpp:76
+msgid "Folder name cannot contain character: "
+msgstr "資料夾名稱不能包含字元："
+
+#: src/fax_list_manager.cpp:85
+msgid "The following folder already exists: "
+msgstr "下列資料夾已經存在："
+
+#: src/fax_list_manager.cpp:496
+msgid "Folder"
+msgstr "資料夾"
+
+#: src/fax_list_manager.cpp:527
+msgid "Date"
+msgstr "日期"
+
+#: src/fax_list_manager.cpp:538
+msgid "Description"
+msgstr "描述"
+
+#: src/fax_list_manager.cpp:646 src/fax_list_manager.cpp:649
+#: src/fax_list_manager.cpp:650 src/fax_list_manager.cpp:823
+msgid "Inbox"
+msgstr "收件匣"
+
+#: src/fax_list_manager.cpp:655 src/fax_list_manager.cpp:658
+#: src/fax_list_manager.cpp:659 src/fax_list_manager.cpp:824
+msgid "Sent box"
+msgstr "寄件匣"
+
+#: src/fax_list_manager.cpp:668 src/fax_list_manager.cpp:673
+#: src/fax_list_manager.cpp:674
+msgid "Trash"
+msgstr "垃圾匣"
+
+#: src/file_list.cpp:109
+msgid "efax-gtk: File list"
+msgstr "efax-gtk: 檔案清單"
+
+#: src/file_list.cpp:153
+msgid "Files to fax"
+msgstr "待發檔案"
+
+#: src/file_list.cpp:181 src/socket_list.cpp:209
+msgid "View selected file"
+msgstr "檢視所選檔案"
+
+#: src/file_list.cpp:191 src/socket_list.cpp:219
+msgid "Remove selected file from list"
+msgstr "從清單中刪除所選檔案"
+
+#: src/file_list.cpp:199
+msgid "Add files to list"
+msgstr "加入檔案到清單"
+
+#: src/file_list.cpp:205
+msgid "Add files to the file list for faxing"
+msgstr "加入檔案到檔案清單來傳送"
+
+#: src/file_list.cpp:216
+msgid "Move file up"
+msgstr "上移檔案"
+
+#: src/file_list.cpp:217
+msgid "Move file down"
+msgstr "下移檔案"
+
+#: src/file_list.cpp:604
+msgid "Remove file "
+msgstr "刪除檔案"
+
+#: src/file_list.cpp:606 src/socket_list.cpp:514
+msgid " from the list?"
+msgstr "從清單中？"
+
+#: src/file_list.cpp:612
+msgid "Remove file"
+msgstr "刪除檔案"
+
+#: src/main.cpp:145
+#, fuzzy
+msgid ""
+"Copyright (C) 2001 - 2014 Chris Vine\n"
+"This program is released under the GNU General Public License, version 2\n"
+msgstr ""
+"版權 (C) 2001 - 2011 Chris Vine\n"
+"這個程式以 GNU 公共版權，版本 2 發佈\n"
+
+#: src/main.cpp:161
+msgid ""
+"Usage: efax-gtk [options] [filename]\n"
+"Options:\n"
+"\t-r  Start the program in receive standby mode\n"
+"\t-s  Start the program hidden in the system tray\n"
+"See the README file which comes with the distribution\n"
+"for further details\n"
+msgstr ""
+"用法: efax-gtk [選項] [檔名]\n"
+"選項:\n"
+"\t-r  啟動程式到待機接收狀態\n"
+"\t-s  啟動程式並隱藏於系統匣\n"
+"檢視程式附帶的讀我檔案來了解更多細節\n"
+
+#: src/main.cpp:234
+msgid "Invalid option.  Options are:\n"
+msgstr "不明選項。選項是：\n"
+
+#: src/main.cpp:551
+msgid ""
+"Invalid user name specified - it must be in plain\n"
+"ASCII characters.  No user name will be shown on\n"
+"the fax top header line, but don't worry as the\n"
+"fax station number will always be given on the\n"
+"top header\n"
+msgstr ""
+"指定了無效的使用者名稱 - 它必須單純以 ASCII \n"
+"字元組成。在傳真頁眉列將不會顯示任何使用者名稱，\n"
+"但是不用擔心，因為傳真機台號碼總是會出現於頁眉中\n"
+
+#: src/main.cpp:618
+msgid ""
+"Invalid modem class specified\n"
+"Adopting default of Class 2\n"
+msgstr ""
+"設定了無效的數據機級別\n"
+"採用預設的級別 2\n"
+
+#: src/main.cpp:627 src/main.cpp:632
+msgid "No serial port device specified in "
+msgstr "沒有指定序列埠裝置於"
+
+#: src/main.cpp:685
+msgid "Adopting default fax resolution of 204x196\n"
+msgstr "採用預設傳真解析度 204x196\n"
+
+#: src/main.cpp:693
+msgid ""
+"Invalid fax resolution specified\n"
+"Adopting default fax resolution of 204x196\n"
+msgstr ""
+"指定了無效的傳真解析度\n"
+"採用預設傳真解析度 204x196\n"
+
+#: src/main.cpp:701
+msgid ""
+"Invalid ring number specified\n"
+"Will answer after one ring\n"
+msgstr ""
+"指定了無效的響鈴次數\n"
+"鈴響一聲後將應答\n"
+
+#: src/main.cpp:708
+msgid "Adopting default page size of a4\n"
+msgstr "採用預設頁面尺寸 A4\n"
+
+#: src/main.cpp:718
+msgid ""
+"Invalid page size specified\n"
+"Adopting default page size of a4\n"
+msgstr ""
+"指定了無效的頁面尺寸\n"
+"採用預設頁面尺寸 A4\n"
+
+#: src/main.cpp:731
+msgid ""
+"Invalid dialmode specified\n"
+"Adopting default of tone dialling\n"
+msgstr ""
+"指定了無效的撥號模式\n"
+"採用預設的撥號模式\n"
+
+#: src/main.cpp:767
+msgid "Invalid print shrink specified: adopting default value of 100\n"
+msgstr "指定了無效的列印頁面收縮值：採用預設的值 100\n"
+
+#: src/main.cpp:776
+msgid "Adopting default postscript view command of 'gv'\n"
+msgstr "採用預設的 postscript 檔案檢視命令 'gv'\n"
+
+#: src/main.cpp:790
+msgid ""
+"No port for the socket server has been specified, so the server will not be "
+"started\n"
+msgstr "沒有指定通訊端伺服器的連接埠號碼，所以將不會啟動伺服器\n"
+
+#: src/main.cpp:796
+msgid ""
+"Invalid port for the socket server has been specified, so the server will "
+"not be started.  It needs to be between 1024 and 65535\n"
+msgstr ""
+"指定的通訊端伺服器連接埠號碼無效，所以伺服器將不會啟動。連接埠號碼必須介於 "
+"1024 和 65535 之間\n"
+
+#: src/main.cpp:828
+msgid ""
+"Invalid ip family for socket server specified: adopting default of ipv4\n"
+msgstr ""
+
+#: src/main.cpp:854
+msgid ""
+"Invalid redial interval has been specified. It needs to be between 5 and "
+"1440 minutes\n"
+msgstr ""
+
+#: src/main.cpp:867
+msgid ""
+"Invalid WORK_SUBDIR: directory specified. WORK_SUBDIR: will be ignored\n"
+msgstr "指定了無效的工作子目錄：。WORK_SUBDIR: 將被忽略\n"
+
+#: src/main.cpp:1001
+msgid ""
+"DBUS error: Cannot start efax-gtk.\n"
+"\n"
+"Make sure the DBUS session message bus is running"
+msgstr ""
+
+#: src/main.cpp:1003
+msgid "efax-gtk: DBUS error"
+msgstr ""
+
+#: src/mainwindow.cpp:307
+msgid "File  "
+msgstr "檔案  "
+
+#: src/mainwindow.cpp:309
+msgid "Socket "
+msgstr "通訊端 "
+
+#: src/mainwindow.cpp:311
+msgid "Fax entry method: "
+msgstr "傳真輸入方式："
+
+#: src/mainwindow.cpp:312 src/mainwindow.cpp:1634
+msgid "Single file"
+msgstr "單一檔案"
+
+#: src/mainwindow.cpp:313 src/mainwindow.cpp:1635
+msgid "Multiple files"
+msgstr "多個檔案"
+
+#: src/mainwindow.cpp:314 src/mainwindow.cpp:1636
+msgid "Socket list"
+msgstr "通訊端清單"
+
+#: src/mainwindow.cpp:315 src/mainwindow.cpp:1637 src/socket_notify.cpp:68
+msgid "Tel number: "
+msgstr "電話號碼："
+
+#: src/mainwindow.cpp:316 src/mainwindow.cpp:1638 src/socket_notify.cpp:69
+msgid "Send fax"
+msgstr "傳送傳真"
+
+#: src/mainwindow.cpp:317 src/mainwindow.cpp:1639 src/tray_icon.cpp:159
+msgid "Answer call"
+msgstr "應答傳真"
+
+#: src/mainwindow.cpp:318 src/mainwindow.cpp:1640 src/tray_icon.cpp:154
+msgid "Take over call"
+msgstr "接起電話"
+
+#: src/mainwindow.cpp:319 src/mainwindow.cpp:1641
+msgid "Standby"
+msgstr "待機"
+
+#: src/mainwindow.cpp:320 src/mainwindow.cpp:1642 src/tray_icon.cpp:170
+msgid "Stop"
+msgstr "停止"
+
+#: src/mainwindow.cpp:366
+msgid "Fax to send"
+msgstr "外送傳真"
+
+#: src/mainwindow.cpp:494
+msgid "List _received faxes"
+msgstr "列出已收傳真(_R)"
+
+#: src/mainwindow.cpp:501
+msgid "_List sent faxes"
+msgstr "列出外送傳真(_L)"
+
+#: src/mainwindow.cpp:512
+msgid "Queued _faxes from socket"
+msgstr "將通訊端傳真排入佇列(_F)"
+
+#: src/mainwindow.cpp:518
+msgid "_Enter single file"
+msgstr "輸入單一檔案(_E)"
+
+#: src/mainwindow.cpp:525
+msgid "Enter _multiple files"
+msgstr "輸入多個檔案(_M)"
+
+#: src/mainwindow.cpp:536
+msgid "_Address book"
+msgstr "通訊錄(_A)"
+
+#: src/mainwindow.cpp:547
+msgid "Re_dial queue"
+msgstr ""
+
+#: src/mainwindow.cpp:559
+msgid "_Settings"
+msgstr "設定(_S)"
+
+#: src/mainwindow.cpp:571
+msgid "_Quit"
+msgstr "離開(_Q)"
+
+#: src/mainwindow.cpp:582
+msgid "_Print logfile"
+msgstr ""
+
+#: src/mainwindow.cpp:615
+msgid "Print logfile page _setup"
+msgstr ""
+
+#: src/mainwindow.cpp:625
+msgid "_View logfile"
+msgstr ""
+
+#: src/mainwindow.cpp:642
+msgid "About efax-_gtk"
+msgstr "關於 efax-gtk(_G)"
+
+#: src/mainwindow.cpp:649
+msgid "About _efax"
+msgstr "關於 efax(_E)"
+
+#: src/mainwindow.cpp:655
+msgid "_Translations"
+msgstr "翻譯(_T)"
+
+#: src/mainwindow.cpp:666 src/mainwindow.cpp:674
+msgid "_Help"
+msgstr "求助(_H)"
+
+#: src/mainwindow.cpp:672
+msgid "_File"
+msgstr "檔案(_F)"
+
+#: src/mainwindow.cpp:673
+msgid "_Log"
+msgstr ""
+
+#: src/mainwindow.cpp:925
+msgid ""
+"The program has been started with the -s option but there is no system "
+"tray!\n"
+msgstr "這個程式以 -s 的選項啟動，但沒有系統列可用\n"
+
+#: src/mainwindow.cpp:1021
+msgid ""
+"No fax number specified.  Do you want to send the fax on an open connection?"
+msgstr "沒有指定傳真號碼。您要發傳真到開放的連線嗎？"
+
+#: src/mainwindow.cpp:1023
+msgid "Telephone number"
+msgstr "電話號碼"
+
+#: src/mainwindow.cpp:1310 src/mainwindow.cpp:1316
+msgid "A print job has been received on socket"
+msgstr "通訊端收到列印任務"
+
+#: src/mainwindow.cpp:1311 src/mainwindow.cpp:1317
+msgid "efax-gtk socket"
+msgstr "efax-gtk 通訊端"
+
+#: src/mainwindow.cpp:1376 src/mainwindow.cpp:1382
+msgid "A fax has been received by efax-gtk"
+msgstr "efax-gtk 剛剛接收到一個傳真"
+
+#: src/mainwindow.cpp:1377 src/mainwindow.cpp:1383
+msgid "efax-gtk: fax received"
+msgstr "efax-gtk: 傳真收到"
+
+#: src/mainwindow.cpp:1507
+msgid ""
+"Can't change settings unless the program is inactive\n"
+"Press the Stop button to make it inactive"
+msgstr ""
+"不能變更設定，除非程式處於非起動狀態\n"
+"按停止鍵來使它不起動"
+
+#: src/mainwindow.cpp:1609
+msgid "Italian - Luca De Rugeriis\n"
+msgstr "義大利文 - Luca De Rugeriis\n"
+
+#: src/mainwindow.cpp:1610
+msgid "Polish - Pawel Suwinski\n"
+msgstr "波蘭文 - Pawel Suwinski\n"
+
+#: src/mainwindow.cpp:1611
+msgid "Bulgarian - Zdravko Nikolov\n"
+msgstr "保加利亞文 - Zdravko Nikolov\n"
+
+#: src/mainwindow.cpp:1612
+msgid "Russian - Pavel Vainerman\n"
+msgstr "俄文 - Pavel Vainerman\n"
+
+#: src/mainwindow.cpp:1613
+msgid "Hebrew - Assaf Gillat\n"
+msgstr "希伯來文 - Assaf Gillat\n"
+
+#: src/mainwindow.cpp:1614
+msgid "Greek - Hellenic Linux Users Group\n"
+msgstr "希臘文 - Hellenic Linux Users Group\n"
+
+#: src/mainwindow.cpp:1615
+msgid "Albanian - Besnik Bleta\n"
+msgstr "阿爾巴尼亞文 - Besnik Bleta\n"
+
+#: src/mainwindow.cpp:1616
+msgid "Hungarian - Gergely Szakats, Laszlo Csordas\n"
+msgstr "匈牙利文 - Gergely Szakats, Laszlo Csordas\n"
+
+#: src/mainwindow.cpp:1617
+msgid "Simplified Chinese - Kite Lau\n"
+msgstr "簡體中文 － Kite Lau\n"
+
+#: src/mainwindow.cpp:1618
+msgid "German - Steffen Wagner\n"
+msgstr "德文 - Steffen Wagner\n"
+
+#: src/mainwindow.cpp:1619
+msgid "Swedish - Daniel Nylander\n"
+msgstr "瑞典文 - Daniel Nylander\n"
+
+#: src/mainwindow.cpp:1620
+msgid "Catalan - Jordi Sayol Salomo\n"
+msgstr "嘉泰羅尼亞文 - Jordi Sayol Salomo\n"
+
+#: src/mainwindow.cpp:1621
+msgid "Traditional Chinese - Wei-Lun Chao\n"
+msgstr "繁體中文 － 趙惟倫\n"
+
+#: src/mainwindow.cpp:1622
+msgid "Spanish - Antonio Trujillo\n"
+msgstr ""
+
+#: src/mainwindow.cpp:1623
+msgid "French - Charlie Ledocq"
+msgstr ""
+
+#: src/mainwindow.cpp:1625
+msgid "efax-gtk: Translations"
+msgstr "efax-gtk: 翻譯"
+
+#: src/mainwindow.cpp:1753 src/mainwindow.cpp:2128
+msgid "Press F1 for help"
+msgstr "求助請按 F1 鍵"
+
+#: src/mainwindow.cpp:1941
+msgid "Invalid Utf8 received in MainWindow::read_error_pipe_cb()\n"
+msgstr "在 MainWindow::read_error_pipe_cb() 中收到無效的 Utf8\n"
+
+#: src/mainwindow.cpp:2020 efax/efax.c:384
+msgid "terminated by signal"
+msgstr "被信號終止"
+
+#: src/settings.cpp:79
+msgid "Name: "
+msgstr "名稱："
+
+#: src/settings.cpp:80
+msgid "Number: "
+msgstr "號碼："
+
+#: src/settings.cpp:201
+msgid "Serial Device: "
+msgstr "序列埠裝置："
+
+#: src/settings.cpp:202
+msgid "Lock File: "
+msgstr "加鎖檔案："
+
+#: src/settings.cpp:203
+msgid "Capabilities: "
+msgstr "功能："
+
+#: src/settings.cpp:204
+msgid "Rings (1-9): "
+msgstr "鈴聲（1－9）："
+
+#: src/settings.cpp:205
+msgid "Modem Class: "
+msgstr "數據機級別："
+
+#: src/settings.cpp:206
+msgid "Dial Mode: "
+msgstr "撥號模式："
+
+#: src/settings.cpp:222
+msgid "Auto"
+msgstr "自動"
+
+#: src/settings.cpp:224
+msgid "Class 1"
+msgstr "級別 1"
+
+#: src/settings.cpp:226
+msgid "Class 2"
+msgstr "級別 2"
+
+#: src/settings.cpp:228
+msgid "Class 2.0"
+msgstr "級別 2.0"
+
+#: src/settings.cpp:244
+msgid "Tone"
+msgstr "音頻"
+
+#: src/settings.cpp:246
+msgid "Pulse"
+msgstr "脈衝"
+
+#: src/settings.cpp:518
+msgid "Initialization Params:"
+msgstr "初始參數："
+
+#: src/settings.cpp:519
+msgid "Reset Params: "
+msgstr "重置參數："
+
+#: src/settings.cpp:520
+msgid "Other Params: "
+msgstr "其它參數："
+
+#: src/settings.cpp:672
+msgid "Use GTK+ Print System"
+msgstr ""
+
+#: src/settings.cpp:673
+msgid "Print Program: "
+msgstr "列印程式："
+
+#: src/settings.cpp:674
+msgid "Print Shrink (50-100):"
+msgstr "列印收縮（50－100）："
+
+#: src/settings.cpp:675
+msgid ""
+"Popup confirmation dialog\n"
+"before printing"
+msgstr "列印前跳出確認對話窗"
+
+#: src/settings.cpp:899
+msgid ""
+"Postscript viewer\n"
+"program:"
+msgstr ""
+"Postscript\n"
+"檢視器程式："
+
+#: src/settings.cpp:985
+msgid "Run socket server"
+msgstr "執行通訊端伺服器"
+
+#: src/settings.cpp:986
+msgid ""
+"Popup dialog when fax\n"
+"received from socket"
+msgstr ""
+"從通訊端收到傳真時\n"
+"跳出對話視窗"
+
+#: src/settings.cpp:987
+msgid ""
+"Port to which faxes to\n"
+"be sent:"
+msgstr ""
+"發送傳真的\n"
+"連接埠號碼"
+
+#: src/settings.cpp:988
+msgid ""
+"Addresses allowed to\n"
+"connect"
+msgstr "允許連線的地址"
+
+#: src/settings.cpp:989
+msgid ""
+"IP family for socket\n"
+"server"
+msgstr ""
+
+#: src/settings.cpp:1021
+msgid "localhost   "
+msgstr "本機"
+
+#: src/settings.cpp:1024
+msgid "other"
+msgstr "其它"
+
+#: src/settings.cpp:1047
+msgid "IPv4   "
+msgstr ""
+
+#: src/settings.cpp:1049
+msgid "IPv6"
+msgstr ""
+
+#: src/settings.cpp:1315
+msgid ""
+"Popup dialog when fax\n"
+"received by modem"
+msgstr ""
+"數據機收到傳真時\n"
+"跳出視窗"
+
+#: src/settings.cpp:1316
+msgid ""
+"Execute a program or script\n"
+"when fax received by modem"
+msgstr ""
+"當數據機收到傳真時\n"
+"執行一個程式或命令稿"
+
+#: src/settings.cpp:1502
+msgid "Sent Fax Resolution:"
+msgstr "外送傳真解析度："
+
+#: src/settings.cpp:1503
+msgid ""
+"Include destination\n"
+"fax number on fax\n"
+"page top header line"
+msgstr ""
+"在頁眉包含目的地\n"
+"的傳真號碼"
+
+#: src/settings.cpp:1504
+msgid "Automatic redial"
+msgstr ""
+
+#: src/settings.cpp:1505
+msgid "Interval (minutes):"
+msgstr ""
+
+#: src/settings.cpp:1506
+msgid "Dial Prefix:"
+msgstr ""
+
+#: src/settings.cpp:1520
+msgid "Standard"
+msgstr "標準"
+
+#: src/settings.cpp:1522
+msgid "Fine"
+msgstr "精細"
+
+#: src/settings.cpp:1774
+msgid "Log File: "
+msgstr "日誌檔案："
+
+#: src/settings.cpp:1837
+msgid "Page Size: "
+msgstr "頁面尺寸："
+
+#: src/settings.cpp:1943
+msgid "efax-gtk: settings"
+msgstr "efax-gtk: 設定"
+
+#: src/settings.cpp:1979
+msgid "Note: pressing the OK button will save the settings in file"
+msgstr "注意：按 OK 鍵將儲存設定到檔案"
+
+#: src/settings.cpp:1986
+msgid "Reset"
+msgstr "重置"
+
+#: src/settings.cpp:2019
+msgid "Identity"
+msgstr "身分"
+
+#: src/settings.cpp:2022
+msgid "Modem"
+msgstr "數據機"
+
+#: src/settings.cpp:2025
+msgid "Params"
+msgstr "參數"
+
+#: src/settings.cpp:2028
+msgid "Print"
+msgstr "列印"
+
+#: src/settings.cpp:2034
+msgid "Socket"
+msgstr "通訊端"
+
+#: src/settings.cpp:2037
+msgid "Receive"
+msgstr "接收"
+
+#: src/settings.cpp:2040
+msgid "Send"
+msgstr ""
+
+#: src/settings.cpp:2043
+msgid "Logging"
+msgstr "日誌"
+
+#: src/settings.cpp:2046
+msgid "Page"
+msgstr "頁面"
+
+#: src/settings.cpp:2110
+msgid ""
+"Invalid user name specified in \"Identity\" tab - it must be in plain ASCII "
+"characters.  If this is a problem, leave it blank as the fax station number "
+"will always be given on the top header"
+msgstr ""
+"在「身分」分頁中指定了無效的使用者名稱 - 它必須單純由 ASCII 字元組成。如果有"
+"困難就保持它為空白，因為傳真機台號碼將會總是出現在頁眉"
+
+#: src/settings.cpp:2114 src/settings.cpp:2152 src/settings.cpp:2171
+#: src/settings.cpp:2190 src/settings.cpp:2218 src/settings.cpp:2237
+#: src/settings.cpp:2310 src/settings.cpp:2366 src/settings.cpp:2458
+msgid "Config Error"
+msgstr "設定錯誤"
+
+#: src/settings.cpp:2151
+msgid "Invalid modem class specified"
+msgstr "指定了無效的數據機級別"
+
+#: src/settings.cpp:2170
+msgid "Invalid page size specified"
+msgstr "指定了無效的頁面尺寸"
+
+#: src/settings.cpp:2189
+msgid "Invalid sent fax resolution specified"
+msgstr "指定了無效的外送傳真解析度"
+
+#: src/settings.cpp:2217
+msgid "Invalid rings number specified"
+msgstr "指定了無效的鈴聲次數"
+
+#: src/settings.cpp:2236
+msgid "Invalid dial mode specified"
+msgstr "指定了無效的撥號模式"
+
+#: src/settings.cpp:2309
+msgid "Invalid print shrink parameter specified"
+msgstr "指定了無效的列印收縮參數"
+
+#: src/settings.cpp:2364
+msgid "Invalid socket port number specified. It must be between 1024 and 65535"
+msgstr "指定了無效的通訊端連接埠號碼。它必須介於 1024 與 65535 之間"
+
+#: src/settings.cpp:2456
+msgid ""
+"Invalid redial interval specified. It must be between 5 and 1440 minutes"
+msgstr ""
+
+#: src/settings.cpp:3106
+msgid "Enter settings from "
+msgstr "輸入設定來自"
+
+#: src/settings.cpp:3109
+msgid " or\n"
+msgstr "或是\n"
+
+#: src/settings.cpp:3114
+msgid "Reset settings"
+msgstr "重置設定"
+
+#: src/settings_help.cpp:46
+msgid ""
+"Put the name to appear on the fax top header on sent faxes here.  It must be "
+"in plain ASCII characters.  If this is a problem, leave it blank as the fax "
+"station number will always be given on the top header"
+msgstr ""
+"在這裡輸入出現於外送傳真頁眉的名稱。它必須單純由 ASCII 字元組成。如果有困難就"
+"保持它為空白，因為傳真機台號碼將會總是出現在頁眉"
+
+#: src/settings_help.cpp:50
+msgid "efax-gtk help: Name"
+msgstr "efax-gtk 說明: 名稱"
+
+#: src/settings_help.cpp:52
+msgid ""
+"Put the number to appear on the fax top header on sent faxes here.  This "
+"will also comprise the fax station ID reported to the sending fax machine "
+"when receiving faxes"
+msgstr ""
+"在這裡輸入要在外送傳真頁眉上顯示的號碼。這也將包括應答傳真機顯示給對方的身"
+"分。"
+
+#: src/settings_help.cpp:55
+msgid "efax-gtk help: Number"
+msgstr "efax-gtk 說明: 號碼"
+
+#: src/settings_help.cpp:60
+msgid ""
+"Put the serial device to which the modem is connected here (if none is "
+"given, the program defaults to /dev/modem).  Do not include the `/dev/' part "
+"of the device name -- ie state it as `ttyS1' or `cua2', etc.  With Linux, "
+"ttyS0 equates to COM 1, ttyS1 to COM 2, and so on"
+msgstr ""
+"在此指定數據機所連線的序列埠裝置（如果留白，程式將預設使用 /dev/modem）。不要"
+"在此包括裝置名稱的「/dev/」部分，也就是只宣告「ttyS1」, 或是「cua2」…等等。"
+"在 Linux 下，ttyS0 等同於 COM 1﹑ttyS1 等同於 COM 2…以此類推。"
+
+#: src/settings_help.cpp:65
+msgid "efax-gtk help: Device"
+msgstr "efax-gtk 說明: 裝置"
+
+#: src/settings_help.cpp:67
+msgid ""
+"Put the lock file directory here.  If none is specified, the program "
+"defaults to /var/lock"
+msgstr "在此指定加鎖檔案的目錄。如果留白，程式預設使用 /var/lock"
+
+#: src/settings_help.cpp:69
+msgid "efax-gtk help: Lock File"
+msgstr "efax-gtk 說明: 加鎖檔案"
+
+#: src/settings_help.cpp:71
+msgid ""
+"With efax-0.9 or higher you should usually pick \"Auto\", as then efax will "
+"work out the class of the modem by itself, but you can also force a class by "
+"picking one of the specified ones if you want.  However, with efax-0.8 the "
+"program defaults to Class 2, so if you are using a Class 1 modem with old "
+"versions of efax specify the Class here"
+msgstr ""
+"在 efax-0.9 或以上的版本，您一般需要選擇「自動」，efax 會自動判斷數據機的級"
+"別，但您也可以強制使用自己指定的級別。然而 efax-0.8 會預設級別 2，所以如果您"
+"在舊版本的 efax 裡使用級別 1 的數據機，請在這裡指定級別。"
+
+#: src/settings_help.cpp:77
+msgid "efax-gtk help: Modem Class"
+msgstr "efax-gtk 說明: 數據機的級別"
+
+#: src/settings_help.cpp:79
+msgid ""
+"This specifies whether tone or pulse dialling will be used when sending faxes"
+msgstr "這裡指定用音頻或脈衝來撥號傳送傳真"
+
+#: src/settings_help.cpp:81
+msgid "efax-gtk help: Dial Mode"
+msgstr "efax-gtk 說明: 撥號模式"
+
+#: src/settings_help.cpp:83
+msgid ""
+"This specifies the capabilities of the modem.  To see what these mean do "
+"`man efax', and look at the operation of the `-c' flag.  With efax-0.9 and a "
+"Class 2 modem, you usually won't need to specify this and should leave it "
+"blank, as the program will interrogate the modem.  If using an older version "
+"of efax or a different class of modem, values which will work with "
+"practically any 14,400 bps modem are 1,5,0,2,0,0,0,0, or 1,3,0,2,0,0,0,0 for "
+"slower ones"
+msgstr ""
+"這個設定數據機的功能。想知道是什麼意思，請執行「man efax」，檢視「-c」選項。"
+"在 efax-0.9 和一個 Class 2 數據機之下，您一般不用指定這個，留白即可，因為程式"
+"會詢問數據機。如果使用舊版本的 efax 或是一個不同級別的數據機，和典型的任何較"
+"慢的 14,400 bps 的數據機能工作的值是 1,5,0,2,0,0,0,0, or 1,3,0,2,0,0,0,0。"
+
+#: src/settings_help.cpp:91
+msgid "efax-gtk help: Capabilities"
+msgstr "efax-gtk 說明: 功能"
+
+#: src/settings_help.cpp:93
+msgid ""
+"This defines the number of rings the modem allows to pass before answering "
+"the telephone when in Standby mode.  Acceptable values are 1 to 9.  If none "
+"is specified, the program defaults to 1"
+msgstr ""
+"這裡設定了在待機接收模式下數據機應答前的響鈴次數。允許的值為 1 到 9。如果沒有"
+"指定，程式預設為 1。"
+
+#: src/settings_help.cpp:96
+msgid "efax-gtk help: Rings"
+msgstr "efax-gtk 說明: 響鈴"
+
+#: src/settings_help.cpp:101
+msgid ""
+"This specifies the initializing `AT' commands for the modem when in fax "
+"mode.  Specify as many of these as are needed, separated by spaces for "
+"commands which need to be separated, but without a prepended `AT'.  If none "
+"is specified, the program will default to `Z &FE&D2S7=120 &C0 M1L0', which "
+"will be correct for practically all modems"
+msgstr ""
+"這裡指定了在傳真機模式下用於數據機的起始「AT」命令。可以指定多個命令，不同命"
+"令用空格隔開，但不加「AT」字首。如果沒有指定，程式將預設用「Z &FE&D2S7=120 "
+"&C0 M1L0」，這個將適用於大部分數據機。"
+
+#: src/settings_help.cpp:107
+msgid "efax-gtk help: Initialization Parameters"
+msgstr "efax-gtk 說明: 起始參數"
+
+#: src/settings_help.cpp:109
+msgid ""
+"This specifies the `AT' commands that will reset the modem.  Specify as many "
+"commands as are needed, separated by spaces for commands which need to be "
+"separated, but without a prepended `AT'.  If none is specified, the program "
+"will default to `Z', which will be correct for practically all modems"
+msgstr ""
+"這裡指定了將重置數據機的「AT」命令。可以指定多個命令，不同命令用空格隔開，但"
+"不加「AT」字首。如果沒有指定，程式將預設用「Z」，這個將適用於大部分數據機。"
+
+#: src/settings_help.cpp:114
+msgid "efax-gtk help: Reset Parameters"
+msgstr "efax-gtk 說明: 重置參數"
+
+#: src/settings_help.cpp:116
+msgid ""
+"This can be used to pass any other parameter to efax (do `man efax' to see "
+"what is available).  Specify as many of these as are needed, separated by "
+"spaces for different parameters -- eg include `-or' to do a bit reversal "
+"during receive for Multitech modems which require it.  Unless you have an "
+"unusual modem, leave this blank"
+msgstr ""
+"這裡可以用來傳遞任何其它的參數給 efax（用「man efax」來檢視可用參數）。可以指"
+"定多個參數，而用空格隔開不同參數－－例如包含「-or」來做一些在接收傳真時 "
+"Multitech 數據機所需要的位元反轉。除非您有一個不平常的數據機，那就讓它留白。"
+
+#: src/settings_help.cpp:122
+msgid "efax-gtk help: Other Parameters"
+msgstr "efax-gtk 說明: 其它參數"
+
+#: src/settings_help.cpp:127
+msgid ""
+"If this is checked, the program will use the GTK+ print system rather than "
+"the command line argument specified below to print faxes"
+msgstr ""
+
+#: src/settings_help.cpp:130
+msgid "efax-gtk help: Use GTK+ print system"
+msgstr ""
+
+#: src/settings_help.cpp:132
+msgid ""
+"This is the command which prints and takes postscript input on standard "
+"input.  If none is specified, the program will default to `lpr'.  This has "
+"no effect if the \"Use GTK+ Print System\" button is checked"
+msgstr ""
+"這是用來接收並列印來自標準輸入的 postscript 檔案的命令。如果留空，程式預設為"
+"\"lpr\""
+
+#: src/settings_help.cpp:136
+msgid "efax-gtk help: Print Program"
+msgstr "efax-gtk 說明: 列印程式"
+
+#: src/settings_help.cpp:138
+msgid ""
+"This will determine the extent to which a printed page will be reduced to "
+"fit within a printer's print area.  It is a percentage -- eg 98 will shrink "
+"the page to 98 per cent of its size.  If none is specified no shrink will "
+"take place (ie you can, but there is no need to, specify 100).  This has no "
+"effect if the \"Use GTK+ Print System\" button is checked"
+msgstr ""
+"這決定了適應印表機的列印範圍所作的收縮程度。這是個百分比－－例如 98 將把頁面"
+"收縮至實際尺寸的 98％。如果留空，將不做任何收縮(也就是說您可以－但不必－指定 "
+"100）"
+
+#: src/settings_help.cpp:144
+msgid "efax-gtk help: Print Shrink"
+msgstr "efax-gtk 說明: 列印收縮"
+
+#: src/settings_help.cpp:146
+msgid ""
+"This specifies whether a confirmatory pop-up dialog is to appear before "
+"printing whenever the \"Print selected fax\" button is pressed in the "
+"Received Faxes list or Sent Faxes list.  Uncheck the box if you don't want a "
+"dialog (if you have specified an external print manager such as 'kprinter' "
+"in the Print Program box, then you will not want this checked).  This has no "
+"effect if the \"Use GTK+ Print System\" button is checked"
+msgstr ""
+"這指定在已收傳真或外送傳真清單裡，當按\"列印所選傳真\"按鈕時是否在列印前彈出"
+"確認對話視窗。如果您不想要彈出視窗就去勾選（如果您指定了一個外部列印管理器，"
+"例如在列印程式選框裡指定了'kprinter'，那麼您將不需要此勾選）。"
+
+#: src/settings_help.cpp:152 src/settings_help.cpp:181
+msgid "efax-gtk help: Popup"
+msgstr "efax-gtk 說明: 彈出視窗"
+
+#: src/settings_help.cpp:157
+msgid ""
+"A postscript viewer is used to view sent and received faxes via the fax "
+"lists, and also to view faxes to be sent identified via the \"Files to fax\" "
+"file selector dialog.  Specify here the command to be used to view "
+"postscript files.  If none is specified, the program will default to 'gv'.  "
+"Other possibilities you may want to specify are 'evince' (the Gnome image "
+"viewer) or 'kghostview' (the KDE postscript viewer). If using gv, you may "
+"need to use the '-media A4' or '-media Letter' option to select correct "
+"paper size.  evince and kghostview do this automatically"
+msgstr ""
+"postscript 檢視器是用來從傳真清單裡檢視已收或外送傳真，而且也用來檢視在\"要傳"
+"真的檔案\"選擇視窗裡的外送傳真。在這裡指定用來檢視 postscript 檔案的命令。如"
+"果沒有指定，程式將預設用「gv」。或是您可能需要指定「evince」（Gnome "
+"postscript 檢視器）或是「kghostview」（KDEpostscript 檢視器）。如果您使用 "
+"gv，您可能需要用 '-media A4' 或是 '-media Letter' 的選項來選擇正確的頁面尺"
+"寸。evince 和 kghostview 則可以自動辨識。"
+
+#: src/settings_help.cpp:166
+msgid "efax-gtk help: Postscript Viewer Program"
+msgstr "efax-gtk 說明: Postscript 檔案檢視器"
+
+#: src/settings_help.cpp:171
+msgid ""
+"This specifies whether a socket server is to be run for CUPS or  some other "
+"print system.  Check the box if it is to run"
+msgstr ""
+"這裡指定了是否需要為 CUPS 或其它列印系統執行一個通訊端伺服器。如果需要就勾"
+"選。"
+
+#: src/settings_help.cpp:173
+msgid "efax-gtk help: Run socket server"
+msgstr "efax-gtk 說明: 執行通訊端伺服器"
+
+#: src/settings_help.cpp:175
+msgid ""
+"This specifies whether a pop-up dialog is to appear whenever a fax is "
+"received by the socket server from the print system.  Check the box if you "
+"want a dialog (this has no effect unless you have also checked the box for "
+"the socket server to run).  If the program is inactive or is standing by to "
+"receive faxes, the fax can be sent directly from this dialog"
+msgstr ""
+"這裡指定了，當經過通訊端伺服器接收到來自列印系統的傳真任務時，是否彈出對話視"
+"窗。如果是就勾選（如果您也勾選了執行通訊端伺服器，這裡將不生效）。如果程式沒"
+"起動傳真可以從這個視窗直接傳送。"
+
+#: src/settings_help.cpp:183
+msgid ""
+"This specifies the port number on which the socket server is to listen.  It "
+"should be between 1024 and 65535."
+msgstr ""
+"這裡指定了通訊端伺服器監聽的連接埠號碼。它應該要介於 1023 與 65535 之間。"
+
+#: src/settings_help.cpp:185
+msgid "efax-gtk help: Port"
+msgstr "efax-gtk 說明: 連接埠"
+
+#: src/settings_help.cpp:187
+#, fuzzy
+msgid ""
+"This determines whether addresses other than localhost and your machine's "
+"own host name will be allowed to make a connection to the socket. Unless you "
+"have unusual requirements (that is, unless the CUPS or lpd daemons are "
+"running on another machine), you should choose localhost.  If you want other "
+"machines to be able to connect, pick \"other\" and specify the hostnames of "
+"the computers which may connect (separating different hostnames by spaces, "
+"but you do not need to specify localhost and your machine's hostname, as "
+"those are always permitted).  Such hostnames may be specified as an ordinary "
+"host name or in numeric notation.  Numeric notation may have * as a trailing "
+"wildcard, so for example 10.1.* will permit access for addresses 10.1.0.0 to "
+"10.1.255.255.  IPv6 numeric addresses may also have a trailing wildcard, but "
+"if so '::' may not be used in the address (but other forms of 0 suppression "
+"are acceptable).  You should run efax-gtk behind a firewall if you choose "
+"\"other\"."
+msgstr ""
+"這裡指定了，是否本機和您機器自己的主機名之外的地址，被允許連線到通訊端伺服"
+"器。除非您有不尋常的需要（也就是，除了 CUPS 或 lpd 守護程式在另外一台機器執"
+"行），否則您應該選擇本機。如果您想讓其它機器也可以連線，請選\"其它\"而且指定"
+"被允許連線的電腦的主機名全稱（用空格隔開不同主機名，但您不需在這指定本機和您"
+"的機器主機名，因為它們總是被允許連線的）。如果您選擇\"其它\"，您應該在防火牆"
+"之後執行 efax-gtk。"
+
+#: src/settings_help.cpp:200
+msgid "efax-gtk help: Socket connections allowed"
+msgstr "efax-gtk 說明: 通訊端允許的連線數"
+
+#: src/settings_help.cpp:201
+msgid "This specifies the IP family to be used by the socket server."
+msgstr ""
+
+#: src/settings_help.cpp:202
+msgid "efax-gtk help: IP family"
+msgstr ""
+
+#: src/settings_help.cpp:207
+msgid ""
+"This parameter specifies whether a pop-up dialog will appear when a fax is "
+"received from a modem. Check the box if you want a pop-up."
+msgstr "這個參數指定當數據機收到傳真時，是否彈出對話視窗。如果是，請勾選。"
+
+#: src/settings_help.cpp:209
+msgid "efax-gtk help: Receive pop-up"
+msgstr "efax-gtk 說明: 接收彈出視窗"
+
+#: src/settings_help.cpp:211
+msgid ""
+"This specifies whether a program or script is to be executed when a fax is "
+"received from a modem.  Check the box if you want to execute a program, and "
+"enter the program name.  efax-gtk comes with two scripts, print_fax and "
+"mail_fax, which can be used automatically to print a received fax or to mail "
+"it to a user (so to mail a fax you can enter `mail_fax' here).  See the "
+"README file for further details."
+msgstr ""
+"這裡指定當數據機收到傳真時，程式是否執行一個程式或命令稿。如果您想要執行一個"
+"程式，就勾選此方框並輸入程式名稱。efax-gtk 附有兩個命令稿：print_fax 與 "
+"mail_fax，它們可以用來自動列印接收到的傳真，或者將它郵寄給某位使用者 (因此您"
+"可以在這裡輸入 'mail_fax' 以郵寄傳真)。參看 README 檔案以獲得詳細資料。"
+
+#: src/settings_help.cpp:217
+msgid "efax-gtk help: Execute program when fax received"
+msgstr "efax-gtk 說明: 傳真收到時執行程式"
+
+#: src/settings_help.cpp:222
+msgid ""
+"This specifies the resolution to which faxes are sent.  \"Standard\" gives "
+"204x98 and \"Fine\" gives 204x196"
+msgstr ""
+"這裡指定了外送傳真的解析度。\"標準\" 代表 204x98，而\"好\" 代表 204x196 的解"
+"析度"
+
+#: src/settings_help.cpp:224
+msgid "efax-gtk help: Sent Fax Resolution"
+msgstr "efax-gtk 說明: 外送傳真解析度"
+
+#: src/settings_help.cpp:226
+msgid ""
+"This specifies whether the destination fax number is included in the top fax "
+"header line for sent faxes.  Uncheck the box if you do not want this to be "
+"shown (say because it includes a pay card access number)"
+msgstr ""
+"這裡指定了是否在外送傳真的頁眉包含目的地的傳真號碼。如果您不想要這個被顯示就"
+"去勾選（例如因為它包含了一個付費卡的先撥號碼）。"
+
+#: src/settings_help.cpp:230
+msgid "efax-gtk help: Fax top header line"
+msgstr "efax-gtk 說明: 傳真頁眉"
+
+#: src/settings_help.cpp:232
+msgid ""
+"This specifies whether the program is to redial automatically when sending a "
+"fax if the modem is in use or the recipient is busy.  Check the box if you "
+"want want automatic redial"
+msgstr ""
+
+#: src/settings_help.cpp:235
+msgid "efax-gtk help: Redial"
+msgstr ""
+
+#: src/settings_help.cpp:237
+msgid ""
+"This specifies a prefix to be prepended to any dialed number - for example "
+"you can specify '9,' here to dial through a switchboard which needs 9 to "
+"obtain an outside line followed by a delay."
+msgstr ""
+
+#: src/settings_help.cpp:240
+msgid "efax-gtk help: Dial Prefix"
+msgstr ""
+
+#: src/settings_help.cpp:245
+msgid ""
+"This parameter specifies a log file to which progress on negotiations and "
+"fax status, and errors and warnings, are logged.  If none is specified, then "
+"no log file will be maintained.  (A log file can also be kept by redirecting "
+"stdout and stderr -- see the README file for further details)"
+msgstr ""
+"這個參數指定了記錄傳真交涉、狀態、錯誤和警告的日誌檔案。如果沒有指定，那麼將"
+"沒有日誌記錄。（一個日誌檔案也可以透過重新導向到 stdout 和 stderr－－更多細節"
+"請看 README 檔案）"
+
+#: src/settings_help.cpp:249
+msgid "efax-gtk help: Log File"
+msgstr "efax-gtk 說明: 日誌檔案"
+
+#: src/settings_help.cpp:254
+msgid "Specify the page size for faxes here"
+msgstr "在此指定傳真的頁面尺寸"
+
+#: src/settings_help.cpp:255
+msgid "efax-gtk help: Page Size"
+msgstr "efax-gtk 說明: 頁面尺寸"
+
+#: src/helpfile.cpp:64
+msgid "efax-gtk: Help"
+msgstr "efax-gtk: 求助"
+
+#: src/helpfile.cpp:84
+msgid "Sending"
+msgstr "傳送中"
+
+#: src/helpfile.cpp:91
+msgid "Auto redialing"
+msgstr ""
+
+#: src/helpfile.cpp:98
+msgid "Receiving"
+msgstr "接收中"
+
+#: src/helpfile.cpp:105
+msgid "Address Book"
+msgstr "通訊錄"
+
+#: src/helpfile.cpp:112
+msgid "Fax Lists"
+msgstr "傳真清單"
+
+#: src/helpfile.cpp:119
+msgid "Settings"
+msgstr "設定"
+
+#: src/helpfile.cpp:195
+msgid ""
+"\n"
+"Sending faxes\n"
+"-------------\n"
+"\n"
+"Before sending a fax, it must be specified in the \"Fax to send\" box. It "
+"must be in postscript or PDF format (formats produced by all Unix/Linux word "
+"and document processors), and will be converted by the program into the "
+"correct tiffg3 fax format.\n"
+"\n"
+"There are two fax entry methods.  First, the fax to be sent can be a file "
+"saved on the filesystem.  It can be entered manually in the \"Fax to send\" "
+"box, or entered by means of the file selection dialog.  If the file "
+"comprises a single postscript or PDF file, then you can find it by pressing "
+"the \"Single File\" button.  It can be more easily found with this dialog if "
+"it is placed in the $HOME/faxout directory.\n"
+"\n"
+"Where more than one file is specified in the \"Fax to send\" box, they will "
+"be sent as a single fax appended in the order in which they are entered in "
+"the box.  Such multiple files can be more easily selected using the file "
+"list brought up by pressing the \"Multiple Files\" button.  Pressing the "
+"\"Multiple Files\" button enables files to be found and added to the file "
+"list, and they can be reordered by using the Up or Down arrow buttons, or by "
+"dragging and dropping with the mouse.\n"
+"\n"
+"As an alternative, faxes can be received directly from the print system by "
+"means of a socket server provided by the program.  Efax-gtk maintains a list "
+"of queued faxes received from the socket which can be accessed by choosing "
+"\"Socket\" as the fax entry method, and then bringing up the queued faxes "
+"list by pressing the \"Socket list\" button.  This is a more convenient way "
+"of sending faxes from a word processor, and enables a fax to be sent for "
+"faxing to efax-gtk by printing from the word processor program.  Where a fax "
+"is queued for sending in the socket list, a small red circle will appear in "
+"the main program window on the right hand side of the \"Fax to send\" box.  "
+"For particulars of how to set up CUPS or lpr/lprng to send to efax-gtk, see "
+"the README file which comes with the distribution.\n"
+"\n"
+"The telephone number to which the fax is to be sent is entered into the "
+"\"Tel number\" box.  This can be entered directly into the box, or by using "
+"the built-in addressbook.  The addressbook can be invoked by pressing the "
+"\"Tel number\" button, or from the `File/Address book' pull-down menu item "
+"(see the \"Address Book\" tag in this help dialog). However, if a telephone "
+"connection has already been established with the remote fax receiver, then "
+"the fax can be sent without dialing by leaving the \"Tel number\" box blank "
+"(a dialog will come up asking if you would like to send the fax without "
+"dialing).\n"
+"\n"
+"When a fax is received from the print system via the socket server, the "
+"program settings can also be configured to bring up a dialog automatically.  "
+"If the program is inactive or is standing-by to receive faxes the fax can be "
+"sent directly from this dialog without the need to invoke the list of queued "
+"faxes received from the socket.\n"
+"\n"
+"Successfully sent faxes are copied to a directory in the $HOME/faxsent "
+"directory, which has a name derived from the year, month, day, hour and "
+"seconds when the sending of the fax was completed, and will appear in the "
+"faxes sent list.  They are only included in that list if they have been sent "
+"without error.  The efax message display box will report on the progress of "
+"a fax being sent.  The fax list can be brought up from the `File/List sent "
+"faxes' pull down menu item.  See \"Using the fax lists\" further below.\n"
+msgstr ""
+
+#: src/helpfile.cpp:261
+msgid ""
+"\n"
+"Automatic redialing\n"
+"-------------------\n"
+"\n"
+"The program settings have an option for automatic redialing of a fax to be "
+"sent if the modem was in use or the receiving station was busy when the "
+"first attempt to send it was made.  A list of the faxes queued for redialing "
+"can be brought up from the 'File' pull-down menu or from the icon in the "
+"system tray.\n"
+"\n"
+"If the program settings have been set to provide for automatic redialing, "
+"the program will keep trying to send the fax at the intervals chosen in the "
+"settings until either (a) the sending of the fax is successful, (b) there "
+"has been a failure arising from something other than the modem being in use "
+"or the recipient station being busy (such as a modem error, or the remote "
+"number ringing out without answering), (c) the fax is removed by the user "
+"from the list of faxes queued for redialing, (d) if the fax to be sent is a "
+"print job received from the print system, the print job is removed by the "
+"user from the dialog showing the list of queued faxes from the print socket, "
+"(e) if the fax to be sent comprises file(s) on the file system, the file(s) "
+"are deleted or moved (or their permissions changed to make them unreadable), "
+"or (f) the 'Stop' button is pressed while an attempt is being made to send "
+"the fax concerned which is queued for redialing.\n"
+"\n"
+"A fax queued for redialing will not be sent while the Settings dialog is "
+"open.  Instead, if the interval for resending such a fax has passed, a "
+"further sending attempt will take place once the Settings dialog has been "
+"closed.\n"
+"\n"
+"The list of queued faxes for redialing is not preserved when the program is "
+"terminated.  However, if any unsent faxes are print jobs received from the "
+"print system, they can still be found in the dialog showing the list of "
+"queued faxes from the print socket (assuming they have not been explicitly "
+"removed from that list by the user).\n"
+msgstr ""
+
+#: src/helpfile.cpp:302
+msgid ""
+"\n"
+"Receiving faxes\n"
+"---------------\n"
+"\n"
+"Three ways of receiving faxes are provided for.\n"
+"\n"
+"First, the program can be set to answer a fax call which is ringing but has "
+"not been answered, by pressing the \"Answer call\" button.\n"
+"\n"
+"Secondly, the program can take over a call which has already been answered "
+"(say, by a telephone hand set) by pressing the \"Take over call\" button.\n"
+"\n"
+"Thirdly, the program can be placed in standby mode by pressing the \"Standby"
+"\" button.  This will automatically answer any call after the number of "
+"rings specified in the efax-gtkrc file, and receive the fax. The program "
+"will keep on receiving faxes until the \"Stop\" button is pressed.\n"
+"\n"
+"Received faxes in tiffg3 format (one file for each page) are placed in a "
+"directory in the $HOME/faxin directory, which has a name derived from the "
+"year, month, day, hour and seconds when reception of the fax was completed, "
+"and is the fax ID number.\n"
+"\n"
+"Received faxes can be printed, viewed, described and managed using the built "
+"in fax list facility.  This can be brought up from the `File/List received "
+"faxes' pull down menu item.  See \"Using the fax lists\" further below.\n"
+"\n"
+"When a fax is received, a pop-up dialog can also be set to appear (go to the "
+"Settings dialog to do this).  In the settings dialog you can also specify a "
+"program to be executed when a fax is received.  The fax ID number is passed "
+"as the first (and only) argument to the program, which enables the program "
+"to find the fax in $HOME/faxin.  The distribution contains two executable "
+"scripts, mail_fax and print_fax, which can be used to e-mail a fax or print "
+"a fax to a user automatically when it is received.  (These scripts are not "
+"installed by 'make install' - if you want to use them, make them executable "
+"with 'chmod +x' and copy them to a directory which is in the system path "
+"such as /usr/local/bin, and then specify the script name in the settings "
+"dialog.)\n"
+msgstr ""
+
+#: src/helpfile.cpp:347
+msgid ""
+"\n"
+"Using the address book\n"
+"----------------------\n"
+"\n"
+"To pick a telephone number from the address book, highlight the relevant "
+"address by pressing the left mouse button over it, and then press the \"OK\" "
+"button.\n"
+"\n"
+"Addresses can be added to the address book by pressing the add button, and "
+"then completing the relevant dialog which will appear.  To delete an address "
+"from the address book, highlight the relevant address and press the delete "
+"(trashcan) button.  The addressbook can be sorted by using the up and down "
+"arrow buttons on a highlighted address, or by dragging and dropping using "
+"the mouse.\n"
+msgstr ""
+
+#: src/helpfile.cpp:365
+msgid ""
+"\n"
+"Using the fax lists\n"
+"-------------------\n"
+"\n"
+"To bring up the fax lists, go to the the `File' menu and pick the `List "
+"received faxes' or `List sent faxes' menu item.  Highlight the fax to "
+"printed or viewed by pressing the left mouse button.  The programs to be "
+"used to print and view the fax are specifed in the efax-gtkrc configuration "
+"file, or if none are specified, the program will print using lpr (which will "
+"work for most Unix systems) and view with gv.\n"
+"\n"
+"To print faxes, a PRINT_SHRINK parameter can be specifed in efax-gtkrc to "
+"enable the fax page to fit within the printer margins.  A parameter of 98 "
+"will work with most printers.  This can be changed while the program is "
+"running by bringing up the `Settings' dialog and entering it into the `Print/"
+"Print Shrink' box.\n"
+"\n"
+"A description can be added to a received fax when appearing in a fax list "
+"(or subsequently amended) by pressing the relevant button -- this will "
+"enable faxes to be more easily identified.\n"
+"\n"
+"The received faxes list will show, at the far right of the tool bar, the "
+"number of faxes received since the program was last started.  If efax-gtk is "
+"in receive standby mode, the `tooltips' for the program's icon in the system "
+"tray will also indicate this number.  The count can be reset to 0 without "
+"restarting the program by pressing the reset button in the received faxes "
+"list.\n"
+msgstr ""
+
+#: src/helpfile.cpp:397
+msgid ""
+"\n"
+"Settings\n"
+"--------\n"
+"\n"
+"The program settings can be changed by manually editing the efax-gtk "
+"configuration file comprising $HOME/.efax-gtkrc, $sysconfdir/efax-gtkrc or /"
+"etc/efax-gtkrc.  The file is searched for in that order, so $HOME/.efax-"
+"gtkrc takes precedence over the other two.\n"
+"\n"
+"The configuration file can also be set by using the Settings dialog launched "
+"from the `File/Settings' pull down menu item.  The settings entered using "
+"this dialog are always stored as $HOME/.efax-gtkrc. Accordingly, if the "
+"Settings dialog has been used, and you want to revert to the global "
+"settings, this can be done either by deleting the $HOME/.efax-gtkrc file, or "
+"by pressing the `Reset' button in the Settings dialog, which will reload the "
+"Settings dialog from the global configuration file ($sysconfdir/efax-gtkrc "
+"or /etc/efax-gtkrc).\n"
+"\n"
+"Help can be obtained when filling out the Settings dialog by holding the "
+"mouse over the relevant help (?) button, which will bring up a \"Tips\" "
+"display, or by pressing the button, which will bring up an information "
+"display.\n"
+msgstr ""
+
+#: src/socket_server.cpp:130
+msgid "Socket running on port "
+msgstr "通訊端伺服器執行於連接埠 "
+
+#: src/socket_server.cpp:305
+msgid "Print job received on socket\n"
+msgstr "通訊端所接收的列印任務\n"
+
+#: src/socket_server.cpp:352
+msgid "Closing the socket\n"
+msgstr "正在關閉通訊端\n"
+
+#: src/socket_list.cpp:140
+msgid "efax-gtk: Queued faxes from socket"
+msgstr "efax-gtk: 排入佇列的通訊端傳真任務"
+
+#: src/socket_list.cpp:184
+msgid "Queued print jobs"
+msgstr "排入佇列的列印任務"
+
+#: src/socket_list.cpp:227
+msgid "Enter selected fax to send"
+msgstr "輸入已選傳真來傳送"
+
+#: src/socket_list.cpp:233
+msgid "Choose the selected fax for sending"
+msgstr "選擇所選傳真來傳送"
+
+#: src/socket_list.cpp:357 src/socket_notify.cpp:85
+msgid "PRINT JOB: "
+msgstr "列印任務："
+
+#: src/socket_list.cpp:512
+msgid "Remove "
+msgstr "移除"
+
+#: src/socket_list.cpp:519
+msgid "efax-gtk: Remove queued fax"
+msgstr "efax-gtk: 移除已佇列傳真任務"
+
+#: src/socket_notify.cpp:64
+msgid "efax-gtk: print job received on socket"
+msgstr "efax-gtk: 通訊端接收到列印任務"
+
+#: src/socket_notify.cpp:70
+msgid "Queue fax"
+msgstr "佇列傳真"
+
+#: src/socket_notify.cpp:87
+msgid ""
+" has been received on socket.\n"
+"Send or queue fax?"
+msgstr ""
+"已經在通訊端接收到。\n"
+"傳送還是排入佇列？"
+
+#: src/logger.cpp:101 src/logger.cpp:256
+msgid "Beginning fax log: "
+msgstr ""
+
+#: src/logger.cpp:155 src/logger.cpp:207
+msgid "Ending fax log: "
+msgstr ""
+
+#: src/logger.cpp:293
+msgid "Cannot open log file for reading"
+msgstr ""
+
+#: src/logger.cpp:294
+msgid "efax-gtk: print logfile"
+msgstr ""
+
+#: src/logger.cpp:345
+msgid "Cannot open log file for viewing"
+msgstr ""
+
+#: src/logger.cpp:346
+msgid "efax-gtk: view logfile"
+msgstr ""
+
+#: src/logger.cpp:416
+msgid "efax-gtk: View log"
+msgstr ""
+
+#: src/tray_icon.cpp:122
+msgid "List received faxes"
+msgstr "列出已接收傳真"
+
+#: src/tray_icon.cpp:130
+msgid "List sent faxes"
+msgstr "列出已傳送傳真"
+
+#: src/tray_icon.cpp:143
+msgid "Redial queue"
+msgstr ""
+
+#: src/tray_icon.cpp:164
+msgid "Receive standby"
+msgstr "進入待機接收狀態"
+
+#: src/tray_icon.cpp:183
+msgid "Quit"
+msgstr "離開"
+
+#: src/tray_icon.cpp:230
+msgid "efax-gtk: "
+msgstr "efax-gtk: "
+
+#: src/redial_queue.cpp:125
+msgid "efax-gtk: Redial queue"
+msgstr ""
+
+#: src/redial_queue.cpp:191
+msgid "Remove fax from redial list"
+msgstr ""
+
+#: src/redial_queue.cpp:266
+msgid "Remove fax to "
+msgstr ""
+
+#: src/redial_queue.cpp:268
+msgid " from the redial queue?"
+msgstr ""
+
+#: src/redial_queue.cpp:273
+msgid "efax-gtk: Remove fax for redialling?"
+msgstr ""
+
+#: src/utils/mono_tiff_print_manager.cpp:274
+msgid "No file to print specified"
+msgstr ""
+
+#: efax/efax.c:379
+msgid "success"
+msgstr "成功"
+
+#: efax/efax.c:380
+msgid "number busy or modem in use"
+msgstr "號碼忙碌中或數據機佔用中"
+
+#: efax/efax.c:381
+msgid "unrecoverable error"
+msgstr "不可回復的錯誤"
+
+#: efax/efax.c:382
+msgid "invalid modem response"
+msgstr "無效的數據機反應"
+
+#: efax/efax.c:383
+msgid "no response from modem"
+msgstr "數據機沒有反應"
+
+#: efax/efax.c:385
+msgid "internal error"
+msgstr "內部錯誤"
+
+#: efax/efax.c:395
+msgid "NSC - poller features"
+msgstr "NSC - 輪詢特點"
+
+#: efax/efax.c:398
+msgid "CIG - poller ID"
+msgstr "CIG - 輪詢身分"
+
+#: efax/efax.c:401
+msgid "DTC - poller capabilities"
+msgstr "DTC - 輪詢功能"
+
+#: efax/efax.c:404
+msgid "NSF - answering features"
+msgstr "NSF - 應答特點"
+
+#: efax/efax.c:407
+msgid "CSI - answering ID"
+msgstr "CSI - 應答身分"
+
+#: efax/efax.c:410
+msgid "DIS - answering capabilities"
+msgstr "DIS - 應答功能"
+
+#: efax/efax.c:413
+msgid "NSS - caller features"
+msgstr "Nss - 來電特點"
+
+#: efax/efax.c:416
+msgid "TSI - caller ID"
+msgstr "TSI - 來電身分"
+
+#: efax/efax.c:419
+msgid "DCS - session format"
+msgstr "DCS - 作業階段格式"
+
+#: efax/efax.c:423
+msgid "CFR - channel OK"
+msgstr "CFR - 線路正常"
+
+#: efax/efax.c:426
+msgid "FTT - channel not OK"
+msgstr "FTT - 線路異常"
+
+#: efax/efax.c:430
+msgid "MPS - not done"
+msgstr "MPS - 未完成"
+
+#: efax/efax.c:433
+msgid "EOM - not done, new format"
+msgstr "EOM - 未完成、新格式"
+
+#: efax/efax.c:436
+msgid "EOP - done"
+msgstr "EOP - 完成"
+
+#: efax/efax.c:440
+msgid "PRI-MPS - not done, call operator"
+msgstr "PRI-MPS - 未完成、呼叫總機"
+
+#: efax/efax.c:443
+msgid "PRI-EOM - not done, new format, call operator"
+msgstr "PRI-EOM - 未完成、新格式、呼叫總機"
+
+#: efax/efax.c:446
+msgid "PRI-EOP - done, call operator"
+msgstr "PRI-EOP - 完成、呼叫總機"
+
+#: efax/efax.c:450
+msgid "MCF - page OK"
+msgstr "MCF - 頁面正常"
+
+#: efax/efax.c:453
+msgid "RTP - page OK, check channel"
+msgstr "RTP - 頁面正常、偵測線路"
+
+#: efax/efax.c:456
+msgid "PIP - page OK, call operator"
+msgstr "PIP - 頁面正常、呼叫總機"
+
+#: efax/efax.c:459
+msgid "RTN - page not OK, check channel"
+msgstr "RTN - 頁面異常、偵測線路"
+
+#: efax/efax.c:462
+msgid "PIN - page not OK, call operator"
+msgstr "PIN - 頁面異常、呼叫總機"
+
+#: efax/efax.c:466
+msgid "CRP - repeat command"
+msgstr "CRP - 重複命令"
+
+#: efax/efax.c:469
+msgid "DCN - disconnect"
+msgstr "DCN - 中斷連線"
+
+#: efax/efax.c:472
+msgid "UNKNOWN"
+msgstr "不明"
+
+#: efax/efax.c:629
+msgid "incompatible local and remote capabilities"
+msgstr "不相容的本地和遠端功能"
+
+#: efax/efax.c:710 efax/efax.c:720 efax/efax.c:732
+#, c-format
+msgid "can't delete file %s:"
+msgstr "不能刪除檔案 %s："
+
+#: efax/efax.c:713 efax/efax.c:723 efax/efax.c:735
+#, c-format
+msgid "removed file: %s"
+msgstr "已刪除檔案：%s"
+
+#: efax/efax.c:784
+msgid "header:"
+msgstr "頁眉:"
+
+#: efax/efax.c:868
+msgid "characters received while sending"
+msgstr "傳送時收到的字元"
+
+#: efax/efax.c:906
+#, c-format
+msgid "sent %d+%d lines and %d+%d bytes, in %d secs at %d bps"
+msgstr ""
+"以每秒 %6$d 位元組的速度，耗時 %5$d 秒，傳送了 %1$d+%2$d 列和 %3$d+%4$d 位元"
+"組"
+
+#: efax/efax.c:915
+msgid "flow control did not work"
+msgstr "流程控制沒起作用"
+
+#: efax/efax.c:954
+msgid "modem response in data"
+msgstr "數據機資料反應"
+
+#: efax/efax.c:973
+msgid "run length buffer overflow"
+msgstr "執行長度溢出"
+
+#: efax/efax.c:1036
+msgid "file write:"
+msgstr "檔案寫入："
+
+#: efax/efax.c:1038
+msgid "CAN: data reception cancelled"
+msgstr "CAN: 資料接收被取消"
+
+#: efax/efax.c:1044 efax/efax.c:1045 efax/efax.c:2157
+msgid "reception errors"
+msgstr "接收錯誤"
+
+#: efax/efax.c:1055
+#, c-format
+msgid "received %d lines with %d errors"
+msgstr "接收了 %d 列，並有 %d 個錯誤"
+
+#: efax/efax.c:1107
+#, c-format
+msgid "sent TCF - channel check of %d bytes"
+msgstr "外送 TCF - 線路偵測 %d 位元組"
+
+#: efax/efax.c:1143
+msgid "timed out during training check data"
+msgstr "偵測資料程序逾時"
+
+#: efax/efax.c:1156
+#, c-format
+msgid "received TCF - channel check (OK: run of %d in %d)"
+msgstr "已收 TCF - 線路偵測 (正常: 執行了 %2$d 中的  %1$d)"
+
+#: efax/efax.c:1159
+#, c-format
+msgid "received TCF - channel check (not OK: run of %d in %d)"
+msgstr "已收 TCF - 線路偵測 (異常：執行了 %2$d 中的  %1$d)"
+
+#: efax/efax.c:1214
+msgid "last byte of frame is NULL"
+msgstr "圖框的最後一個位元組為 NULL"
+
+#: efax/efax.c:1222
+msgid "sent"
+msgstr "已送"
+
+#: efax/efax.c:1253
+msgid "HDLC frame missing initial 0xff"
+msgstr "HDLC 圖框缺少起始的 0xff"
+
+#: efax/efax.c:1260
+msgid "bit-reversed HDLC frame, reversing bit order"
+msgstr "位元反轉的 HDLC 圖框，反轉位元順序中"
+
+#: efax/efax.c:1281
+msgid "timed out reading frame data"
+msgstr "讀取圖框資料逾時"
+
+#: efax/efax.c:1291
+msgid "frame error"
+msgstr "圖框錯誤"
+
+#: efax/efax.c:1294
+msgid "no response after frame data"
+msgstr "圖框資料之後沒有反應"
+
+#: efax/efax.c:1297
+msgid "wrong response after frame data"
+msgstr "圖框資料之後反應錯誤"
+
+#: efax/efax.c:1304
+#, c-format
+msgid "frame too long (%d, > %d max bytes)"
+msgstr "圖框太長 (%d, > %d 最大位元組) "
+
+#: efax/efax.c:1371
+msgid "wrong carrier"
+msgstr "錯誤的載體"
+
+#: efax/efax.c:1376
+msgid "wrong response to command to receive a frame"
+msgstr "對接收圖框的命令反應錯誤"
+
+#: efax/efax.c:1384
+#, c-format
+msgid "received short frame (%d bytes)"
+msgstr "已收短圖框 (%d 位元組)"
+
+#: efax/efax.c:1391
+msgid "received"
+msgstr "已收"
+
+#: efax/efax.c:1409
+msgid "The remote ID is"
+msgstr "遠端的身分是"
+
+#: efax/efax.c:1459
+msgid "no answer from remote fax"
+msgstr "遠端傳真沒有應答"
+
+#: efax/efax.c:1464 efax/efax.c:1505 efax/efax.c:1576
+msgid "can't open page"
+msgstr "無法開啟頁面"
+
+#: efax/efax.c:1482
+msgid "remote has one or more documents to send and can receive"
+msgstr "遠端有一個或更多檔案要傳送而且能接收"
+
+#: efax/efax.c:1484
+msgid "remote has one or more documents to send and cannot receive"
+msgstr "遠端有一個或更多檔案要傳送而且不能接收"
+
+#: efax/efax.c:1488
+msgid "remote has no documents to send and can receive"
+msgstr "遠端沒有檔案傳送而且能接收"
+
+#: efax/efax.c:1490
+msgid "remote has no documents to send and cannot receive"
+msgstr "遠端沒有檔案傳送而且不能接收"
+
+#: efax/efax.c:1495
+msgid "remote cannot receive, trying anyways"
+msgstr "遠端無法接收，但嘗試中"
+
+#: efax/efax.c:1498
+msgid "remote has nothing to send, trying anyways"
+msgstr "遠端沒有任何東西傳送，但嘗試中"
+
+#: efax/efax.c:1552
+#, c-format
+msgid "channel not usable at %d bps"
+msgstr "線路速度 %d 位元組時無法使用"
+
+#: efax/efax.c:1561
+msgid "channel not usable at lowest speed"
+msgstr "線路速度最低時無法使用"
+
+#: efax/efax.c:1569
+msgid "invalid response to DCS"
+msgstr "給 DCS 的反應無效"
+
+#: efax/efax.c:1623 efax/efax.c:2053
+#, c-format
+msgid "sent page %s"
+msgstr "外送頁 %s"
+
+#: efax/efax.c:1651
+msgid "invalid post-page response"
+msgstr "無效頁後反應"
+
+#: efax/efax.c:1695
+msgid "interrupt request ignored"
+msgstr "插斷請求被忽略"
+
+#: efax/efax.c:1745
+msgid "timed out waiting for command"
+msgstr "等待命令逾時"
+
+#: efax/efax.c:1790 efax/efax.c:2126
+#, c-format
+msgid "page saved to %s"
+msgstr "頁儲存到 %s"
+
+#: efax/efax.c:1837
+msgid "unrecognized command"
+msgstr "不明命令"
+
+#: efax/efax.c:1843
+msgid "no command or response from remote"
+msgstr "遠端沒有命令或反應"
+
+#: efax/efax.c:1869
+#, c-format
+msgid "abnormal termination (code %d)"
+msgstr "不正常終止 （代號 %d）"
+
+#: efax/efax.c:1918
+msgid "no XON/DC2 received after CONNECT"
+msgstr "CONNECT 之後沒有收到 XON/DC2"
+
+#: efax/efax.c:1927
+#, c-format
+msgid "%d characters received while waiting to send"
+msgstr "等待傳送時收到 %d 個字元"
+
+#: efax/efax.c:1975
+msgid "remote has one or more documents to send."
+msgstr "遠端有一個或多個檔案要傳送"
+
+#: efax/efax.c:2043
+msgid "no +FPTS response obtained, it is assumed that fax was received"
+msgstr "沒有獲得 +FPTS 反應，就當做傳真被收到了"
+
+#: efax/efax.c:2081
+msgid "too many page send retries"
+msgstr "太多頁傳送重試"
+
+#: efax/efax.c:2171
+msgid "receive (+FDR) command failed"
+msgstr "接收 (+FDR) 命令失敗"
+
+#: efax/efax.c:2198
+#, c-format
+msgid "dialing %s"
+msgstr "撥往 %s 中"
+
+#: efax/efax.c:2208
+#, c-format
+msgid "The remote ID is %s"
+msgstr "遠端身分是 %s"
+
+#: efax/efax.c:2216
+msgid "called"
+msgstr "已呼叫"
+
+#: efax/efax.c:2219 efax/efax.c:2222
+msgid "connected"
+msgstr "已連線"
+
+#: efax/efax.c:2224
+msgid "number is busy"
+msgstr "號碼忙線"
+
+#: efax/efax.c:2226
+msgid "dial command failed"
+msgstr "撥號命令失敗"
+
+#: efax/efax.c:2304
+msgid "waiting for activity"
+msgstr "等待動作中"
+
+#: efax/efax.c:2306
+msgid "activity detected"
+msgstr "偵測到動作"
+
+#: efax/efax.c:2313
+msgid "can't answer: can't lock device"
+msgstr "無法應答：無法鎖定裝置"
+
+#: efax/efax.c:2332
+#, c-format
+msgid "too many %%d escapes in command (%s)"
+msgstr "在命令 (%s) 裡太多 %%d 跳脫字元"
+
+#: efax/efax.c:2339 efax/efax.c:2362
+#, c-format
+msgid "executing command /bin/sh -c %s"
+msgstr "執行命令 /bin/sh -c %s"
+
+#: efax/efax.c:2345 efax/efax.c:2368
+msgid "exec() call failed:"
+msgstr "exec() 呼叫失敗:"
+
+#: efax/efax.c:2348
+msgid "no getty command defined for data call"
+msgstr "沒有設定 getty 命令用來呼叫資料"
+
+#: efax/efax.c:2353
+msgid "fax call answered"
+msgstr "應答了傳真呼叫"
+
+#: efax/efax.c:2356
+msgid "voice call answered"
+msgstr "應答了語音呼叫"
+
+#: efax/efax.c:2371
+msgid "no voice command defined for voice call"
+msgstr "語音呼叫裡沒有設定語音命令"
+
+#: efax/efax.c:2384
+msgid "unable to answer call"
+msgstr "無法應答呼叫"
+
+#: efax/efax.c:2425
+msgid "modem does not support fax"
+msgstr "數據機不支援傳真"
+
+#: efax/efax.c:2430
+msgid "can't determine fax modem class support"
+msgstr "不能確定傳真數據機的支援級別"
+
+#: efax/efax.c:2453
+msgid "Multi-Tech bit order set"
+msgstr "Multi-Tech 位元順序組"
+
+#: efax/efax.c:2460
+#, c-format
+msgid "using %s in class %s"
+msgstr "使用 %2$s 級別的 %1$s 數據機"
+
+#: efax/efax.c:2545
+#, c-format
+msgid "failed page %s"
+msgstr "失敗頁 %s"
+
+#: efax/efax.c:2556
+#, c-format
+msgid "finished - %s"
+msgstr "已完成 - %s"
+
+#: efax/efax.c:2662
+#, c-format
+msgid "local ID (%s) truncated to %d characters"
+msgstr "本地身分 (%s) 被縮成 %d 個字元"
+
+#: efax/efax.c:2669
+#, c-format
+msgid "local ID (%s) has non-standard characters"
+msgstr "本地身分 (%s) 有非標準的字元"
+
+#: efax/efax.c:2705
+msgid "using line buffering of stdout"
+msgstr "使用標準輸出的列緩衝區"
+
+#: efax/efax.c:2727
+#, c-format
+msgid "incorrect quality (-q) argument (%s)"
+msgstr "不正確的品質 (-q) 參數 (%s)"
+
+#: efax/efaxmsg.c:215
+msgid " Error: "
+msgstr " 錯誤： "
+
+#: efax/efaxmsg.c:216
+msgid " Warning: "
+msgstr " 警告： "
+
+#: efax/efaxlib.c:1231 efax/efaxlib.c:1323 efax/efaxlib.c:1345
+#, c-format
+msgid "can't open file %s:"
+msgstr "無法開啟檔案 %s："
+
+#: efax/efaxlib.c:1368
+#, c-format
+msgid "can't get format of file %s"
+msgstr "無法獲得檔案 %s 的格式："
+
+#: efax/efaxlib.c:1389
+#, c-format
+msgid "can't rewind file %s:"
+msgstr "無法倒帶檔案 %s："
+
+#: efax/efaxlib.c:1991
+#, c-format
+msgid "can't open output file %s:"
+msgstr "無法開啟輸出檔案 %s："
+
+#: efax/efaxio.c:133
+msgid "fax device write error:"
+msgstr "傳真裝置寫入錯誤："
+
+#: efax/efaxio.c:262
+#, c-format
+msgid "unexpected response \"%s\""
+msgstr "未預知的反應 \"%s\""
+
+#: efax/efaxio.c:272
+#, c-format
+msgid "modem command \"%s\" too long"
+msgstr "數據機命令 \"%s\" 太長"
+
+#: efax/efaxio.c:320
+#, c-format
+msgid "timed out after command: %s"
+msgstr "命令：%s 之後逾時"
+
+#: efax/efaxio.c:326
+msgid "timed out after waiting"
+msgstr "等待逾時"
+
+#: efax/efaxio.c:330
+#, c-format
+msgid "wrong response after command: %s"
+msgstr "命令：%s 之後錯誤反應"
+
+#: efax/efaxio.c:336
+msgid "wrong response after waiting"
+msgstr "等待之後錯誤反應"
+
+#: efax/efaxio.c:365
+msgid "sync: dropping DTR"
+msgstr "同步：拋棄 DTR"
+
+#: efax/efaxio.c:371
+msgid "sync: sending escapes"
+msgstr "同步：傳送跳脫"
+
+#: efax/efaxio.c:383
+msgid "sync: modem not responding"
+msgstr "同步：數據機不反應"
+
+#: efax/efaxio.c:413
+#, c-format
+msgid "modem command (%s) failed"
+msgstr "數據機命令 (%s) 失敗"
+
+#: efax/efaxio.c:419
+msgid "modem command failed"
+msgstr "數據機命令失敗"
+
+#: efax/efaxio.c:470
+#, c-format
+msgid "%s locked or busy - waiting"
+msgstr "%s 已鎖定或是忙線 - 等待中"
+
+#: efax/efaxio.c:495
+#, c-format
+msgid "opened %s"
+msgstr "已開啟 %s"
+
+#~ msgid "New faxes: "
+#~ msgstr "新傳真："
+
+#, fuzzy
+#~ msgid ""
+#~ "Copyright (C) 2001 - 2009 Chris Vine\n"
+#~ "\n"
+#~ "This program is released under the GNU General Public License, version 2"
+#~ msgstr ""
+#~ "著作權所有 (C) 2001 - 2008 Chris Vine\n"
+#~ "\n"
+#~ "本程式根據 GNU 一般公共授權第二版而釋出"
+
+#~ msgid ""
+#~ " configuration file\n"
+#~ "and /dev/modem does not exist\n"
+#~ msgstr " 設定檔案以及 /dev/modem 不存在\n"
+
+#~ msgid ""
+#~ " configuration file\n"
+#~ "Using default of /dev/modem\n"
+#~ msgstr "配置檔案使用預設裝置 /dev/modem\n"
+
+#~ msgid "Adopting default printer command of 'lpr'\n"
+#~ msgstr "採用預設的列印命令 'lpr'\n"
+
+#~ msgid "Traditional Chinese - Wei-Lun Chao"
+#~ msgstr "繁體中文 － 趙惟倫"

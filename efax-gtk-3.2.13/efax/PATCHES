@@ -1,0 +1,51 @@
+The standard distribution of efax-0.9a-001114 has a bug in both efax
+and efix.  They make a call to setlocale(), which causes incorrect
+floating point representation in locales which use the comma instead
+of the full-stop as the decimal separator.  This is corrected in the
+versions of efax.c and efix.c in this directory by setting the
+LC_NUMERIC locale facet to the "C" locale.  In addition,
+internationalisation support has been added to efax so far as relevant
+to efax-gtk (messages from efax, if a suitable translation file has
+been provided, will be displayed in the language equating to the
+user's locale).
+
+CUPS-1.1.19 and above will not print multi-page PS files produced with
+efix correctly.  In so doing CUPS is pedantic but correct, as efix
+includes an EPS reference in the PS header, and the EPS standard
+requires EPS files only to have one page.  The PS header in const char
+PSBEGIN [] in efax/efaxlib.c in this directory has therefore been
+amended so as to exclude the EPS reference.
+
+A change has been made to the definition of MAXMSGBUF in efaxmsg.c, so
+that it does not exceed PIPE_BUF/2 in size.  This is so that a message
+from efax does not overrun the pipe used to communicate with efax-gtk.
+
+In efaxmsg.c, the variable argument handling has been modified to
+avoid an invalid double call to vfprintf() on the same va_list value
+(this bug is triggered on some systems when using the 'fax' script but
+does not directly affect efax-gtk).
+
+To distinguish itself from the standard distribution, the binary of
+efax is installed as efax-0.9a and the binary of efix is installed as
+efix-0.9a.  efax-gtk will look for these executables by those names.
+If you want to use the standard distribution of efax with efax-gtk,
+then make a symbolic link between efax and efax-0.9a, and between efix
+and efix-0.9a, and efax-gtk will then find them.
+
+In addition, the following patches from http://shino.pos.to/linux/efax/
+have been applied:
+
+  efax08a-time.patch          (efaxio.c)
+  efax-0.9-nullptr.patch      (efax.c and efaxos.c)
+  efax-0.9-numlines.patch     (efix.c)
+  efax-0.9a-frlen.patch       (efax.c)
+
+And the following patch from Fedora 2:
+
+  efax-0.9-misc.patch         (efax.c)
+
+Fixes for (harmless) warnings issued by gcc-4.0, about pointer targets
+differing in signedness, have been added to efax.c, efaxio.c and
+efaxlib.c.
+
+Chris Vine, September 2005

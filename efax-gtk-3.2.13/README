@@ -1,0 +1,776 @@
+Copyright (C) 2001 to 2012 Chris Vine
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    A copy of the GNU General Public License version 2 is set out
+    in the file COPYING accompanying this distribution.  You can
+    also obtain a written copy from the Free Software  Foundation,
+    Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+
+    Note that the copyright of the efax program, to which this is a
+    front end, belongs to Ed Casas.
+
+                            OVERVIEW
+
+This program is a GTK+ front end for the efax program.  It can be used
+to send and receive faxes with a fax modem, and to view, print and
+manage faxes received.  It also has a socket interface to provide a
+"virtual printer" for sending faxes from word processors and similar
+programs, and can automatically e-mail a received fax to a designated
+user, and automatically print a received fax.
+
+Any files to be faxed should be in postscript format, which is the
+generic printer format for Unix/Linux systems.  The program will use
+ghostscript to convert these into the Group 3 fax format which the fax
+modem will understand.  Recent versions of ghostscript (which is used
+to carry out the conversion) will also accept files in PDF format.
+
+                              EFAX
+
+The efax-gtk distribution compiles and installs a patched version of
+efax-0.9a-001114, so you do not need to separately build and install
+efax.  In particular, the version of efax supplied with efax-gtk
+provides internationalization support, and resolves certain
+difficulties with locales in the standard distribution.
+
+If you get reports of UTF-8 conversion errors from efax-gtk or efax
+when referring to file names then you may not have set the
+G_FILENAME_ENCODING or G_BROKEN_FILENAMES environmental variable
+correctly - see the "INTERNATIONALISATION" section below for further
+details.
+
+To avoid name conflicts the patched versions of efax and efix are
+installed as efax-0.9a and efix-0.9a.
+
+                    INSTALLATION: FROM SOURCE FILES
+
+Compiling from source
+---------------------
+
+To compile from source, place the distribution file in a local source
+directory (eg ~/src).  Untarring/unzipping it will create a
+sub-directory 'efax-gtk' where the source code can be found.  You can
+now edit the file efax-gtkrc (which by default will be placed by "make
+install" in /usr/local/etc) to provide global settings which match
+your serial port, name, telephone number and other particulars.
+efax-gtkrc specifies run-time not compile-time options, but you can
+edit it now so that the version installed by "make install" is
+correct.  Alternatively, you can start up the program and enter any
+settings by bringing up the `Settings' dialog from the `File/Settings'
+pull-down menu once the program has started.  (See below).
+
+Then enter the command `./configure'.  This will set up the Makefile
+so that it matches your system.  This can be done as user (you do not
+need to be root).  Then type "make", and then "make install".  "make
+install" must be run as root, but "make" can be run as user.  The
+program will by default be installed in /usr/local/bin.  The name of
+the executable is "efax-gtk".
+
+You can change the install directory by running `./configure' with the
+--prefix=[dir] option.  Thus -
+
+  ./configure --prefix=/usr
+
+will install the executables in /usr/bin, as will -
+
+  ./configure --bindir=/usr/bin.
+
+The configuration file efax-gtkrc (see above) is installed in $RCDIR,
+which by default is /usr/local/etc. If the --prefix=[dir] option is
+used, $RCDIR will be taken from that.  So -
+
+  ./configure --prefix=/usr
+
+will install efax-gtkrc in the /usr/etc directory.  Its install
+directory RCDIR can also be changed by running ./configure with the
+--sysconfdir=[dir] option.  Thus -
+
+  ./configure --sysconfdir=/etc
+
+will install efax-gtkrc in /etc.
+
+The man file will by default be installed in $prefix/man.  If the
+--prefix=[dir] option is used, the base directory will be taken from
+that.  So -
+
+  ./configure --prefix=/usr
+
+will install the man file in the /usr/man/man1 directory, as will -
+
+  ./configure --mandir=/usr/man
+
+In addition, a fax filter file `efax-gtk-faxfilter' is by default
+installed in /var/spool/fax, but a different directory can be chosen
+by running `./configure' with the --with-spooldir=[dir] option.  See
+below for an explanation of what this does.
+
+To compile and use the program, glib >=2.10.0, gtk+2 >= 2.12.0 or
+gtk+3 >= 2.99.0, c++-gtk-utils-1.2 >= 1.2.13 or c++-gtk-utils-2.0 >=
+2.0.1 or c++-gtk-utils-2.2 >= 2.1.0, dbus-glib >= 0.70 and libtiff
+must be installed, except that dbus-glib is not required if glib is >=
+2.26.0.
+
+See under "GTK VERSIONS" below for further particulars about choosing
+between gtk+2 and gtk+3.
+
+As mentioned above, there is a dependency on c++-gtk-utils-1.2 >=
+1.2.13, c++-gtk-utils-2.0 >= 2.0.1 or c++-gtk-utils-2.2 >= 2.1.0.
+c++-gtk-utils-1.2 only requires C++98, whereas c++-gtk-utils-2.0
+requires reasonably complete support for C++0x/11 at the level
+provided by gcc-4.4 or later and c++-gtk-utils-2.2 requires gcc-4.6 or
+later.  efax-gtk will compile with c++-gtk-utils-1.2,
+c++-gtk-utils-2.0 or c++-gtk-utils-2.2, but if it is known that
+C++0x/11 is supported to the level provided by gcc-4.4 or gcc-4.6,
+then prefer c++-gtk-utils-2.0 or c++-gtk-utils-2.2 respectively; if
+versions of gcc earlier than gcc-4.4 are also to be used to compile
+this program, then use c++-gtk-utils-1.2.  c++-gtk-utils can be
+obtained from http://cxx-gtk-utils.sourceforge.net/
+
+All the versions of c++-gtk-utils will compile under GTK+2 and GTK+3.
+To compile them for GTK+2, configure them with './configure-gtk2', and
+to compile them for GTK+3, configure them with './configure-gtk3'.
+
+The program is written as a single instance program: if the user tries
+to start another instance when one is already running, the one already
+running will be brought up.
+
+Making RPM binaries
+-------------------
+
+A RPM spec file is included in the distribution.  If rpm is installed,
+entering `rpmbuild -tb efax-gtk-[version].src.tgz' as root will create
+a standard RPM binary file efax-gtk-[version]-1.[i386].rpm.  This will
+be found in the RPM binary directory that your RPM-build configuration
+specifies (normally /usr/src/redhat/RPMS/i386 for Redhat i86 systems,
+and /usr/src/packages/RPMS/i386 for SuSE i86 systems).
+
+To install the rpm binary once made, use the normal command
+`rpm -i [rpm filename]'.
+
+To make the binary RPM file you must have the packages referred to in
+"Compiling from source" above.  Once the rpm file is made, to install
+it you must also have the ghostscript package installed.
+
+As the efax-gtk.spec file causes rpm to check for dependencies both
+when efax-gtk is being compiled and when being installed, this can
+give rise to problems of portability, because different distributions
+package things under different names.  If the rpm binary won't compile
+or install on your system because of these dependencies, but you are
+sure that you have gtk+, libsigc++ and ghostscript installed, there
+are two choices -- to compile the package using `rpmbuild -tb --nodeps
+efax-gtk-[version].src.tgz' and install the binary file using `rpm -i
+--nodeps [rpm filename]', or to:
+
+- unzip efax-gtk-[version].src.tgz,
+
+- amend the `BuildRequires:' and/or `Requires:' lines in the
+  efax-gtk.spec file to provide the correct dependency package
+  names for your distribution
+
+- copy efax-gtk-[version].src.tgz to /usr/src/[packages]/SOURCES
+
+- enter `rpmbuild -bb efax-gtk.spec'.
+
+If you install via binary RPMs, then you will either have to use the
+File/Settings dialog to configure the program when you first use it,
+or before using it have to amend the $prefix/etc/efax-gtkrc by hand
+after installation (see further below).
+
+                             USE
+
+The first time you use the program, you will be asked if you accept
+the terms of the General Public Licence, version 2.
+
+Files to be sent should be saved as postscript files.  Recent versions
+of ghostscript (which is used to convert the postscript file to tiffg3
+fax format) will also accept PDF files.  If the program is started
+with a filename as the last argument, then it will begin with that
+file already inserted in the program's "file to be sent" box.
+Otherwise once the program has started you can use the standard file
+open dialog, or enter it directly into the box via the keyboard.
+
+Ordinary ascii text files can be converted into postscript if required
+using a number of programs, of which probably the easiest to use are
+nenscript or GNU enscript (`man enscript').
+
+For further suggestions about sending faxes from a wordprocessor using
+CUPS, see "Using with a word processor" below.
+
+For efax to operate correctly, the user must have write permission to
+the /var/lock directory, and to the serial port to which the fax modem
+is connected.  In most distributions, the uucp group has write
+permission for these: if this applies to your distribution, the
+easiest approach is to make users members of the uucp group.
+
+The program may be started with a -r option and a -s option:
+
+  efax-gtk -r    This will start the program in receive standby mode
+  efax-gtk -s    This will start the program hidden in the system tray
+
+Sending faxes
+-------------
+
+Before sending a fax, it must be specified in the "Fax to send" box.
+It must be in postscript format (a format produced by all Unix/Linux
+word and document processors), and will be converted by the program
+into the correct tiffg3 fax format.  Recent versions of ghostscript
+(which is used to convert the postscript file to tiffg3 fax images)
+will also accept files in PDF format.
+
+There are two fax entry methods.  First, the fax to be sent can be a
+file saved on the filesystem.  It can be entered manually in the "Fax
+to send" box, or entered by means of the file selection dialog.  If
+the file comprises a single postscript or PDF file, then you can find
+it by pressing the "Single File" button.  It can be more easily found
+with this dialog if it is placed in the $HOME/faxout directory.
+
+Where more than one file is specified in the "Fax to send" box, they
+will be sent as a single fax appended in the order in which they are
+entered in the box.  Such multiple files can be more easily selected
+using the file list brought up by pressing the "Multiple Files"
+button.  Pressing the "Multiple Files" button enables files to be
+found and added to the file list, and they can be reordered by using
+the Up or Down arrow buttons, or by dragging and dropping with the
+mouse.  (If entering multiple files manually rather than by means of
+the "Multiple Files" dialog, use a ',' or a ';' as the file name
+separator.)
+
+As an alternative, faxes can be received directly from the print
+system by means of a socket server provided by the program.  Efax-gtk
+maintains a list of queued faxes received from the socket which can be
+accessed by choosing "Socket" as the fax entry method, and then
+bringing up the queued faxes list by pressing the "Socket list"
+button.  This is a more convenient way of sending faxes from a word
+processor, and enables a fax to be sent for faxing to efax-gtk by
+printing from the word processor program.  Where a fax is queued for
+sending in the socket list, a small red circle will appear in the main
+program window on the right hand side of the "Fax to send" box.  More
+particulars are given under "Using with a word processor" below.
+
+The telephone number to which the fax is to be sent is entered into
+the "Tel number" box.  This can be entered directly into the box, or
+by using the built-in addressbook.  The addressbook can be invoked by
+pressing the "Tel number" button, or from the `File/Address book'
+pull-down menu item.  See "Using the address book" further below.
+However, if a telephone connection has already been established with
+the remote fax receiver, then the fax can be sent without dialing by
+leaving the "Tel number" box blank (a dialog will come up asking if
+you would like to send the fax without dialing - this does the same
+thing as 'fax send -m ...' using the efax 'fax' script from the
+command line).
+
+When a fax is received from the print system via the socket server,
+the program settings can also be configured to bring up a dialog
+automatically.  If the program is inactive or is standing-by to
+receive faxes, the fax can be sent directly from this dialog without
+the need to invoke the list of queued faxes received from the socket.
+
+Successfully sent faxes are copied to a directory in the $HOME/faxsent
+directory, which has a name derived from the year, month, day, hour
+and seconds when the sending of the fax was completed, and will appear
+in the faxes sent list.  They are only included in that list if they
+have been sent without error.  The efax message display box will
+report on the progress of a fax being sent.  The fax list can be
+brought up from the `File/List sent faxes' pull down menu item.  See
+'Using the fax lists" further below.
+	
+The program can send a fax when it is in receive standby mode.  If
+sending a fax from receive standby mode, when the fax has been sent
+(or there is an error in sending the fax), the program will return to
+receive standby mode.
+
+Automatic redialing
+-------------------
+
+The program settings have an option for automatic redialing of a fax
+to be sent if the modem was in use or the receiving station was busy
+when the first attempt to send it was made.  A list of the faxes
+queued for redialing can be brought up from the 'File' pull-down menu
+or from the icon in the system tray.
+
+If the program settings have been set to provide for automatic
+redialing, the program will keep trying to send the fax at the
+intervals chosen in the settings until either (a) the sending of the
+fax is successful, (b) there has been a failure arising from something
+other than the modem being in use or the recipient station being busy
+(such as a modem error, or the remote number ringing out without
+answering), (c) the fax is removed by the user from the list of faxes
+queued for redialing, (d) if the fax to be sent is a print job
+received from the print system, the print job is removed by the user
+from the dialog showing the list of queued faxes from the print
+socket, (e) if the fax to be sent comprises file(s) on the file
+system, the file(s) are deleted or moved (or their permissions changed
+to make them unreadable), or (f) the 'Stop' button is pressed while an
+attempt is being made to send the fax concerned which is queued for
+redialing.
+
+A fax queued for redialing will not be sent while the Settings dialog
+is open.  Instead, if the interval for resending such a fax has
+passed, a further sending attempt will take place once the Settings
+dialog has been closed.
+
+The list of queued faxes for redialing is not preserved when the
+program is terminated.  However, if any unsent faxes are print jobs
+received from the print system, they can still be found in the dialog
+showing the list of queued faxes from the print socket (assuming they
+have not been explicitly removed from that list by the user).
+
+Receiving faxes
+---------------
+
+Three ways of receiving faxes are provided for.
+
+First, the program can be set to answer a fax call which is ringing
+but has not been answered, by pressing the "Answer call" button.
+
+Secondly, the program can take over a call which has already been
+answered (say, by a telephone hand set) by pressing the "Take over
+call" button.
+
+Thirdly, the program can be placed in standby mode by pressing the
+"Standby" button.  This will automatically answer any call after the
+number of rings specified in the efax-gtkrc file, and receive the fax.
+The program will keep on receiving faxes until the "Stop" button is
+pressed.  A fax can also be sent when the program is in receive
+standby mode.
+
+Received faxes in tiffg3 format (one file for each page) are placed in
+a directory in the $HOME/faxin directory, which has a name derived
+from the year, month, day, hour and seconds when reception of the fax
+was completed (for version 3.0.4 onwards), and is the fax ID number.
+
+Received faxes can be printed, viewed, described and managed using the
+built in fax list facility.  This can be brought up from the
+`File/List received faxes' pull down menu item.  See "Using the fax
+lists" further below.
+
+When a fax is received, a pop-up dialog can also be set to appear (go
+to the Settings dialog to do this).
+
+In the settings dialog you can also specify a program to be executed
+whenever a fax is received.  The fax ID number is passed as the first
+(and only) argument to the program, which enables the program to find
+the fax in $HOME/faxin.  The distribution contains two executable
+scripts, mail_fax and print_fax, which can be used to e-mail a fax to
+a user or print a fax automatically when it is received.  (These
+scripts are not installed by 'make install' - if you want to use them,
+make them executable with 'chmod +x' and copy them to a directory
+which is in the system path, such as /usr/local/bin, and then specify
+the script name in the settings dialog).
+
+Using the address book
+----------------------
+
+To pick a telephone number from the address book, highlight the
+relevant address by pressing the left mouse button over it, and then
+press the "OK" button.
+
+Addresses can be added to the address book by pressing the add button,
+and then completing the relevant dialog which will appear.  To delete
+an address from the address book, highlight the relevant address and
+press the delete (trashcan) button.  The addressbook can be sorted by
+using the up and down arrow buttons on a highlighted address, or by
+dragging and dropping using the mouse.
+
+Addresses are stored in file `$HOME/.efax-gtk_addressbook'.
+
+Using the fax lists
+-------------------
+
+To bring up the fax lists, go to the the `File' menu and pick the
+`List received faxes' or `List sent faxes' menu item.  Highlight the
+fax to printed or viewed by pressing the left mouse button.  The
+programs to be used to print and view the fax are specifed in the
+efax-gtkrc configuration file, or if none are specified, the program
+will print using lpr (which will work for most Unix systems) and view
+with gv.
+
+To print faxes, a PRINT_SHRINK parameter can be specifed in efax-gtkrc
+to enable the fax page to fit within the printer margins.  A parameter
+of 98 will work with most printers.  This can be changed while the
+program is running by bringing up the `Settings' dialog and entering
+it into the `Print/Print Shrink' box.
+
+A fax can be deleted from a fax list by pressing the delete (trashcan)
+button.  This will place the deleted fax in the `Trash' folder.  If
+the delete (trashcan) button is pressed in relation to a fax in the
+`Trash' folder, it will be deleted from the file system.
+
+A description can be added to a received fax when appearing in a fax
+list (or subsequently amended) by pressing the relevant button -- this
+will enable faxes to be more easily identified.
+
+The received faxes list will show, at the far right of the tool bar,
+the number of faxes received since the program was last started.  If
+efax-gtk is in receive standby mode, the "tooltips" for the program's
+icon in the system tray will also indicate this number.  The count can
+be reset to 0 without restarting the program by pressing the reset
+button in the received faxes list.
+
+From version 3.0.4 onwards, the fax lists have a column displaying the
+time at which faxes are received or sent.  However, in the case of
+faxes received with versions earlier than version 3.0.4 but displayed
+with version 3.0.4 or later, the displayed received fax time will be
+the time efax-gtk was put into receive mode (which could be a
+considerably earlier than the time a fax was actually received if
+efax-gtk was in receive-standby mode), rather than the time the fax
+was actually received.  With faxes received with version 3.0.4
+onwards, the displayed received fax time will be correctly shown as
+the time that efax-gtk completed reception of the fax.  (You can tell
+whether a received fax was received with version 3.0.4 or later, or an
+earlier one, by going to the faxin sub-directory and examining the fax
+ID giving the directory name within which individual faxes are stored.
+If the fax ID number is a 12 digit number, the fax was received with a
+version earlier than 3.0.4.  If the fax ID number is a 14 digit number
+beginning with 2, then the fax was received with version 3.0.4 or
+later.  This is because the fax ID is given as a number comprising
+year-month-day-hour-minutes-seconds, and with versions earlier than
+3.0.4 the year is given by a two digit number (eg 05), and with
+version 3.0.4 or later it is given by its full four digit number (eg
+2005).
+
+The displayed sent fax time is correct for faxes sent with all
+versions of efax-gtk, including versions earlier than version 3.0.4.
+The time displayed will be the time that the sending of the fax was
+completed.
+
+From version 3.0.7 of efax-gtk, fax descriptions in the fax lists are
+stored in the UTF-8 codeset rather than the locale codeset.  This
+means that any fax descriptions previously stored in a codeset other
+than ASCII or UTF-8 by efax-gtk will not be shown in version 3.0.7.
+Sorry about that, but the former method of storing them in the locale
+codeset was bound to lead to trouble, because in due course Unix-like
+systems will adopt UTF-8 as their standard codeset and on changing
+codesets, previously entered file description were bound to be broken
+anyway.  This gets it over with.  To show these fax descriptions
+again, the contents of all the files with the name Description in the
+$HOME/[WORK_SUBDIR]/faxin/[faxnumber] and
+$HOME/[WORK_SUBDIR]/faxsent/[faxnumber] directories will need to be
+changed from the locale codeset to UTF-8.  gedit can do this manually,
+although it will be a bit tedious.
+
+Settings
+--------
+
+The program settings can be changed by manually editing the efax-gtk
+configuration file comprising $HOME/.efax-gtkrc,
+$sysconfdir/efax-gtkrc or /etc/efax-gtkrc.  The file is searched for
+in that order, so $HOME/.efax-gtkrc takes precedence over the other
+two.
+
+The configuration file can also be set by using the Settings dialog
+launched from the `File/Settings' pull down menu item.  The settings
+entered using this dialog are always stored as $HOME/.efax-gtkrc.
+Accordingly, if the Settings dialog has been used, and you want to
+revert to the global settings, this can be done either by deleting the
+$HOME/.efax-gtkrc file, or by pressing the `Reset' button in the
+Settings dialog, which will reload the Settings dialog from the global
+configuration file ($sysconfdir/efax-gtkrc or /etc/efax-gtkrc).
+
+Help can be obtained when filling out the Settings dialog by holding
+the mouse over the relevant help (?) button, which will bring up a
+"Tips" display, or by pressing the button, which will bring up an
+information display.
+
+                       USING WITH A WORD PROCESSOR
+
+Printing to file from the program itself
+----------------------------------------
+
+Probably the simplest way of using the program with a word processor
+is to print to file from the print dialog of the word processor
+program concerned, and choosing a file name in the $HOME/faxout
+directory which can then be selected with the file selector dialog in
+efax-gtk.  The file to be printed should be in postscript format or
+PDF format (recent versions of ghostscript will accept PDF files as
+well as postscript files).
+
+Faxing via CUPS
+---------------
+
+Versions 2.2.* and 3.* provide a socket server, which CUPS can connect
+to.  When the socket server is running, fax files received from CUPS
+will automatically be displayed in a "Queued faxes from socket" list
+maintained by efax-gtk.  From this list, a fax can be selected for
+sending by efax-gtk, so there is no need to print to file from the
+word processor and then select the file with the file selection dialog
+in efax-gtk.
+
+When a fax is received in this way from the print system via the
+socket, the program settings can also be configured to bring up a
+dialog automatically.  If the program is inactive or is standing-by to
+receive faxes, the fax can be sent directly from this dialog without
+the need to invoke the list of queued faxes received from the socket.
+
+If you are using CUPS and you want to connect it directly to efax-gtk
+as mentioned above, you can do so by bringing up the fax
+administration page for CUPS in a web browser, installing a new
+printer with a name of "fax" (or whatever other name you want), choose
+the IPP protocol, pick a URI of "socket://[hostname]:[port]", and
+choose the "Raw" CUPS printer driver.
+
+The port number can be any port number less than 65536 and more than
+1023 which is not used by any other service on your machine/network
+(this can be checked out by using nmap, but it is best to avoid any
+listed in /etc/services).  For example, as you will usually be
+printing from a local computer, if you choose a port number of 9900
+(which would be quite reasonable) the URI would be:
+
+  socket://localhost:9900
+
+As an alternative, rather easier than the web interface is adding a
+new CUPS virtual printer for efax-gtk by using lpadmin.  To do this,
+log in as whatever user has appropriate permissions (usually root) and
+do it from the command line with:
+
+  /usr/sbin/lpadmin -p FaxPrinter -E -v socket://localhost:9900
+
+That will create a printer name for efax-gtk called FaxPrinter for a
+case where efax-gtk is listening on port 9900.
+
+You should then start efax-gtk, go to the Socket tab in the settings
+dialog, check the "Run socket server" box, and enter 9900 in the "Port
+to which faxes to be sent" box.
+
+To send a fax from the "Queued faxes from socket" dialog, highlight
+the one to be sent, press the "Enter selected fax to send" button in
+the dialog (the one with an icon representing a fax machine) which
+will enter the fax in the "File to fax" box in efax-gtk, and then
+choose a telephone number to send it to and press the "Send fax"
+button in the ordinary way.
+
+If efax-gtk isn't running when you attempt to send a file via CUPS to
+efax-gtk don't worry.  CUPS will queue the fax until it detects that
+the efax-gtk socket server is running, and then send it to efax-gtk.
+
+Faxing via lpd/lprng
+--------------------
+
+The socket server can also be used in the same way with lpd/lprng.
+The files efax-gtk-faxfilter and efax-gtk-socket-client are installed
+in /var/spool/fax, when you run 'make install' (the installation
+directory can be changed at the ./configure stage using the
+./configure --spooldir=[dir] parameter).  You should add at the end of
+/etc/printcap the following -
+
+fax:\
+	:sd=/var/spool/fax:\
+	:mx#0:\
+	:sh:\
+	:lp=/dev/null:\
+	:if=/var/spool/fax/efax-gtk-faxfilter:
+
+This will cause a printer by the name of "fax" to be available, which
+(if printed to) will send the file to the efax-gtk socket server.  If
+you set efax-gtk to listen on a port other than port 9900, you will
+need to amend the file /var/spool/fax/efax-gtk-faxfilter by hand to
+specify the correct port number on which efax-gtk is listening.
+
+Don't forget to restart the lpd printer daemon after amending
+/etc/printcap.  (An equivalent addition to /etc/printcap can also be
+made by using the printer configuration tool with your distribution,
+choosing a printer name of "fax" (or whatever other name you want),
+choosing a printer device of "/dev/null", a spool directory of
+"/var/spool/fax" and an input filter of
+"/var/spool/fax/efax-gtk-faxfilter".)
+
+                              SYSTEM TRAY
+
+Efax-gtk has been written so that it will sit in the system tray in
+GNOME and KDE when the program is running.
+
+From the system tray, the program can be hidden and raised again by
+left-clicking with the mouse on the icon, and right-clicking on it
+will bring up a menu from which certain program operations can be
+performed.  A 'tips' display will also indicate the program state if
+the mouse is left hovering over the efax-gtk icon.
+
+Clicking on the top right (delete) button of the window frame will not
+cause the program to terminate if the program is embedded in the
+system tray.  Instead it will hide it in the tray.  If you want to
+close the program when it is embedded in the tray, either select the
+"Quit" menu item in the system tray efax-gtk menu, or select the
+"Quit" menu item in the "File" pull-down menu in the program toolbar.
+
+Recent versions of GNOME call the system tray a "Notification Area".
+If your desktop panel does not have a Notification Area installed, it
+can be placed on the panel by right clicking on the panel, and going
+to Add to Panel -> Utility -> Notification Area.
+
+                               LOGGING
+
+Errors and warnings from efax are displayed in red in the application
+text window, and information messages and reports on the progress of
+negotiations and on fax status are displayed in black in the window.
+In addition, these messages are sent to stderr and stdout
+respectively.  Accordingly, fax status can be logged by redirecting
+stderr and stdout to a log file.
+
+As an alternative, a log file can also be maintained by setting the
+LOG_FILE parameter in the efax-gtkrc configuration file, or by
+entering a log file name via the Settings dialog.  If no log file is
+specified, no log file will be maintained.  If a log file is
+specified, then it can be viewed and printed from the "Log" pull-down
+menu.
+
+If a log file is specified, it can be specified with or without an
+absolute path name.  If it is specified without an absolute path name,
+then it will be maintained either in the $HOME directory or if a
+working sub-directory is specified with the WORK_SUBDIR parameter (see
+below), in the working sub-directory.
+
+                               SCANNERS
+
+If you have a scanner and want to fax it's output, you may find that
+it produces a separate postscript file for each page.  The easiest way
+of dealing with this is to concatenate the postscript page files
+produced by the scanner to a single fax file such as /tmp/faxfile.ps,
+using 'cat' and appropriate command line wildcards.  You may want to
+automate this with a script.
+
+Alternatively, as mentioned above, more than one file can be specified
+in the "File to fax" box when the program is running.
+
+                          INTERNATIONALISATION
+
+Version 2.0 and above of the program has been written to accommodate
+i18n support.  If anyone wants to provide me with a *.po file with
+translations into their language/locale, I will include it in the
+distribution.
+
+An efax-gtk.pot file and other relevant build tools are included in
+the po directory in the source directory for the purpose.
+
+Users with a file system using other than the ASCII or UTF-8 codesets
+will need to set either the G_FILENAME_ENCODING or G_BROKEN_FILENAMES
+environmental variable in order for glib to carry out the correct
+conversions of file names.  (If you receive frequent error messages
+stating that there was a "UTF-8 conversion error in
+FileReadSelectDialog::set_result()" or some other function, then you
+probably haven't set either environmental variable but need to do so.)
+
+The environmental variables are best set in /etc/profile or ~/.profile
+or in a file included in /etc/profile.d (depending on the
+distribution).  The G_FILENAME_ENCODING environmental variable is
+supported in recent versions of glib-2.0, and if used should be set to
+the codeset used by the file system for filenames.  For example, with
+a bash shell, if the file system uses the ISO-8859-15 codeset for
+filenames, a line in the relevant file as follows will do the trick:
+
+export G_FILENAME_ENCODING=ISO-8859-15
+
+Earlier versions of glib-2.0 only support the G_BROKEN_FILENAMES
+environmental variable (this is also usable by current versions).  If
+this environmental variable is set, glib will assume filenames use the
+same codeset as the current locale.  G_FILENAME_ENCODING takes
+precedence over G_BROKEN_FILENAMES, but you only need to set one of
+them.  To get glib to use your locale codeset for filenames (and they
+are almost always the same), the following will do the trick in the
+bash shell:
+
+export G_BROKEN_FILENAMES=1
+
+The name of this environmental variable is a little misleading.  The
+authors of glib chose to regard any filename codeset other than UTF-8
+as "broken".  In due course UTF-8 will probably become universal on
+Unix-like systems.  At present, it is not.
+
+                            WORKING DIRECTORY
+
+A working sub-directory for the storage of .efax-gtk_addressbook,
+.efax-gtk_mainwin_save and .efax-gtk_queued_server_files and the
+faxin, faxout, faxsent and efax-gtk-server directories can be
+specified in the efax-gtkrc configuration file with the WORK_SUBDIR:
+parameter.  This working subdirectory will appear as a subdirectory of
+$HOME (so if WORK_SUBDIR: is specified as efax-gtk, $HOME/efax-gtk
+will be the working directory).  If none is specified, which is the
+default, then these files/directories will be stored directly in $HOME
+(which was what happened before the option was available, so past
+efax-gtk installations will not be broken if this option is left
+unset).  The WORK_SUBDIR: parameter enables these files and folders to
+be kept together in a separate directory if wanted.  If a WORK_SUBDIR:
+parameter is specified, only .efax-gtkrc will appear directly in
+$HOME.
+
+Note that if you specify a value for WORK_SUBDIR: in the efax-gtkrc
+configuration file, you will need to shift old versions of the files
+and directories mentioned above into the new working directory or
+efax-gtk will not be able to find them, so use this option with
+caution.  In addition, if you wish to use the 'print_fax' or
+'mail_fax' scripts, you will need to set the WORK_SUBDIR option in the
+relevant script.
+
+                            MODEM CLASS MODES
+
+Efax-gtk provides Group 3 fax support using either Class 1, Class 2 or
+Class 2.0 modem protocols.  When operating in Class 2 and 2.0 modes,
+it is the modem which does most of the work.  In Class 1 mode, the
+computer (running efax) does more of the fax processing.
+
+Many fax modem firmware implementations for Class 2 are buggy,
+particularly when receiving faxes.  If you select the "Auto" modem
+class option in the efax-gtk program settings, Classes 2 and 2.0 modes
+will be selected in preference to Class 1 if the program detects that
+the modem supports them.  If you find you get fax reception errors in
+an auto-detected class 2 or 2.0 mode, but your modem also supports the
+Class 1 protocol, try explicitly selecting the "Class 1" modem class
+option in the program settings.  Because most of the fax processing in
+Class 1 mode is done by efax (which is known to do it correctly),
+there is much less chance of running into buggy firmware problems.
+
+                                 DBUS
+
+The program operates as a single-instance program, and in order to do
+so a dbus session message bus must be running.  Most recent
+distributions using GNOME, KDE or Xfce do this anyway, but if your X
+environment does not start a session bus, you may need to start one
+yourself in the script which starts your X session.  To do this you
+can put the following in the script (this will often be a xinitrc file
+in /etc/X11/xinit, but might be ~/.xsession or ~/.Xclients):
+
+  if test -z "$DBUS_SESSION_BUS_ADDRESS" ; then
+    eval `dbus-launch --sh-syntax --exit-with-session`
+    echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
+  fi
+
+However, before amending your scripts, test whether this is necessary,
+by trying to launch the program, or by bringing up a terminal (such as
+xterm, gnome-terminal or konsole) and seeing if 'echo
+$DBUS_SESSION_BUS_ADDRESS' reports anything.  (Usually it won't be
+necessary to amend your scripts.)
+
+If an attempt to start the program is made without the session message
+bus running then an error dialog will be shown and the program will
+then terminate.
+
+                              GTK VERSIONS
+
+The program can compile against GTK+3 as well as GTK+2.  Whichever one
+of those has c++-gtk-utils compiled for it will be picked
+automatically by the configure script.  If c++-gtk-utils has been
+parallel installed for both GTK+2 and GTK+3, GTK+3 will be preferred,
+but if './configure' is passed the '--with-gtk-version=gtk2' option,
+then the program will be configured and compiled against GTK+2
+instead.  To compile against GTK+3, GTK+ >= 2.99.0 is required.
+
+The configuration option '--with-gtk-version' can also be given the
+values 'gtk3' and 'auto'.  If 'gtk3' is given, then c++-gtk-utils must
+have been compiled and installed against GTK+3 if configuration is to
+succeed; if 'auto' is given, then the effect is the same as if the
+'--with-gtk-version' option had not been used.
+
+                          CONTACTING THE AUTHOR
+
+I can be contacted at: cvine -at- users -dot- sourceforge -dot- net.
+
+Updates can be obtained from http://efax-gtk.sourceforge.net/
+
+Chris Vine.

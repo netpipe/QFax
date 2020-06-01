@@ -1,0 +1,72 @@
+#!/bin/sh
+
+# This script is for use with efax-gtk.  It can be used automatically
+# to print a fax when a fax is received.  Edit the user options below
+# as necessary.
+
+########### start of user options ###########
+
+PAGE=a4       # ISO A4
+#PAGE=letter   # US letter
+#PAGE=legal    # US legal
+
+PRINT_CMD="lpr"
+#PRINT_CMD="lpr -Plp"
+
+# PRINT_SHRINK reduces the size of the fax image to fit within printer
+# margins.  It is a percentage, so if you comment it out, or specify
+# 100, then the image will be printed full size.  It cannot be set to
+# a size larger than 100, or less than 50.
+
+PRINT_SHRINK=98
+
+# if you have specified a sub-directory WORK_SUBDIR: in the efax-gtkrc
+# configuration file then you will need to amend the following line
+# accordingly
+
+WORK_SUBDIR=""
+
+############ end of user options ############
+
+if [ -z "$PRINT_SHRINK" ] ; then PRINT_SHRINK=100
+fi
+
+PAGE_a4="210x297mm"
+PAGE_letter="216x279mm"
+PAGE_legal="216x356mm"
+
+case $PAGE in
+	a4) 	PAGE_DIM="$PAGE_a4"
+                H_OFFSET=$((210*(100-$PRINT_SHRINK)/200))
+                V_OFFSET=$((297*(100-$PRINT_SHRINK)/200))
+	;;
+	letter)	PAGE_DIM="$PAGE_letter"
+                H_OFFSET=$((216*(100-$PRINT_SHRINK)/200))
+                V_OFFSET=$((279*(100-$PRINT_SHRINK)/200))
+	;;
+	legal) 	PAGE_DIM="$PAGE_legal"
+                H_OFFSET=$((216*(100-$PRINT_SHRINK)/200))
+                V_OFFSET=$((356*(100-$PRINT_SHRINK)/200))
+	;;
+	*)      echo "Incorrect page size specified"
+	        exit 2
+	;;
+esac
+
+if [ $PRINT_SHRINK -gt 100 ]; then
+  echo "PRINT_SHRINK is too large"
+  exit 1
+elif [ $PRINT_SHRINK -lt 50 ]; then
+  echo "PRINT_SHRINK is too small"
+  exit 1
+elif [ $PRINT_SHRINK -eq 100 ]; then
+  SIZE="1"
+else
+  SIZE="0."$PRINT_SHRINK
+fi
+
+
+DISPLACE=$H_OFFSET","$V_OFFSET"mm"
+FILES=$HOME/$WORK_SUBDIR/faxin/$1/$1.*
+
+efix-0.9a -ve -r300 -ops -p$PAGE_DIM -s$SIZE -d$DISPLACE $FILES | $PRINT_CMD

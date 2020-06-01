@@ -1,0 +1,22 @@
+     ../src/addressbook.cpp \
+     ../src/dialogs.cpp \
+     ../src/efax_controller.cpp \
+     ../src/fax_list.cpp \
+     ../src/fax_list_manager.cpp \
+     ../src/file_list.cpp \
+     ../src/main.cpp \
+     ../src/mainwindow.cpp \
+     ../src/settings.cpp \
+     ../src/settings_help.cpp \
+     ../src/helpfile.cpp \
+     ../src/socket_server.cpp \
+     ../src/socket_list.cpp \
+     ../src/socket_notify.cpp \
+     ../src/logger.cpp \
+     ../src/tray_icon.cpp \
+     ../src/redial_queue.cpp \
+     ../src/utils/mono_tiff_print_manager.cpp \
+     ../efax/efax.c \
+     ../efax/efaxmsg.c \
+     ../efax/efaxlib.c \
+     ../efax/efaxio.c

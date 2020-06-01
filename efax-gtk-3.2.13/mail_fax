@@ -1,0 +1,110 @@
+#!/bin/sh
+
+# This script is for use with efax-gtk.  It can be used automatically
+# to e-mail a fax to a user when a fax is received.  To use it you
+# must have the Heirloom mailx (previously called 'nail') enhanced
+# mail program installed.  If Heirloom mailx does not come with your
+# distribution, you can get it from
+# http://heirloom.sourceforge.net/mailx.html .  If the PDF output
+# format is chosen then this also uses the ps2pdf script which comes
+# with Ghostscript, which should be within the user's path.
+
+# Edit the user options below as necessary.
+
+########### start of user options ###########
+
+# The fax can be e-mailed as a PDF (Portable Document Format) or PS
+# (PostScript) file.  Choose the format here.
+
+FORMAT=pdf
+#FORMAT=ps
+
+# Specify the page size to be used here.
+
+PAGE=a4       # ISO A4
+#PAGE=letter   # US letter
+#PAGE=legal    # US legal
+
+# This is the address to which the fax is to be sent.  If none is
+# specified, it will be send to $USER@localhost
+
+#MAIL_ADDR=
+
+# SHRINK reduces the size of the fax image which is e-mailed to enable
+# the recipient to print it out with an allowance for printer margins.
+# It is a percentage, so if you comment it out, or specify 100, then
+# the image will be sent full size.  It cannot be set to a size larger
+# than 100, or less than 50.
+
+SHRINK=98
+
+# if you have specified a sub-directory WORK_SUBDIR: in the efax-gtkrc
+# configuration file then you will need to amend the following line
+# accordingly
+
+WORK_SUBDIR=""
+
+############ end of user options ############
+
+if [ -z "$SHRINK" ] ; then SHRINK=100
+fi
+
+if [ -z "$MAIL_ADDR" ] ; then MAIL_ADDR="$USER@localhost"
+fi
+
+PAGE_a4="210x297mm"
+PAGE_letter="216x279mm"
+PAGE_legal="216x356mm"
+
+case $PAGE in
+	a4) 	PAGE_DIM="$PAGE_a4"
+                H_OFFSET=$((210*(100-$SHRINK)/200))
+                V_OFFSET=$((297*(100-$SHRINK)/200))
+	;;
+	letter)	PAGE_DIM="$PAGE_letter"
+                H_OFFSET=$((216*(100-$SHRINK)/200))
+                V_OFFSET=$((279*(100-$SHRINK)/200))
+	;;
+	legal) 	PAGE_DIM="$PAGE_legal"
+                H_OFFSET=$((216*(100-$SHRINK)/200))
+                V_OFFSET=$((356*(100-$SHRINK)/200))
+	;;
+	*)      echo "Incorrect page size specified"
+	        exit 2
+	;;
+esac
+
+if [ $SHRINK -gt 100 ]; then
+  echo "SHRINK is too large"
+  exit 1
+elif [ $SHRINK -lt 50 ]; then
+  echo "SHRINK is too small"
+  exit 1
+elif [ $SHRINK -eq 100 ]; then
+  SIZE="1"
+else
+  SIZE="0."$SHRINK
+fi
+
+
+DISPLACE=$H_OFFSET","$V_OFFSET"mm"
+FILES=$HOME/$WORK_SUBDIR/faxin/$1/$1.*
+
+# generate the file to e-mail in the chosen format
+case $FORMAT in
+	pdf) 	TEMP_FILE=$HOME/efax-gtk-$1.pdf
+                efix-0.9a -ve -r300 -ops -p$PAGE_DIM -s$SIZE -d$DISPLACE $FILES | ps2pdf -sPAPERSIZE=$PAGE - $TEMP_FILE
+	;;
+	ps)	TEMP_FILE=$HOME/efax-gtk-$1.ps
+                efix-0.9a -ve -r300 -ops -p$PAGE_DIM -s$SIZE -d$DISPLACE $FILES > $TEMP_FILE
+	;;
+	*)      echo "Incorrect output format specified"
+	        exit 3
+	;;
+esac
+
+# now e-mail it
+MAIL_CMD="mailx -s efax-gtk -a$TEMP_FILE $MAIL_ADDR"
+echo "Fax $1 received by efax-gtk attached" | $MAIL_CMD
+sleep 1
+rm $TEMP_FILE

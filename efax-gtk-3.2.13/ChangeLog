@@ -1,0 +1,1807 @@
+Version 3.2.13 (11th April 2014)
+--------------
+
+	Fix API breakage in GTK+-3.12 (the buttons of GtkDialog objects
+	have been made internal instead of non-internal children of the
+	action area box) (dialog.h, dialog.cpp).
+
+	Put icon in efax and efax-gtk about dialogs (dialogs.cpp).
+
+	Replace AC_CONFIG_HEADER macro with AC_CONFIG_HEADERS when
+	configuring (Samuli Suominen) (configure.ac).
+
+	Update build system to automake-1.13.3 (config.guess, config.sub,
+	depcomp, INSTALL).
+
+	Update desktop file (Samuli Suominen) (efax-gtk.desktop).
+
+Version 3.2.12 (1st June 2013)
+--------------
+
+	Force GType initialisation of GtkEntry for GtkSettings
+	(mainwindow.cpp).
+
+	Correct entry sizing in settings dialog (settings.cpp).
+
+	Improve tray icon sizing (tray_icon.cpp).
+
+	Permit the program to build against c++-gtk-utils-2.2 (this
+	requires increasing the c++-gtk-utils-1.2 dependency to 1.2.13,
+	and increasing the c++-gtk-utils-2.0 dependency to 2.0.1)
+	(acinclude.m4, README; mainwindow.h, mainwindow.cpp).
+
+	Cause bootstrap.sh to build translation files (bootstrap.sh).
+
+	Update build system to automake-1.13.1 (configure.ac,
+	config.guess, config.sub, depcomp, INSTALL, install-sh, missing;
+	src/Makefile.am; efax/Makefile.am).
+
+Version 3.2.11 (1st January 2013)
+--------------
+
+	Workaround for a bug in GtkFileChooserDialog in later versions of
+	gtk+-2.24 (dialogs.cpp).
+
+	Change efax-gtk.desktop to meet
+	http://specifications.freedesktop.org/menu-spec/menu-spec-latest.html
+	recommendations (efax-gtk.desktop).
+
+	Add French translation (Charlie Ledocq) (po/fr.po, LINGUAS).
+
+Version 3.2.10 (21st October 2012)
+--------------
+
+        Update build system to automake-1.12.1 and autoconf-2.69.
+
+	Suppress gtk+-3 deprecation warnings (acinclude.m4).
+
+	Set locale even if NLS not set (main.cpp).
+
+	Deal better with GtkMessageDialog format string (dialog.cpp).
+
+	Use automake silent rules (configure.ac).
+
+	Correct icon entry in efax-gtk.desktop file (efax-gtk.desktop).
+
+	Simplify file chooser selection code (dialogs.cpp).
+
+	Call atexit() instead of glib's now deprecated g_atexit() (the use
+	of atexit() in this program is entirely safe) (main.cpp).
+
+	Remove unnecessary pointer value check in present_prog()
+	(main.cpp).
+
+	Add Spanish translation (Antonio Trujillo) (po/LINGUAS, po/es.po,
+	po/efax-gtk.pot; mainwindow.cpp).
+
+	Update copyright notices (COPYING, README; addressbook.h,
+	addressbook.cpp, dialogs.h, dialogs.cpp, efax_controller.h,
+	efax_controller.cpp, fax_list.h, fax_list.cpp, fax_list_manager.h,
+	fax_list_manager.cpp, file_list.h, file_list.cp, gpl.h,
+	helpfile.h, helpfile.cpp, logger.h, logger.cpp, main.cpp,
+	mainwindow.h, mainwindow.cpp, prog_defs.h, redial_queue.h,
+	redial_queue.cpp, settings.h, settings.cpp, settings_help.h,
+	settings_help.cpp, socket_list.h, socket_list.cpp,
+	socket_notify.h, socket_notify.cpp, socket_server.h,
+	socket_server.cpp, tray_icon.h, tray_icon.cpp;
+	utils/cairo_handle.h, utils/icon_info_handle.h,
+	utils/mono_tiff_print_manager.h,
+	utils/mono_tiff_print_manager.cpp,
+	utils/pango_layout_iter_handle.h, utils/selected_rows_handle.h,
+	utils/selected_rows_handle.cpp, utils/sem_sync.h,
+	utils/tiff_handle.h, utils/toolbar_append_widget.h,
+	utils/toolbar_append_widget.cpp, utils/tree_path_handle.h,
+	utils/tree_row_reference_handle.h, utils/utf8_utils.h,
+	utils/utf8_utils.cpp;
+	efax-gtk-faxfilter/efax-gtk-socket-client.cpp.
+
+	Update documentation (README).
+
+	Update configuration scripts (acinclude.m4).
+
+Version 3.2.9 (21st December 2011)
+-------------
+
+	Have a hard dependency on c++-gtk-utils-1.2 >= 1.2.7 or
+	c++-gtk-utils-2.0 >= 2.0.0-rc1, so that C++0x/11 can be more
+	easily supported, and maintainability is improved (README,
+	acinclude.m4, configure.ac, src/Makefile.am,
+	src/utils/Makefile.am, po/POTFILES.in; delete src/internal
+	directory and its contents.)
+
+	Make the settings help dialogs of a reasonable size with GTK+3
+	(settings_help.cpp).
+
+	Permit IPv6 addresses to be specified with a wildcard and only
+	one, or no, ':' character (socket_server.cpp).
+
+	Explicitly set shadow type of fax input frame (mainwindow.cpp).
+
+	Change library linking order (src/Makefile.am and
+	efax/Makefile.am).
+
+	Remove unnecessary configure checks (acinclude.m4, configure.ac
+	and src/Makefile.am)
+
+	Upgrade gettext to version 0.18 and include m4 macros
+	(po/Makefile.in.in, po/Rules-quot, m4 directory, Makefile.am).
+
+	Add proper header checks at configuration time (configure.ac).
+
+Version 3.2.8 (30th March 2011)
+-------------
+
+	Permit IPv6 addresses in domain name form as well as in numeric
+	format (socket_server.h and socket_server.cpp).
+
+	Improve error checking and so suppress gcc-4.6 warning
+	(mainwindow.cpp; utils/mono_tiff_print_manager.cpp).
+
+	Upgrade internal c++-gtk-utils version.
+
+Version 3.2.7.1 (16th March 2011)
+---------------
+
+	Correct style change handling (mainwindow.h, mainwindow.cpp).
+
+	Update comments in efax-gtkrc on "SOCK_OTHER_ADDRESSES:" for IPv6
+	(efax-gtkrc).
+
+Version 3.2.7 (14th March 2011)
+-------------
+
+	Change default gtk target to gtk+3, and permit
+	--with-gtk-version=gtk2 and --with=gtk-version=gtk3 as well as
+	--with-gtk-version=gtk+2 and --with=gtk-version=gtk+3
+	(acinclude.m4, README).
+
+	Provide option for server to accept IPv6 connections (efax-gtkrc;
+	prog_defs.h, main.cpp, mainwindow.cpp, settings.h, settings.cpp,
+	settings_help.h, settings_help.cpp, socket_server.h and
+	socket_server.cpp).
+
+	Use GtkStyleContext for a GTK+3 compile (acinclude.m4;
+	addressbook.cpp, dialogs.h, dialogs.cpp, fax_list.cpp,
+	fax_list-manager.cpp, helpfile.cpp, logger.cpp, main.cpp,
+	mainwindow.h and mainwindow.cpp).
+
+	Correct non-sh-ism in configuration files (acinclude.m4).
+
+	Include efax-gtk.png icon in rpm spec file (efax-gtk.spec.in).
+
+        Minor adjustments to MonoTiffPrintManager implementation
+	(utils/mono_tiff_print_manager.h and
+	utils/mono_tiff_print_manager.cpp).
+
+	Provide some explicit casts for std::pair constructor required by
+	C++0x (dialogs.cpp, fax_list.cpp, file_list.cpp, socket_list.cpp).
+
+	Provide compile option for c++-gtk-utils-2.0 (acinclude.m4,
+	README; efax_controller.cpp, fax_list.cpp, gpl.h, logger.cpp,
+	socket_server.h and socket_server.cpp).
+
+	Surpress warning about std::auto_ptr being deprecated when
+	compiling under C++0x (acinclude.m4).
+
+	Upgrade internal c++-gtk-utils version to 1.2.12 (and also adjust
+	the configuration files for that (acinclude.m4, configure.ac;
+	src/internal/c++-gtk-utils/Makefile.am)).
+
+Version 3.2.6 (13th November 2010)
+-------------
+
+	Do not require dbus-glib where glib >= 2.26 is installed
+	(acinclude.4, configure.ac, src/Makefile.am,
+	src/internal/c++-gtk-utils/Makefile.am with upgraded
+	c++-gtk-utils).
+
+	Fixes for gtk+-2.91 (acinclude.m4, addressbook.cpp, dialogs.cpp,
+	fax_list.cpp, fax_list_manager.cpp, helpfile.cpp, logger.cpp,
+	main.cpp, mainwindow.h, mainwindow.cpp, settings.cpp and
+	socket_notify.cpp).
+
+	Improve widget sizing for widgets displaying text
+	(efax_controller.h, mainwindow.h and mainwindow.cpp).
+
+	Fix compilation error with gtk+-2.12 (mainwindow.cpp).
+
+	Remove anachronistic comment (utils/mono_tiff_print_manager.cpp).
+
+	Upgrade internal c++-gtk-utils version to 1.2.7.
+
+Version 3.2.5 (13th October 2010)
+-------------
+
+	Fix segfault when printing faxes with cairo-1.10
+	(utils/mono_tiff_print_manager.h and
+	utils/mono_tiff_print_manager.cpp).
+
+	Use cairo rather than the GDK drawing functions to draw the
+	indicator of whether there are print jobs from the socket to be
+	faxed (mainwindow.h, mainwindow.cpp and utils/cairo_handle.h).
+
+	Use gtk_tree_view_convert_bin_window_to_widget_coords() instead of
+	gtk_widget_get_pointer() in order to obtain the pointer position
+	in widget co-ordinates for tree view motion notify events
+	(fax_list_manager.cpp).
+
+	Modify argument handling for efax message functions to avoid an
+	invalid double call to vfprintf() on the same va_list value (this
+	bug is triggered on some systems when using the 'fax' script but
+	does not directly affect efax-gtk) (efax/efaxmsg.c, efax/PATCHES).
+
+	Upgrade internal c++-gtk-utils version to 1.2.6.
+
+Version 3.2.4 (2nd August 2010)
+-------------
+
+	Fix uncaught exception where a file to be faxed is not in valid
+	postscript/PDF format (efax_controller.cpp).
+
+	Include the former gnome stock_send-fax icon as the standard icon
+	for efax-gtk (Makefile.am, efax-gtk.desktop, efax-gtk.png,
+	AUTHORS; main.cpp).
+
+	Use XkbBell() rather than XBell() where available (acinclude.m4,
+	main.cpp).
+
+	Include pkg-config test for x11.pc, if available (acinclude.m4 and
+	src/Makefile.am).
+
+	Further build fixes for Debian Hurd (src/efax_controller.cpp and
+	src/fax_list.cpp; efax/efaxmsg.c).
+
+	Update Hungarian translation (László Csordás) (hu.po and
+	mainwindow.cpp).
+
+	Remove redundant anonymous namespace for callbacks with C linkage
+	(addressbook.h, addressbook.cpp, dialogs.h, dialogs.cpp,
+	fax_list.h, fax_list.cpp, fax_list_manager.h,
+	fax_list_manager.cpp, file_list.h, file_list.cpp, helpfile.h,
+	helpfile.cpp, logger.h, logger.cpp, mainwindow.h, mainwindow.cpp,
+	redial_queue.h, redial_queue.cpp, settings.h, settings.cpp,
+	settings_help.h, settings_help.cpp, socket_list.h,
+	socket_list.cpp, socket_notify.h, socket_notify.cpp, tray_icon.h,
+	tray_icon.cpp, utils/mono_tiff_print_manager.h,
+	utils/mono_tiff_print_manager.cpp, utils/selected_rows_handle.h,
+	utils/selected_rows_handle.cpp).
+
+	Correct linkage specification of present_prog() (main.cpp).
+
+	Use Cgu::start_timeout_seconds() rather than Cgu::start_timeout()
+	where available (fax_list_manager.cpp, logger.cpp).
+
+	Remove redundant comments (prog_defs.h,
+	utils/toolbar_append_widget.cpp).
+
+	Upgrade internal c++-gtk-utils version to 1.2.4.
+
+Version 3.2.3 (4th June 2010)
+-------------
+
+	Provide compilation option for GTK+3 as well as GTK+2
+	(configure.ac, acinclude.m4 and README; addressbook.cpp,
+	dialogs.cpp, fax_list.cpp, fax_list_manager.cpp, file_list.cpp,
+	helpfile.cpp, logger.cpp, mainwindow.cpp, redial_queue.cpp,
+	settings.cpp, settings_help.cpp, socket_list.cpp and
+	socket_notify.cpp).
+
+	Make program configuration check for _POSIX_CLOCK_SELECTION as
+	well as _POSIX_MONOTONIC_CLOCK when checking the availability of
+	monotonic clocks for condition variables (corrects BSD builds)
+	(acinclude.m4).
+
+	Ensure PIPE_BUF is defined in mainwindow.cpp (corrects Hurd
+	build).
+
+	Upgrade internal c++-gtk-utils version to 1.2.3.
+
+Version 3.2.2 (7th May 2010)
+-------------
+
+	Update internal copy of c++-gtk-utils to version 1.2.2 and fix
+	compilation error with gcc-4.5.0.
+
+	Provide an automatic redial option where the modem is in use or
+	the recipient of a fax is busy (efax-gtkrc; efax_controller.h,
+	efax_controller.cpp, helpfile.h, helpfile.cpp, main.cpp,
+	mainwindow.h, mainwindow.cpp, prog_defs.h, settings.h,
+	settings.cpp, settings_help.h, settings_help.cpp, tray_icon.h and
+	tray_icon.cpp; new files redial_queue.h, redial_queue_icons.h and
+	redial_queue.cpp).
+
+	Get GUI to deal with a corner case where sending a fax from the
+	socket server to an empty number (open connection) is
+	cancelled (mainwindow.h, mainwindow.cpp, socket_notify.h and
+	socket_notify.cpp).
+
+	Provide an error dialog if, on program start-up, a connection to
+	the dbus session message bus cannot be established (main.cpp).
+
+	Use Cgu::start_timeout_seconds() instead of Cgu::start_timeout()
+	where glib supports it, and so bump c++-gtk-utils requirement to
+	version 1.2.1 (acinclude.m4, mainwindow.cpp)
+
+Version 3.2.1 (9th April 2010)
+-------------
+
+	Fix compilation error where GTK+ version 2.12 or 2.14 is
+	installed (tray_icon.cpp).
+
+	Make a double click on a fax to send in the socket list cause the
+	fax to be viewed (fax_list_manager.h, fax_list_manager.cpp,
+	socket_list.h and socket_list.cpp).
+
+	Update c++-gtk-utils version.
+
+	Update Catalan translation (Jordi Salomo).
+
+	Update documentation to refer to PDF format files (README,
+	helpfile.cpp).
+
+	Omit unnecessary conditional inclusion of c++-gtk-utils
+	headers (addressbook.h, addressbook.cpp, dialogs.h, dialogs.cpp,
+	efax_controller.h, efax_controller.cpp, fax_list.h, fax_list.cpp,
+	fax_list_manager.h, fax_list_manager.cpp, file_list.h,
+	file_list.cpp, helpfile.h, logger.h, logger.cpp, main.cpp,
+	mainwindow.h, mainwindow.cpp, prog_defs.h, settings.h,
+	settings_help.h, socket_list.h, socket_list.cpp, socket_notify.h,
+	socket_server.h, socket_server.cpp, tray_icon.h,
+	utils/cairo_handle.h, utils/icon_info_handle.h,
+	utils/mono_tiff_print_manager,h,
+	utils/mono_tiff_print_manager.cpp,
+	utils/pango_layout_iter_handle.h, utils/tiff_handle.h,
+	utils/tree_path_handle.h, utils/tree_row_reference_handle.h and
+	utils/utf8_utils.cpp).
+
+Version 3.2.0 (10th March 2010)
+-------------
+
+	Make a double click on a fax in a fax list cause the fax to be
+	viewed (fax_list.cpp, fax_list_manager.h and
+	fax_list_manager.cpp).
+
+	Enforce single strip tiff images from ghostscript for
+	efix (efax_controller.cpp).
+
+        Incorporate c++-gtk-utils library, including providing new
+	Emitter/EmitterArg and SafeEmitter/SafeEmitterArg classes for
+	thread-safe signalling, and a Callback::post() function which
+	provides for thread-safe disconnection of a callback if the object
+	whose method it encapsulates has been
+	destroyed (src/internal/c++-gtk-utils, src/utils); drop dependency
+	on libsigc++.
+
+        Replace deprecated GtkTooltips interface with GtkTooltip
+	interface (addressbook.cpp, fax_list.cpp, file_list.cpp,
+	settings.cpp, socket_list.cpp, tray_icon.h, tray_icon.cpp,
+	utils/toolbar_append_widget.h and
+	utils/toolbar_append_widget.cpp).
+
+	Substitute GtkStatusIcon for EggTrayIcon (mainwindow.h,
+	mainwindow.cpp, tray_icon.h, tray_icon.cpp, libegg/eggtrayicon.h
+	and libegg/eggtrayicon.cpp).
+
+	Reimplement PromptDialog class using GtkDialog, and tidy up
+	InfoDialog class (dialogs.h and dialogs.cpp).
+
+	Reimplement about dialogs with GtkAboutDialog (dialogs.h,
+	dialogs.cpp and mainwindow.cpp).
+
+	Refactor the code so that a continous timer event is not
+	required (efax_controller.h, efax_controller.cpp, mainwindow.h and
+	mainwindow.cpp).
+
+	Remove code for a case where std::stringstream is not present.
+
+	No longer include all of namespace std with a using
+	declaration (src/prog_defs.h).
+
+	Do not include partial gtk+/gobject/glib headers (adopt '#include
+	<gtk/gtk.h>' etc).
+
+Version 3.0.20 (20th August 2009)
+--------------
+
+	Fix regression in 3.0.19 which causes incorrect fault handling if
+	efax-gtk is given an invalid postscript file (efax_controller.h
+	and efax_controller.cpp).
+
+	Provide new Emitter/EmitterArg and SafeEmitter/SafeEmitterArg
+	classes for thread-safe signalling (utils/emitter.h,
+	utils/callback.h and utils/mutex.h).
+
+	Provide a Callback::post() function which provides for thread-safe
+	disconnection of a callback if the object whose method it
+	encapsulates has been destroyed (utils/callback.h and
+	utils/callback.cpp).
+
+Version 3.0.19 (28th July 2009)
+--------------
+
+	If the gtk+ version is >= 2.8.0 and X11 is the backend, use gdk
+	X11 functions to move the program window to the current workspace
+	if the user tries to start another instance (mainwindow.cpp).
+	
+	Include gtk/gtk.h, gdk/gdk.h and glib.h instead of individual
+	gtk+/glib header files.
+	
+	Correct failure to print or view logfile if the logfile user
+	setting does not have an absolute path name (logger.cpp) (and if
+	no absolute path name is specified, store the file in $HOME or the
+	working sub-directory of $HOME - mainwindow.h and mainwindow.cpp).
+
+	Allow choice of priorities in Callback::post() function.  Provide
+	Callback::Functor class wrapping Callback objects and further
+	generalise Callback objects (utils/callback.h).
+
+	Improve iconified tracking (mainwindow.cpp).
+
+	Correct the order in which tests based on the definitions in
+	config.h are carried out, when choosing header files to be
+	included (fax_list_manager.cpp, logger.cpp and mainwindow.cpp).
+
+	Include fsync() call after flushing fdoutbuf stream buffer
+	(utils/fdstream.tcc).
+
+	Minor code layout improvements (efax_controller.h,
+	efax_controller.cpp, file_list.h, file_list.cpp, socket_list.h,
+	socket_list.cpp, utils/mem_fun.h, utils/Makefile.am and
+	utils/Makefile.in).
+
+	Update to gettext-0.17
+
+	Update to automake-1.10.1.
+
+Version 3.0.18 (9th December 2008)
+--------------
+
+	Print received/sent faxes via cairo, libtiff and GtkPrintOperation
+	when efax-gtk is compiled against GTK+ >= 2.10.0, instead of
+	converting to postscript with efix (fax_list.h, fax_list.cpp,
+	mainwindow.cpp, settings.h and settings.cpp, and new files
+	utils/mono_tiff_print_manager.h and
+	utils/mono_tiff_print_manager.cpp; configure.ac, src/Makefile.am
+	and utils/Makefile.am).
+
+	Minor improvements to the TextPrintManager implementation
+	(text_print_manager.h and text_print_manager.cpp).
+
+	Make use of GTK+ print system the default when efax-gtk is
+	compiled against GTK+ >= 2.10.0 (main.cpp and efax-gtkrc).
+	
+	Correct man file (efax-gtk.1) (Lior Kaplan).
+
+Version 3.0.17 (27th March 2008)
+--------------
+
+	Replace thread-unsafe use of sigc::slot where relevant with thread
+	safe callback classes (efax_controller.cpp, fax_list.cpp,
+	mainwindow.cpp, socket_server.cpp, utils/thread.h,
+	utils/thread.cpp and utils/Makefile.am and add new file
+	utils/callback.h).
+
+	Compile fixes for gcc-4.3 (file_list.cpp and socket_list.cpp).
+
+	Fix '=' for '==' error (settings.cpp).
+
+	Remove unnecessary debugging code (main.cpp).
+
+	Update config.guess, config.sub, install-sh, missing and
+	mkinstalldirs to automake-1.9.
+
+	Correct comments in pipes.h (utils/pipes.h).
+
+	Update documentation in utils/gobj_handle.h,
+	utils/intrusive_handle.h and utils/notifier.h.
+
+Version 3.0.16 (14th November 2007)
+--------------
+
+	Provide an option for prepending a standard prefix on dialling
+	(prog_defs.h, main.cpp, mainwindow.cpp, settings.h, settings.cpp,
+	settings_help.h and settings_help.cpp).
+
+	Implement start_iowatch() without a sigc::signal object (that is,
+	using only a sigc::slot object for the callback)
+	(utils/io_watch.cpp).
+
+	Corrections to syntax of efax-gtk.1 (man file) and
+	efax-gtk.desktop. (Lior Kaplan).
+
+	Add reference to -e option in efax man file.
+
+	Add more robust checking of whether an existing instance of
+	efax-gtk is running when another instance is started (main.cpp).
+
+	Correct conditional compilation for use of GTK+ printing system to
+	check for version 2.10 (mainwindow.cpp).
+
+	Update comments on threading in prog_defs.h.
+
+	Update Catalan translation (Jordi Sayol).
+
+	Update README file.
+
+Version 3.0.15 (15th July 2007)
+--------------
+
+	Add provision for printing and viewing the logfile (src/logger.h,
+	src/logger.cpp, src/mainwindow.h, src/mainwindow.cpp,
+	src/Makefile.and src/Makefile.in).
+
+	Make the expose event handler for the drawing area of the "Fax
+	from socket" notifier more efficient (mainwindow.h and
+	mainwindow.cpp).
+
+	Move PrintManager class to utils sub-directory as FilePrintManager
+	class and provide new TextPrintManager class
+	(utils/file_print_manager.h,utils/file_print_manager.cpp,
+	utils/text_print_manager.h and utils/text_print_manager.cpp,
+	utils/pango_layout_iter_handle.h; print_manager.h and
+	print_manager.cpp removed).
+
+	Correctly show help dialog for GTK+ print system checkbox in
+	settings dialog (settings.cpp).
+
+	Explicitly forbid copying of IntrusiveCounter and
+	IntrusiveLockCounter class objects (utils/intrusive_ptr.h).
+
+	Do not initialise the pthread_cond_t object in a Thread::Cond
+	object if the call to pthread_condattr_setclock() fails (this
+	avoids a possible resource leak) (utils/mutex.h).
+
+	Improve GError handling where relevant (main.cpp, mainwindow.cpp,
+	utils/utf8utils.cpp and utils/gerror_handle.h).
+
+	Change use of g_list_append() to g_list_prepend()
+	(mainwindow.cpp).
+
+	Greek translation updated.
+
+Version 3.0.14 (16th March 2007)
+--------------
+
+	Cater for postscript viewers such as evince which, if an instance
+	of the program is already running, will return before the file to
+	be viewed is displayed (fax_list.h and fax_list.cpp).
+
+Version 3.0.13 (10th March 2007)
+--------------
+
+	Use GtkToolItem interface where compiled against GTK+ >= 2.4
+	(fax_list.cpp, file_list.cpp, socket_list.cpp,
+	utils/toolbar_append_widget.h utils/toolbar_append_widget.cpp).
+
+	Use Glib atomic functions for locked reference counting where
+	compiled against glib >= 2.4 (utils/intrusive_ptr.h,
+	utils/shared_handle.h and utils/shared_ptr.h).
+
+	Improve robustness of referencing of PrintManager class
+	(print_manager.cpp).
+
+	Don't allow GtkEntry objects to select contents automatically when
+	acquiring focus (mainwindow.cpp) and update copyright notice
+	(main.cpp, mainwindow.cpp and efax-gtk.1).
+
+	Take some miscellaneous thread functions/objects out of global
+	namespace (utils/thread.h and utils/thread.cpp).
+
+	Refer to evince rather than ggv as the Gnome ps file viewer
+	(efax-gtkrc and settings_help.cpp).
+
+	Modify interface of AsyncQueue class (utils/async_queue.h).
+
+	In the README file, refer to using rpmbuild and not rpm to build
+	rpm packages.
+
+Version 3.0.12 (8th November 2006)
+--------------
+
+	Update Catalan translation (Jordi Sayol) and Hebrew translation
+	(Assaf Gillat).
+
+	Correct failure to clear the list of permitted client addresses
+	for the socket interface after changing settings from the settings
+	dialog (main.cpp).
+
+	Hostname addresses permitted to connect to the socket server may
+	now be specified in numeric dot notation.  Numeric dot notation
+	may also contain a trailing * as a wildcard. (efax-gtkrc,
+	prog_defs.h, settings_help.cpp, socket_server.h and
+	socket_server.cpp).
+
+	Make memory management of the PrintManager class easier/safer for
+	the user (fax_list.h, fax_list.cpp, main.cpp, mainwindow.cpp,
+	print_manager.h, print_manager.cpp, utils/intrusive_ptr.h,
+	src/Makefile.am and src/Makefile.in).
+
+	Revise method for passing of arguments to threads
+	(fax_list.h, fax_list.cpp, sigc_compatibility.h and
+	utils/async_queue.h).
+
+	Correct second paragraph of documentation comments in
+	utils/notifier.h and add further paragraph about the use of the
+	Notifier::connect() method (utils/notifier.h).
+
+	Correct threading explanation for the program (prog_defs.h).
+
+	Correct format of efax-gtk man page (efax-gtk.1).
+
+	Upgrade configuration files to automake-1.9.6 and gettext-0.15
+	(Makefile.in, aclocal.m4, config.rpath,
+	efax-gtk-faxfilter/Makefile.in, po/Makefile.in.in,
+	src/Makefile.in, src/utils/Makefile.in).
+
+	Provide full quoting of aclocal macros (acinclude.m4, aclocal.m4).
+
+	Revise the 'mail_fax' script to refer to Heirloom mailx rather
+	than nail.
+
+	Update the copyright dates in the efax-gtk man file (efax-gtk.1).
+
+Version 3.0.11 (19th August 2006)
+--------------
+
+	Correct file descriptor leak when viewing a fax (fax_list.h and
+	fax_list.cpp).
+
+	Implement printing of faxes in fax lists via the GTK+ print system
+	where compiled against GTK+2.10 or higher (acinclude.m4,
+	aclocal.m4, configure.ac, configure, efax-gtkrc, po/POTFILES.in,
+	src/Makefile.am, src/Makefile.in, dialogs.h, fax_list.h,
+	fax_list.cpp, main.cpp, print_manager.h, print_manager.cpp,
+	prog_defs.h, settings.h, settings.cpp, settings_help.h,
+	settings_help.cpp, utils/window.cpp).
+
+	Improve handling of user locales with streams (acinclude.m2,
+	configure.ac, efax_controller.cpp, fax_list.cpp, main.cpp,
+	mainwindow.cpp, settings.cpp and socket_server.cpp).
+
+	Use AC_COMPILE_IFELSE/AC_LANG_PROGRAM autoconf macros instead of
+	the AC_TRY_COMPILE macro when configuring the program
+	(acinclude.m4 and aclocal.m4).
+
+	Correct derivation of fdistream class for wide characters (not
+	relevant to efax-gtk) (utils/fdstream.h).
+
+	Mention the need to call g_thread_init() before Notifier::init()
+	in the Notifier documentation (utils/notifier.h).
+
+	Correct help information concerning sending faxes via socket and
+	pop-up dialog (settings_help.cpp).
+
+	Explicitly include <ios> header where relevant (addressbook.cpp,
+	efax_controller.cpp, fax_list.cpp, fax_list_manager.cpp, main.cpp,
+	mainwindow.cpp, socket_list>cpp, socket_notify.cpp,
+	socket_server.cpp and tray_icon.cpp).
+
+Version 3.0.10 (10th June 2006)
+--------------
+
+	Update Albanian translation (Besnik Bleta) and Catalan translation
+	(Jordi Sayol).
+
+	Add Traditional Chinese translation (including efax-gtk.desktop)
+	(Wei-Lun Chao).
+
+	Make the sort direction of the fax lists selectable
+	(fax_list_manager.h, fax_list_manager.cpp and mainwindow.cpp).
+
+	Improve time reporting to main window and to logfile
+	(mainwindow.h, mainwindow.cpp and efax/efaxmsg.c).
+	
+	Have GobjHandle<> sink objects with floating references, and with
+	GTK+-2.9 and above use g_object_ref_sink() instead of
+	g_object_ref()/gtk_object_sink() (utils/gobj_handle.h,
+	utils/widget.h, utils/widget.cpp, dialogs.cpp and mainwindow.cpp).
+
+	Have consistent keys shortcuts for the closing of dialogs
+	(addressbook.cpp, dialogs.h, dialogs.cpp, fax_list.cpp and
+	helpfile.cpp).
+
+	Use in_addr_t type explicitly where relevant (socket_server.cpp,
+	prog_defs.h, configure.ac, acinclude.m4 and aclocal.m4).
+
+	Move initialisation of std::string prog_fifo_name (previously
+	std::string fifo_name) from MainWindow::pipe_thread() to
+	MainWindow::start_pipe_thread() to prevent read access of
+	ProgConfig::working_dir by more than one thread (mainwindow.h and
+	mainwindow.cpp).
+
+	Explicitly define _XOPEN_SOURCE where relevant (src/Makefile.am,
+	src/Makefile.in, src/utils/Makefile.am and src/utils/Makefile.in).
+
+	Break up the string literal making up the GPL copyright notice
+	into smaller chunks to accommodate compilers which will not accept
+	large string literals (gpl.h and dialogs.cpp).
+
+	Use the GTK_CHECK_VERSION macro where relevant (dialogs.cpp,
+	fax_list_manager.cpp, main.cpp and mainwindow.cpp).
+
+	Amend copyright notice (COPYING and gpl.h).
+
+	Update copyright notice when the program is started with the
+	--version option (main.cpp).
+
+	Documentation improvements, including explaining in README how to
+	use CUPS lpadmin to set up a virtual printer for efax-gtk as an
+	alternative to using the CUPS web interface and updating the man
+	file (settings_help.cpp, README and efax-gtk.1).
+
+Version 3.0.9 (11th March 2006)
+-------------
+	
+	Swedish translation added (Daniel Nylander).
+
+	Catalan translation added (Jordi Sayol Salomo).
+
+	Use gtk_widget_queue_draw() to update the drawing area which
+	indicates whether a fax is in the "faxes to send" queue via an
+	expose event rather than doing it directly (mainwindow.cpp).
+
+	Cater for serial port devices in sub-directories of /dev
+	(main.cpp).
+
+	Have Notifier objects detect whether the signalling thread is the
+	same one as the thread in which the slot will execute and if so
+	by-pass the Notifier pipe, and implement Notifier objects without
+	using a map and object IDs.  (main.cpp, socket_server.cpp,
+	utils/notifier.h and utils/notifier.cpp).
+
+	Correctly handle case of constructor of SharedPtr and SharedHandle
+	objects throwing (utils/shared_ptr.h and utils/shared_handle.h)
+
+	Allow the program to compile without X (configure.ac,
+	acinclude.m4, aclocal.m4, main.cpp, tray_icon.h, tray_icon.cpp and
+	libegg/eggtrayicon.c).
+	
+	Document the use of G_IO_HUP with iowatches (utils/io_watch.h).
+
+	Correct comments about the use of PipeFifo::connect_to_stdout()
+	and PipeFifo::connect_to_stderr() (utils/pipes.h).
+
+	Improve text for translation about modem classes (efax.c).
+
+	Include <ostream> and <istream> headers file where relevant
+	(configure.ac, include.m4, aclocal.m4, addressbook.cpp,
+	efax_controller.cpp, fax_list.cpp, fax_list_manager.cpp, main.cpp,
+	mainwindow.cpp, socket_list.cpp, socket_notify.cpp,
+	socket_server.cpp and tray_icon.cpp).
+
+	Revise locking of prog_config objects (dialogs.cpp,
+	efax_controller.cpp and fax_list.cpp).
+
+Version 3.0.8 (14th January 2006)
+-------------
+
+	Update Greek translation (Hellenic Linux Users Group).
+
+	Add German translation (po/de.po and mainwindow.cpp) (Steffen
+	Wagner).
+
+	Destroy thread attribute object correctly (utils/thread.h and
+	utils/thread.cpp).
+
+	Use GtkSpinButton objects in the settings dialog where relevant
+	(settings.h, settings.cpp and settings_help.cpp).
+
+	Improve documentation/commenting of write_error() function
+	(mainwindow.cpp).
+
+	Update gettext tools to latest version (gettext-0.14.5)
+	(po/Makevars and po/Rules-quot).
+
+	Move typedef of InstanceMap into the Notifier class
+	(utils/notifier.h and utils/notifier.cpp).
+
+	Provide specific CFLAGS and CXXFLAGS specification in rpm spec
+	file (efax-gtk.spec.in and efax-gtk.spec).
+
+Version 3.0.7 (23rd November 2005)
+-------------
+
+	NOTE: Fax descriptions in the fax lists are now stored in UTF-8
+	rather than the locale codeset.  This means that any fax
+	descriptions previously stored in a codeset other than ASCII or
+	UTF-8 by efax-gtk will not be shown in version 3.0.7.  Sorry about
+	that, but the former method of storing them in the locale codeset
+	was bound to lead to trouble, because in due course Unix-like
+	systems will adopt UTF-8 as their standard codeset and on changing
+	codesets, previously entered file description were bound to be
+	broken anyway.  This gets it over with.  To show these fax
+	descriptions again, the contents of all the files with the name
+	Description in the $HOME/[WORK_SUBDIR]/faxin/[faxnumber] and
+	$HOME/[WORK_SUBDIR]/faxsent/[faxnumber] directories will need to
+	be changed from the locale codeset to UTF-8.  gedit can do this
+	manually, although it will be a bit tedious.
+
+	Corrections to man pages (Lior Kaplan) (efax-gtk.1, efax.1 and
+	efix.1).
+
+	Enable file names to be used in locale codesets other than ASCII
+	or UTF-8 (efax_controller.cpp, fax_list_manager.cpp,
+	mainwindow.cpp, efax/efax.c, efax/efaxio.c and efax/efaxlib.c).
+
+	Make keyboard navigation of FileReadSelectDialog class work
+	correctly where implemented with a GtkFileDhooserDialog object
+	(dialogs.cpp).
+
+	Update the README file to explain the setting of the
+	G_FILENAME_ENCODING environmental variable for file systems using
+	other than the ASCII or UTF-8 codesets (README).
+
+	Add some stray missing std namespace scope qualifiers so that the
+	program compiles without a using-directive for std namespace
+	(file_list.cpp, main.cpp, socket_list.h, socket_list.cpp and
+	socket_server.cpp).
+
+	Make the methods of the Thread::CancelBlock class explicitly
+	static (utils/thread.h).
+
+	Update Russian translation (Pavel Vainerman) (po/ru.po and
+	mainwindow.cpp).
+
+Version 3.0.6 (16th October 2005)
+-------------
+
+	Add simplified Chinese translation (Kite Lau).
+
+	Provide internationalisation support for the efax program to which
+	efax-gtk is a front end (configure.ac, efax_controller.h,
+	efax_controller.cpp, main.cpp, mainwindow.h, mainwindow.cpp,
+	efax/Makefile.am, efax/efax.c, efax/efaxio.c, efax/efaxlib.h,
+	efax/efaxlib.c, efax/efaxmsg.h, efax/efaxmsg.c, utils/utf8_utils.h
+	and utils/utf8_utils.cpp; man file efax/efax.1).
+
+	Make the fax top header line of a sent fax charset independent,
+	and remove some incorrect codeset conversions
+	(efax_controller.cpp, main.cpp, settings.h, settings.cpp and
+	settings_help.cpp).
+
+	Deal with two minor timing/race issues (efax_controller.h and
+	efax_controller.cpp).
+
+	Make Notifier::make_id() a static method, since it only uses local
+	or static objects (notifier.h).
+
+	Instead of omitting the call to setlocale() in efax/efix.c, after
+	setting the locales to match their environment, reset LC_NUMERIC
+	to the "C" locale (efax/efix.c).
+
+	Update Hungarian translation (Gergely Szakats).
+
+Version 3.0.5 (11th September 2005)
+-------------
+
+	Provide a further explicit cast to void* in sentinel for elipsis
+	arguments, for 64-bit systems (mainwindow.cpp).
+
+	Provide for the automatic updating of the fax lists when a fax is
+	received or sent (efax_controller.h, efax_controller.cpp,
+	fax_list.h, fax_list.cpp, fax_list_manager.h,
+	fax_list_manager.cpp, helpfile.cpp, mainwindow.h and
+	mainwindow.cpp).
+
+	Provide for the received fax list to show the number of new faxes
+	received since the program was last started (efax_controller.h,
+	efax_controller.cpp, fax_list.h, fax_list.cpp, helpfile.cpp,
+	mainwindow.cpp, tray_icon.h and tray_icon.cpp)
+
+	Make minor changes to handling of colours of certain labels
+	(mainwindow.h and mainwindow.cpp).
+
+	Make the program close properly if the "Quit" item is chosen from
+	the system tray menu and a blocking modal dialog is showing
+	(utils/window.cpp).
+
+	Remove unnecessary use of GtkAlignment objects to adjust labels
+	(GtkLabel derives from GtkMisc) (addressbook.cpp and
+	settings.cpp).
+
+	Make Notifier::read_pipe_slot() a static method (utils/notifier.h,
+	utils/notifier.cpp and sigc_compatibility.h).
+
+	Call the slot connected to an iowatch via a sigc::signal object
+	rather than directly, so sigc::trackable is effective
+	(utils/iowatch.h and utils/iowatch.cpp).
+
+	Change text when prompting to delete or print faxes now that fax
+	id numbers are not shown in fax lists (fax_list.cpp).
+
+	Remove exception specifications in shared pointer/handle classes
+	(utils/gobj_handle.h, utils/shared_handle.h and
+	utils/shared_ptr.h).
+
+	Include a guard when creating a FaxListDialog object so we cannot
+	call it up twice through the call to gtk_main_iteration() in
+	FaxListManager::populate_fax_list() (fax_list_manager.h,
+	fax_list_manager.cpp and mainwindow.cpp).
+
+	Provide an exception to the LGPL in its application to files
+	containing templates to allow instantiation of templates by
+	program source code without imposing restrictions on the use of
+	the resulting object code (utils/fdstream.h, utils/fdstream.tcc,
+	utils/gobj_handle.h, utils/shared_handle.h and
+	utils/shared_ptr.h).
+
+	Change the "Copyright" field to a "License" field in RPM spec file
+	(efax-gtk.spec.in and efax-gtk.spec).
+
+	Update Russian translation (Pavel Vainerman).
+
+Version 3.0.4 (13th August 2005)
+-------------
+
+	Add a date column to the fax lists, which derives the time of the
+	fax from the fax ID (the directory in which faxes are stored)
+	(Pavel Vainerman and Chris Vine). (fax_list_manager.h,
+	fax_list_manager.cpp and helpfile.cpp; and README)
+	
+	Provide for the fax ID (the directory in which faxes are stored)
+	for received faxes to be derived from the time that the fax is
+	received rather than the time that efax-gtk is put into receive
+	mode.  This enables the fax lists to display the correct time of a
+	received fax. (Chris Vine) (efax_controller.h,
+	efax_controller.cpp, fax_list_manager.h, fax_list_manager.cpp,
+	main.cpp, mainwindow.h, mainwindow.cpp and prog_defs.h)
+
+	Now that stored fax directories (fax name IDs) are not displayed
+	in the fax lists, provide the part of the ID representing a year
+	in 4 (or more) digit rather than 2 digit format (someone in 2099
+	might be pleased!). (Chris Vine) (efax_controller.cpp,
+	fax_list_manager.cpp and main.cpp)
+
+	Put a UTF-8 validation function in namespace Utf8 (Chris Vine)
+	(fax_list_manager.h, utils/utf8_utils.h and utils/utf8_utils.cpp).
+
+	Move gobj_handle.h, icon_info_handle.h, io_watch.h, io_watch.cpp,
+	mutex.h, notifier.h, notifier.cpp, pipes.h, pipes.cpp,
+	selected_rows_handle.h, selected_rows_handle.cpp, sem_sync.h,
+	shared_handle.h, shared_ptr.h, thread.h, thread.cpp,
+	tree_path_handle.h, tree_row_reference_handle.h, utf8_utils.h,
+	utf8_utils.cpp, widget.h, widget.cpp, window.h and window.cpp to
+	src/utils sub-directory and change licence from GPL to LGPL.  Move
+	fdstream.h and fdstream.tcc from src/fdstream sub-directory to
+	src/utils sub-directory.
+
+	Where relevant, handle PipeFifo and Notifier errors by exceptions
+	- consequential on putting the source for these in the utils
+	sub-directory (Chris Vine) (fax_list.cpp, main.cpp, prog_defs.h,
+	utils/notifier.h, utils/notifier.cpp, utils/pipes.h and
+	utils/pipes.cpp).
+
+	Change clean-up arrangements on start-up (Chris Vine)
+	(efax_controller.h, efax_controller.cpp and main.cpp).
+
+	Correct false calls to _exit() in FaxListDialog::view_fax_thread()
+	(Chris Vine) (fax_list.cpp).
+
+	Make the PipeFifo and SemSync classes explicitly non-copiable
+	(Chris Vine) (utils/pipes.h and utils/sem_sync.h).
+
+	Provide further explicit casts to void* in sentinels for elipsis
+	arguments for 64-bit systems (Chris Vine) (addressbook.cpp,
+	fax_list_manager.cpp, file_list.cpp, mainwindow.cpp and
+	socket_list.cpp).
+
+	Update Hebrew translation (Assaf Gillat).
+
+Version 3.0.3 (16th July 2005)
+-------------
+
+	Provide a settings option to omit the destination fax number from
+	the fax page top header line (efax_controller.cpp, main.cpp,
+	prog_defs.h, settings.h, settings.cpp, settings_help.h and
+	settings_help.cpp).
+
+	Use a mutex to ensure that writes to the Notifier pipe are atomic
+	between threads (IEEE Std 1003.1, 2001 Edition guarantees that
+	writes by different processes to a pipe of less than PIPE_BUF in
+	size are atomic, but not in relation to writes by threads within
+	any one process). (notifier.h and notifier.cpp).
+
+	Some fixes for 64 bit systems:
+	  Update gettext configuration (including removing relevant macros
+	  from acinclude.m4) (acinclude.m4, aclocal.m4, configure and
+	  po/Makefile.in.in).
+
+	  Provide an explicit cast to void* in a sentinel for elipsis
+	  arguments (mainwindow.cpp).
+
+	Fixes for (harmless) warnings issued by gcc-4.0, about pointer
+	targets differing in signedness (efax.c, efaxio.c and efaxlib.c).
+
+Version 3.0.2 (5th June 2005)
+-------------
+
+	Close the socket server by using pthread_cancel() with a suitable
+	choice of cancellation point, to guarantee that the socket is
+	closed correctly under all conditions; this also requires that
+	pthreads be used explicitly (efax_controller.cpp, fax_list.cpp,
+	main.cpp, mainwindow.cpp, mutex.h, socket_server.h,
+	socket_server.cpp, thread.h and thread.cpp; acinclude.m4,
+	aclocal.m4 and configure.ac).
+
+	Provide for efax-gtk to kill any fax viewing sessions which are
+	open when efax-gtk is closed (main.cpp).
+
+	Simplify and improve the implementation of the fax lists
+	(fax_list_manager.h, fax_list_manager.cpp, selected_rows_handle.h,
+	selected_rows_handle.cpp and tree_row_reference.h).
+
+	Add an option to the mail_fax script to enable the received fax to
+	be e-mailed in PDF (Portable Document Format) as well as PS
+	(PostScript) formats. (mail_fax).
+	
+	Use a custom iowatch object instead of a GIOChannel object when
+	all we want to do is poll a file descriptor in the main program
+	event loop. (efax_controller.h, efax_controller.cpp, mainwindow.h,
+	mainwindow.cpp, notifier.h and notifier.cpp and add new files
+	io_watch.h and io_watch.cpp).
+
+	Close timer in MessageText destructor (mainwindow.h and
+	mainwindow.cpp).
+
+Version 3.0.1 (12th May 2005)
+-------------
+	
+	Add Hungarian translation (Gergely Szakats) (po/LINGUAS, po/hu.po
+	and mainwindow.cpp).
+
+	Update the Bulgarian Translation (Zdravko Nikolov).
+
+	Make removal of an address in the addressbook work correctly
+	(addressbook.h and addressbook.cpp).
+
+	Make the program clean up correctly if terminated by the X session
+	manager (prog_defs.h, main.cpp, efax_controller.h and
+	efax_controller.cpp).
+
+	Notify the program when running that the user has started it again
+	by means of a fifo, rather than a Unix signal (prog_defs.h,
+	main.cpp, mainwindow.h and mainwindow.cpp).
+
+	Make AddressDialog text length friendly (addressbook.cpp).
+
+	Correct the button reliefs in the fax lists when the fax list is
+	first brought up (efax_controller.cpp).
+
+	Correct dependencies in efax-gtk.spec file (efax-gtk.spec and
+	efax-gtk.spec.in).
+
+Version 3.0.0 (7th May 2005)
+-------------
+
+	Remove dependency on gtkmm (now only GTK+ and libsigc++ are
+	required).
+
+	All files in src/ have been revised, with the following new files
+	added:
+
+	  gobj_handle.h
+	  icon_info_handle.h
+	  mutex.h
+	  notifier.h/notifier.cpp
+	  thread.h/thread.cpp
+	  tree_path_handle.h
+	  tree_row_reference_handle.h	
+	  utf8_utils.h/utf8_utils.cpp
+	  widget.h/widget.cpp
+	  window.h/window.cpp
+	  
+	The following files were removed:
+
+	  gtk_icon_info_handle.h
+	  tree_model_row_reference.h
+
+	(NOTE: the GTKMM branch in CVS still uses gtkmm: go to that branch
+	for any revisions of the version using gtkmm.)
+
+Version 2.2.16 (7th May 2005)
+--------------
+	
+	Albanian translation added (Besnik Bleta).
+
+	Update Russian translation (Pavel Vainerman).
+
+	Update Polish translation (Pawel Suwinski).
+
+	Bring up a prompt when deleting a file in the file list
+	(file_list.cpp).
+
+	Use Scoped_handle<> where relevant (mainwindow.cpp and
+	socket_server.cpp).
+
+	Increase icon size in panel notification area (tray_icon.cpp).
+
+	Correct order of initialisation of static objects for writing to
+	the error pipe (to cater for the unlikely event that the static
+	pipe tries to write to itself on error on setting itself up)
+	(mainwindow.cpp).
+
+	Some code tidying up (socket_list.h and socket_list.cpp).
+
+	Make corrections to basic_inbuf::underflow() and
+	basic_inbuf::xsgetn() methods (doesn't affect efax-gtk but does
+	affect any use of the basic_fdistream class - efax-gtk doesn't use
+	it). (fdstream.tcc).
+
+Version 2.2.15 (26th February 2005)
+--------------
+
+	Fix bug where the Trash folder is dragged in the fax lists
+	(fax_list_manager.cpp).
+
+	Greek translation added (the Hellenic Linux Users Group
+	translation team).
+
+	Italian translation updated (Luca De Rugeriis).
+
+	Adjust image sizes for toolbar buttons in GTK+2.4 or higher
+	(fax_list.cpp, file_list.cpp and socket_list.cpp).
+
+	Provision to ensure synchronisation of memory where necessary in
+	multi-processor systems (efax_controller.h and
+	efax_controller.cpp).
+	
+Version 2.2.14 (18th December 2004)
+--------------
+
+	Fix bug #1079142 (segmentation fault if a fax for sending is
+	received from the print system and the program has been started in
+	the system tray and never raised) (mainwindow.cpp).
+	
+	Check whether the program is already running when it starts up,
+	and if it is bring up the existing program instance on the current
+	workspace (acinclude.m4, aclocal.m4, configure.ac,
+	efax_controller.cpp, fax_list.cpp, file_list.cpp, main.cpp,
+	mainwindow.cpp, socket_server.cpp, fdstream/fdstream.h and
+	fdstream/fdstream.tcc).
+
+	Prettify the setting dialog with Gtk::Alignment, and use
+	Gtk::Alignment instead of filler widgets (mainwindow.h,
+	mainwindow.cpp, settings.h and settings.cpp).
+
+	Some minor code clean-ups (efax_controller.cpp, fax_list.cpp,
+	fax_list_manager.cpp, pipes.h, pipes.cpp and socket_server.cpp).
+
+	Update Bulgarian translation (Zdravko Nikolov).
+
+Version 2.2.13 (20th November 2004)
+--------------
+
+	Provide a trash folder from which faxes can be moved and then
+	physically deleted from the file system (efax-gtk.1, fax_list.h,
+	fax_list.cpp, fax_list_manager.h, fax_list_manager_icons.h,
+	fax_list_manager.cpp, helpfile.cpp, mainwindow.cpp and README).
+	(Once deleted from the trash folder faxes are now removed from the
+	file system rather then being moved to an 'oldfax' sub-directory.)
+
+	Allow multiple faxes to be selected in fax lists (fax_list.cpp,
+	fax_list_manager.h, fax_list_manager.cpp, selected_rows_handle.h
+	and selected_rows_handle.cpp).
+
+	Make dialog captions consistent (addressbook.cpp, dialogs.cpp,
+	fax_list.h, fax_list.cpp, mainwindow.cpp and socket_list.cpp).
+
+	Make Sem_sync::~Sem_sync() take account of the fact that under
+	IEEE Std 1003.1 the count value given by sem_getvalue() can be
+	less than 0 (a negative number can be used to indicate the number
+	of threads waiting on the semaphore) (sem_sync.h).
+
+	Use GTK+ stock icons where available (addressbook.cpp,
+	addressbook_icons.h, fax_list.cpp, fax_list_icons.h, file_list.cpp
+	file_list_icons.h and mainwindow.cpp).
+
+	Update Russian translation (Pavel Vainerman).
+
+	Update Hebrew translation (Assaf Gillat).
+	
+Version 2.2.12 (24th October 2004)
+--------------
+
+	Make the bottom status bar size itself according to the font size
+	choice in Gnome (mainwindow.h and mainwindow.cpp).
+
+	Make EfaxController::status an enumerated type (efax_controller.h,
+	efax_controller.cpp, mainwindow.h and mainwindow.cpp).
+
+	Handle signals properly in Sem_sync::wait() (sem_sync.h).
+
+	Add error checking in FaxListManager::get_folders()
+	(fax_list_manager.cpp).
+
+	Improve error checking on writing to Pipe_fifo objects
+	(mainwindow.cpp, pipes.h, pipes.cpp and prog_defs.h).
+
+	Zero serve_address in Socket_server::socket_thread() before using
+	it (socket_server.cpp), and also address in
+	efax-gtk-socket-client.cpp (in efax-gtk-faxfilter directory)).
+
+	Some other clean-ups (efax_controller.cpp, main.cpp, settings.cpp
+	and shared_ptr.h; efax-gtk-socket-client.cpp (in
+	efax-gtk-faxfilter directory)).
+
+	Add commentary about modem class modes in README file.
+
+	Update Hebrew translation (Assaf Gillat).
+
+Version 2.2.11 (25th September 2004)
+--------------
+
+	The program can now send a fax when in receive standby mode.  When
+	the fax has been sent (or there is an error in sending the fax),
+	the program will return to receive standby mode.
+	(efax_controller.h, efax_controller.cpp, mainwindow.h and
+	mainwindow.cpp).
+	
+	Allow spaces in file names for faxes to be sent (acceptable file
+	name separators are now ',' and ';') (mainwindow.cpp and
+	file_list.cpp).
+	
+	Add Assaf Gillat to the list of translators in the
+	translators' pop-up dialog (mainwindow.cpp).
+
+	Put all the child exit handling of efax sessions in
+	EfaxController::timer_event() (mainwindow.h, mainwindow.cpp,
+	main.cpp, efax_controller.h and efax_controller.cpp).
+
+	Make modal the dialog warning that no fax number has been
+	specified when sending a fax (mainwindow.cpp).
+
+	Put the list of translators in MainWindow::translations_slot() in
+	a gettext() block (mainwindow.cpp).
+
+	Update Russian transation (Pavel Vainerman).
+
+	Put current URL in rpm spec file (efax-gtk.spec.in and
+	efax-gtk.spec).
+
+Version 2.2.10 (5th September 2004)
+--------------
+
+	Provide a -r option which starts the program in receive standby
+	mode, and a -s option which starts the program hidden in the
+	system tray (main.cpp, mainwindow.h and mainwindow.cpp).
+	
+	In the fax lists, the folder name and folder icon are placed in a
+	single column (fax_list_manager.h and fax_list_manager.cpp).
+
+	Hebrew translation (Assaf Gillat).
+
+	The following patches from http://shino.pos.to/linux/efax/
+	have been applied to efax:
+
+	  efax08a-time.patch          (efaxio.c)
+	  efax-0.9-nullptr.patch      (efax.c and efaxos.c)
+	  efax-0.9-numlines.patch     (efix.c)
+	  efax-0.9a-frlen.patch       (efax.c)
+	
+	And the following patch from Fedora 2:
+
+	  efax-0.9-misc.patch         (efax.c)
+	
+	Encapsulate valid fax list folder name checking code in new
+	FolderNameValidator class (fax_list_manager.h,
+	fax_list_manager.cpp and fax_list.cpp).
+
+Version 2.2.9a (9th August 2004)
+--------------
+	
+	Fix incorrect incrementing of STL std:pair<std::string,
+	std::string> iterator after erasing object in std::multimap
+	container (fax_list_manager.cpp).
+
+	Improve detection of UTF-8 encoding errors (fax_list_manager.cpp).
+
+	Updated Polish translation (Pawel Suwinski).
+
+Version 2.2.9 (25th July 2004)
+-------------
+
+	Faxes can be organised in the sent and received fax lists into
+	folders, and dragged and dropped between folders.  (fax_list.h,
+	fax_list.cpp, fax_list_manager.h, fax_list_manager.cpp and
+	tree_model_row_reference.h)
+
+	A working sub-directory for the storage of .efax-gtk_addressbook,
+	.efax-gtk_mainwin_save and .efax-gtk_queued_server_files and the
+	faxin, faxout, faxsent and efax-gtk-server directories can be
+	specified in efax-gtkrc with the WORK_SUBDIR: parameter.
+	(addressbook.cpp, dialogs.cpp, efax_controller.cpp, fax_list.cpp,
+	fax_list_manager.cpp, main.cpp, mainwindow.cpp, prog_defs.h,
+	socket_server.cpp and socket_server.cpp).  (Pavel Vainerman,
+	revised by Chris Vine).
+
+	Fix the attempt to call write_error() before the MainWindow object
+	has been created.  (main.cpp).
+
+Version 2.2.8a (4th July 2004)
+--------------
+	
+	Revised Bulgarian translation (Zdravko Nikolov).
+
+	Tests for whether phread.h should be included (testing for whether
+	HAVE_PTHREAD_SIGPROCMASK is defined) have been corrected
+	(efax_controller.cpp, fax_list.cpp and socket_server.cpp).
+	(Jean-Baptiste Quenot).
+
+	Fix for overwriting static data on call to gethostbyaddr()
+	(socket_server.cpp). (Jean-Baptiste Quenot).
+
+	Fix so that fstream::close() and fstream::clear() are called in
+	the correct order. (efax_controller.cpp, fax_list.cpp and
+	mainwindow.cpp).
+
+	Some other minor code clean-ups and bug fixes (tray_icon.cpp,
+	shared_ptr.h and shared_handle.h).
+
+Version 2.2.8 (18th June 2004)
+-------------
+
+	The program will reside in a panel notification area (system
+	tray). (mainwindow.h, mainwindow.cpp, tray_icon.h and
+	tray_icon.cpp).
+
+	The program pull-down menus use icons in the menu entries for
+	which GTK+ stock icons are available.  (mainwindow.cpp and
+	tray_icon.cpp).
+
+	GtkIconInfo memory leak fixed in main.cpp (main.cpp and
+	gtk_icon_info_handle.h).
+
+	Russian translation (Pavel Vainerman)
+
+	Documentation updates (prog_defs.h, README and efax-gtk.1).
+
+Version 2.2.7a (6th June 2004)
+--------------
+
+	When using gtkmm-2.4:
+
+          Gtk::FileChooserDialog is used instead of Gtk::FileSelection as
+	  the file selector dialog (dialogs.h, dialogs.cpp and
+	  mainwindow.cpp).
+
+          Gtk::IconTheme is used to pick the icon for the program
+	  (otherwise the default built-in icon is used) (prog_defs.h and
+	  main.cpp).
+
+	The mutex locking of prog_config is cleaned up.
+
+	In dialogs, exec() methods are substituted for run() methods (this
+	is because in gtkmm-2.*, Gtk::Dialog has its own non-virtual run()
+	method and some dialogs used in the program are derived from
+	Gtk::Dialog.  Having a separate exec() method avoids the wrong
+	method being called by mistake from a Gtk::Dialog
+	pointer/reference (and attempts to call exec() from a Gtk::Dialog
+	pointer/reference will fail to compile).
+
+	Lists of files received by the socket server for faxing are passed
+	by shared pointer (mainwindow.h, mainwindow.cpp, socket_list.h,
+	socket_list.cpp socket_server.h, socket_server.cpp).
+
+	Further clean ups of use of Glib::ustring and std::string
+	(dialogs.cpp).
+
+	Some changes to the build system so that AC_CHECK_FILES is used
+	instead of AC_CHECK_FILE, and the install will not fail if there
+	is no user 'lp' on the system (acinclude.m4, configure.ac,
+	prog_defs.h and efax-gtk-socket-client.cpp).
+	
+Version 2.2.7 (6th May 2004)
+-------------
+
+The socket server now runs in its own thread, compliant with the
+requirement in IEEE Std 1003.1 that any system calls after fork()ing
+and before exec()ing in a multi-threaded program should be
+async-signal-safe.
+
+Version 2.2.6b (6th June 2004)
+--------------
+
+	Carry out Filename to UTF-8 conversion in
+	MainWindow:get_file_slot() (mainwindow.cpp).
+
+	Further clean ups of use of Glib::ustring and std::string
+	(dialogs.cpp).
+
+	Some changes to the build system so that AC_CHECK_FILES is used
+	instead of AC_CHECK_FILE, and the install will not fail if there
+	is no user 'lp' on the system (acinclude.m4, configure.ac and
+	prog_defs.h).
+
+	Socket_server::is_files() method added (socket_server.h,
+	socket_server.cpp and mainwindow.cpp)
+	
+Version 2.2.6a (6th May 2004)
+--------------
+
+Bulgarian translation (Zdravko Nikolov).
+
+Italian translation updated (Luca De Rugeriis).
+
+Some bug fixes (main.cpp, file_list.cpp socket_list.cpp).
+
+Version 2.2.6 (12th April 2004)
+-------------
+
+The program will now compile and work with gtkmm-2.4, as well as
+gtkmm-2.2 and gtkmm-2.0.
+
+The settings dialog contains two new options.  First, the user can
+elect to execute a program or have a pop-up dialog appear whenever a
+fax is received.  If a program is executed, it will be passed the
+number of the fax received as appearing in the faxes received list as
+an argument.  Two executable scripts, mail_fax and print_fax, are
+provided for the purpose.  (efax_controller.cpp, main.cpp,
+mainwindow.cpp and settings.cpp).
+
+Second, the user can elect not to bring up the confirmatory pop-up
+dialog after pressing the "Print selected fax" button in the Received
+Faxes list or Sent Faxes list.  (fax_list.cpp, main.cpp,
+mainwindow.cpp and settings.cpp).
+
+The efax-gtk.desktop file is now installed in $datadir/applications
+instead of $datadir/gnome/apps/Applications, and it uses the icon
+supplied with GNOME-2.6 comprising stock_send-fax.png.
+
+The use of Glib::ustring and std::string is rationalised and cleaned
+up (dialogs.cpp, fax_list.cpp and socket_list.cpp).
+
+Version 2.2.5a (6th March 2004)
+--------------
+
+Polish translation (Pawel Suwinski).
+
+A fax can now be sent on an open telephone connection if no telephone
+number is entered into the "Tel Number" box (this does the same thing
+as 'fax send -m ...' using the efax 'fax' script from the command
+line).
+
+'efax-gtk [filename]' now works correctly again.
+
+For users of lpd/lprng, efax-gtk-socket-client now logs error messages
+via syslog().
+
+Version 2.2.5 (5th February 2004)
+-------------
+
+The dialog which notifies whether a fax has been received for sending
+from the socket can be used to send the fax.  The documentation
+(README and helpfile.cpp) has been updated to reflect this.
+
+Faxes received via the socket server from the print system are now
+stored in the user's home directory($HOME/efax-gtk-server), rather
+than in the /tmp directory for security reasons.
+
+The version number is correctly reported after enterering 'efax-gtk
+--help' or 'efax-gtk --version'.
+
+The order of entries in this ChangeLog/NEWS file has been reversed.
+
+Version 2.2.4 (10th January 2004)
+-------------
+
+A potential race condition, which can manifest itself in Linux kernel
+2.6 (but not kernel 2.4) can occur by
+efax_controller_childexit_handler() being called in
+efax_controller.cpp before fork() in EfaxController::sendfax() or
+EfaxController::receive() has returned in the parent process, so
+confusing the test of child_pid in fax_controller_childexit_handler().
+This has been corrected by masking SIGCHLD immediately before the
+fork(), and unmasking it after fork() returns. Also a theoretical race
+condition in EfaxController::timer_event() has been corrected
+(efax_controller.cpp, sig_mask.h).
+
+Minor revision to efax-gtk.spec.in (Philip Tellis).
+
+MAXMSGBUF is now defined in efax/efaxmsg.c so that it does not exceed
+PIPE_BUF/2 in size.  This is so that a message from efax does not
+overrun the pipe used to communicate with efax-gtk.
+
+Version 2.2.3 (29th December 2003)
+-------------
+
+Choosing "Enter multiple files" in the File drop-down menu now brings
+up the correct dialog (MainWindow::MainWindow() in mainwindow.cpp).
+
+The socket server does not now run in its own thread (prog_defs.h,
+main.cpp, socket_server.h and socket_server.cpp).  The need to make
+fork() calls in order to invoke gs, gv, efax or efix to create, view
+and print faxes (and to wait() on these child processes on occasions),
+and the fact that fax viewing could cause a child process to exit at a
+time not of the programs choosing (it will be at the time of the
+user's choosing), makes it practically impossible to employ threading
+and also write the program in a way which is reasonably clean and
+complies with the requirement that any system calls between fork()ing
+and exec()ing in a multi-threaded program should be designated as
+async-signal-safe:
+
+IEEE Std 1003.1, 2003 Edition:
+	A process shall be created with a single thread. If a
+	multi-threaded process calls fork(), the new process shall
+	contain a replica of the calling thread and its entire address
+	space, possibly including the states of mutexes and other
+	resources. Consequently, to avoid errors, the child process may
+	only execute async-signal-safe operations until such time as one
+	of the exec functions is called.
+
+Clean up of return values of Pipe_fifo::read() and Pipe_fifo::write()
+(pipes.h and pipes.cpp) and related changes (efax_controller.cpp).
+
+Revision of childexit_signalhandler(), and clean-up related code in
+main.cpp (mainwindow.cpp and main.cpp).
+
+Version 2.2.2 (1st November 2003)
+-------------
+
+The pop-up dialog which announces the receipt of a fax from the socket
+server will display itself even if efax-gtk is minimised
+(mainwindow.cpp - MainWindow::fax_received_notify_slot()).
+
+The fax lists, socket list and help dialog will be raised if they are
+selected and have already been created (mainwindow.h, mainwindow.cpp,
+helpfile.h and helpfile.cpp).
+
+Where a fax is queued for sending in the socket list, a small red
+circle will appear in the main program window (mainwindow.h and
+mainwindow.cpp).
+
+When closing, the program will save its window size and whether fax
+input is selected as File or Socket.
+
+In Socket_server::is_valid_peer(), the parameter is passed by constant
+reference rather than by value (socket_server.h and
+socket_server.cpp).
+
+Starting efax-gtk with --version or --help as parameters gives an
+appropriate response (main.cpp).
+
+Clean-up of code using std::stringstream (efax_controller.ccp -
+EfaxController::make_fax(), EfaxController::save_sent_fax(),
+EfaxController::cleanup_fax_send_fail(); fax_list.cpp -
+FaxListDialog::fax_to_ps(); socket_list.cpp -
+SocketListDialog::set_socket_list_rows()).
+
+configure script now checks for libsigc++>= 1.2.3 (libsigc++1.2.2 and
+less have a bug causing a segfault when a slot deletes the object of
+which it is a member).
+
+Version 2.2.1 (20th October 2003)
+-------------
+
+stringstream is used instead of strstream where available (and a test
+for stringstream added to the configure script).
+
+Changed user interface for choosing the file to be faxed
+(mainwindow.h/mainwindow.cpp).
+
+PS header in const char PSBEGIN [] in efax/efaxlib.c changed so that
+multi-page postscript files produced by efix will print correctly in
+CUPS 1.1.19 and above (EPS headers should only occur in single page
+files).
+
+Test for fully qualified localhost name included in
+Socket_server::is_valid_peer().
+
+A efax-gtk.desktop file is installed in
+$datadir/gnome/apps/Applications
+
+Italian translation updated.
+
+Version 2.2.0 (8th September 2003)
+-------------
+-pre (31st August 2003); -pre2 (1st September 2003); -pre3 (5th September 2003)
+-pre4 (6th September 2003); -pre5 (7th September 2003)
+
+A socket server is provided enabling the print system (particularly
+CUPS) to interface directly with efax-gtk.
+
+Patch level a: (14th September 2003)
+Fix a potential file descriptor leak in
+Socket_server:::make_socket_thread() and set up a signal mask for that
+thread to block SIGCHLD.
+
+Patch level b: (21st September 2003)
+UTF-8 conversion errors are now handled gracefully (that is, by
+reporting the error and proceeding as appropriately as possible),
+without terminating the program.  This has required enabling
+exceptions.
+
+Version 1.0.8 and 2.0.9 (25th August 2003)
+------------------------------------------
+
+A postscript printer driver file (Fax-fax-printer.ppd) is provided to
+make it easier to print via CUPS, and installed by default in
+/usr/share/cups/model.
+
+In version 2.0.9, an issue with word wrapping in the main program text
+window (which shows progress in fax negotiations) is corrected.
+
+The build system has been rewritten so that it now uses automake.
+
+Version 1.0.7 and 2.0.8
+-----------------------
+
+A "Manage/reorder multiple files" button to the right of the "File to
+fax" entry brings up a dialog which enables the order of multiple
+files to be changed and for further files to be added.
+
+Version 1.0.6 and 2.0.7
+-----------------------
+
+The efax-gtk distribution now also compiles and installs a patched
+version of efax-0.9a-001114, so you do not need to separately build
+and install efax.  A number of users reported problems sending or
+printing faxes when in locales which express their floating point
+numbers with a comma as the decimal designator instead of the
+full-stop (which applies to most of Europe outside the UK and
+Ireland): efax and efix incorrectly use C formatted text functions
+after calling setlocale().  The patch simply omits the call to
+setlocale(), so the C locale is used in all cases.  To avoid name
+conflicts the patched versions of efax and efix are installed as
+efax-0.9a and efix-0.9a.  If you want to use the standard
+distributions of efax, delete efax-0.9a and efix-0.9a, and then make a
+symbolic link from efax to efax-0.9a and from efix to efix-0.9a so
+that efax-gtk can find them.
+
+The program can now send multiple postscript files as a single
+fax. The files are included in the fax in the order in which they
+appear in the 'File to fax' box.
+
+The efax-gtkrc configuration file is now by default installed in
+$prefix/etc, rather than /etc (but the relevant directory can still be
+changed by passing the --sysconfdir=[dir] option to ./configure).
+Installed files can be uninstalled from the Makefile by entering 'make
+uninstall'.
+
+Version 2.0.6
+-------------
+
+Build system for translation (*.po) files provided.  Translation files
+for it (by Luca De Rugeriis) and en_GB locales installed.
+
+Version 2.0.5
+-------------
+
+Automatic button re-sizing implemented properly.  Internationalisation
+support correctly initialised.
+
+Patch level a: modal dialogs have appropriate window hints, and a
+window icon is provided for all top level windows.
+
+Version 2.0.4
+-------------
+
+Buttons with focus now show consistently with Gnome-2 style settings,
+and the buttons in the main program window will correctly resize for
+the application font size used.  The focus chain for main program
+window has been corrected.
+
+Version 1.0.5 and 2.0.3
+-----------------------
+
+A more friendly help dialog is provided.
+
+Some minor improvements/fixes for version 2.0.*.
+
+Version 2.0.2
+-------------
+
+Fix bug in build system (this does not affect version 1.0.4).
+
+Versions 1.0.4 and 2.0.1
+------------------------
+
+Insufficient read permissions on a file to be sent are now correctly
+reported.
+
+Minor change to the build system.
+
+The column headings in the fax received and fax sent dialogs are now
+corrected in efax-gtk-2.0.
+
+Versions 1.0.3 and 2.0.0
+------------------------
+
+After sending a fax, the program cleans up after itself by deleting
+old tiffg3 files ([filesent].001, [filesent].002, etc.).
+
+There is a bug in efix in the efax-0.9a distribution which causes
+errors when used in certain locales (this appears to be connected with
+floating point representations).  A work-around has been included to
+get round this (all page sizes and related dimensions are now given in
+whole numbers of millimetres).
+
+efax-2.0.0 is a port to Gtk+-2.*/Gtkmm-2.*.  It is functionally
+identical to efax-1.0.3, but has internationalisation support.
+
+Version 1.0.2
+-------------
+
+Autconf 2.5 has been used to create the configure script.
+
+The settings dialog has been improved.
+
+There is a new "View" button in the dialog brought up from the "File
+to fax:" dialog, which enables files to be checked before they are
+sent.
+
+Faxes in the Sent fax list and the Received fax list are now viewed
+using a postcript viewer, such as gv, ggv or kghostscript.
+
+Patch level a: change to the efax-gtk-send script.
+
+Version 1.0.1
+-------------
+
+A bug in the setting up of the logfile through the Settings dialog has
+been corrected.
+
+A bug in aclocal.m4, which would cause the incorrect binary directory
+to be chosen if configure is run with the --prefix=[DIR] parameter,
+has been corrected.
+
+The Settings dialog now has a `Reset' button, which will reset all the
+settings in it from the global configuration file (/etc/efax-gtkrc or
+/usr/local/etc/efax-gtkrc).
+
+The source files now come with a RPM spec file, so that a RPM binary
+can be created by entering `rpm -tb efax-gtk-[version].src.tgz'.
+
+A man file is also now provided.
+
+Patch level a: a missing header in settings.cpp has been added, so the
+program now compiles with STLport.
+
+Patch level b: the configure script now checks for gtkmm-1.2.5 or
+higher (earlier versions, such as the one supplied with Redhat 7.2, do
+not compile efax-gtk correctly).  A few minor bug fixes.
+
+Version 1.0.0
+-------------
+
+Program settings may now be changed by using the Settings dialog,
+which is brought up from the File/Settings pull-down menu.
+
+Various bug fixes (in particular Standby mode now has better
+modem/serial port error handling).
+
+Version 0.93
+------------
+
+Progress on negotiations and fax status, and errors and warnings, can
+be logged to a log file specified in the efax-gtkrc configuration
+file, or by redirecting stdout and stderr.
+
+A few code clean-ups.
+
+Version 0.92
+------------
+
+There is now a sent fax list as well as a received fax list.
+
+The lists are now automatically sorted in chronological order.
+
+The received fax list will not show any empty directory when the
+program is standing by, or in the middle of receiving a fax.
+
+Some unnecessary efax messages are not displayed in the efax messages
+box.
+
+Patch level a: program will compile with Redhat 7.1/7.2
+
+Version 0.91
+------------
+
+Addresses can be arranged (moved up and down) in the addressbook.
+
+An error in the description of the operation of the CLASS: parameter
+in efax-gtkrc has been corrected.
+
+Version 0.90
+------------
+
+First publicly available release.

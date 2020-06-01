@@ -1,0 +1,33 @@
+Please read the BUGS file to see how to report bugs.
+
+AUTHORS
+
+    Chris Vine <cvine@users.sourceforge.net>
+
+PATCHES BY
+
+    Jean-Baptiste Quenot - 
+
+	move the test for HAVE_PTHREAD_SIGMASK which
+	includes <pthread.h> after the local header files
+	have been included (efax_controller.cpp, fax_list.cpp
+	and mainwindow.cpp)
+
+	store the result of gethostbyaddr() in a std::string
+	to prevent static data being overwritten
+	(socket_server.cpp).
+
+    Pavel Vainerman -
+	
+	include an option for user files to be stored in a
+	sub-directory of the $HOME directory to be specified
+	in the efax-gtkrc configuration file (re-implemented
+	by Chris Vine).
+
+	add a date column to the fax lists
+
+ICON
+
+    The efax-gtk.png icon is the former gnome (<= 2.28)
+    stock_send-fax.png icon, and copyright of the icon is owned
+    accordingly.

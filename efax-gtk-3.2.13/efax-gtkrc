@@ -1,0 +1,311 @@
+# efax-gtkrc -- configuration file for efax-gtk
+
+# Amend it as necessary and copy to $HOME/.efax-gtkrc,
+# $sysconfdir/efax-gtkrc or /etc/efax-gtkrc.  This file is searched
+# for in that order -- ie $HOME/.efax-gtkrc has priority over
+# $sysconfdir/efax-gtkrc and /etc/efax-gtkrc
+
+# Anything preceded by a `#' character is treated as a comment and
+# ignored by the program.
+
+# Put your name to appear on the fax top header on sent faxes here.
+# This should be in plain ASCII characters.  If this is a problem,
+# leave it blank as the fax station number will always be given
+# on the top header anyway
+
+NAME: Joe Bloggs
+
+
+# Put your number to appear on the fax top header on sent faxes here
+# This will also comprise the fax station ID reported to the sending
+# fax machine when receiving faxes
+
+NUMBER: 0000 00000
+
+
+# Put the serial device to which the modem is connected here (if none
+# is given or it is commented out, the program defaults to
+# /dev/modem).  Do not include the `/dev/' part of the device name --
+# ie state it as `ttyS1' or `cua2', etc.  With Linux, ttyS0 equates to
+# COM 1, ttyS1 to COM 2, and so on
+
+DEVICE: ttyS1
+
+
+# Put the lock file directory here.  If none is given or it is
+# commented out, the program defaults to /var/lock.
+
+LOCK: /var/lock
+
+
+# With efax-0.9 you don't usually need to specify this, as efax will
+# work out the class of the modem.  You should therefore usually leave
+# this commented out.  However, with efax-0.8 the program defaults to
+# Class 2, so if you are using a Class 1 modem with old versions of
+# efax specify the Class here.  Valid values are 1 for Class 1 modems
+# and 2.0 for Class 2.0 modems.  With efax-0.9 you can also use the
+# value 2 to explicitly force the use of the Class 2 protocol
+
+#CLASS: 1
+
+
+# Specify the page size here.  Values accepted are `a4', `letter' or
+# `legal'.  If none is specified the program defaults to a4.
+
+PAGE: a4
+
+
+# This specifies the resolution to which faxes are sent.  Values
+# accepted are `standard' (204x98) and `fine' (204x196).  If none is
+# given the program defaults to 204x196.
+
+RES: fine
+
+
+# This specifies whether the destination fax number is included in the
+# top fax header line for sent faxes.  The default is Yes.  Pick 'No'
+# if you do not want this to be shown (say because it includes a pay
+# card access number)
+
+ADDR_IN_HEADER: Yes
+
+
+# This specifies a prefix to be prepended to any dialled number - for
+# example you can specify '9,' here to dial through a switchboard which
+# needs 9 to obtain an outside line followed by a delay.
+
+#DIAL_PREFIX:
+
+
+# This specifies whether the program is to redial automatically when
+# sending a fax if the modem is in use or the recipient is busy.  The
+# default is No.  Pick 'Yes' if you want automatic redial.
+
+REDIAL: No
+
+
+# This specifies the interval between redial attempts, in minutes.
+# Acceptable values are between 5 and 1440.  This setting has no
+# effect if REDIAL is specified as no.
+
+REDIAL_INTERVAL: 15
+
+
+# This defines the number of rings the modem allows to pass before
+# answering the telephone when in Standby mode.  Acceptable values are
+# 1 to 9.  If none is specified, the program defaults to 1.
+
+RINGS: 1
+
+
+# Valid values for the followinga are `tone' and `pulse'.  If none is
+# specified, the program defaults to tone dialling.
+
+DIALMODE: tone
+
+
+# The following specifies the initialising `AT' commands for the modem
+# when in fax mode.  Specify as many of these as are needed, separated
+# by spaces for commands to be separated, without a prepended `AT'.
+# If none is specified, the program will default to `Z &FE&D2S7=120
+# &C0 M1L0', which will be correct for practically all modems
+
+INIT: Z &FE&D2S7=120 &C0 M1L0
+
+
+# The following specifies the `AT' commands to reset the modem.
+# Specify as many of these as are needed, separated by spaces for
+# commands to be separated, without a prepended `AT'.  If none is
+# specified, the program will default to `Z', which will be correct
+# for practically all modems
+
+RESET: Z
+
+
+# The following setting specifies the capabilities of the modem.  To
+# see what these mean do `man efax', and look at the operation of the
+# `-c' flag.  With efax-0.9 and a Class 2 modem, you usually won't
+# need to specify this and should leave it commented out, as the
+# program will interrogate the modem.  If using an older version of
+# efax or a different class of modem, values which will work with
+# practically any 14,400 bps modem are 1,5,0,2,0,0,0,0, or
+# 1,3,0,2,0,0,0,0 for slower ones.
+
+#CAPABILITIES: 1,5,0,2,0,0,0,0
+
+
+# The following is the command which prints and takes postscript input
+# on standard input.  If none is specified, the program will default
+# to `lpr'.  With lpr, you can specify a particular printer to be used
+# with the -P option.  It is not necessary to specify this if
+# USE_GTKPRINT is set to `yes'.
+
+PRINT_CMD: lpr
+
+
+# If set to `yes', the following will cause the program to use the
+# GTK+ print system rather than the command line argument specified in
+# PRINT_CMD in order to print faxes.
+
+USE_GTKPRINT: yes
+
+
+# The following will determine the extent to which a printed page will
+# be reduced to fit within a printer's print area.  It is a percentage
+# -- eg 98 will shrink the page to 98% of its size.  If none is
+# specified no shrink will take place (ie, there is no need to specify
+# `PRINT_SHRINK: 100').  Valid values are 50 to 100.  This setting has
+# no effect if USE_GTKPRINT is specified as yes (the GTK+ print dialog
+# will be displayed instead).
+
+PRINT_SHRINK: 98
+
+
+# The following determines whether a confirmatory dialog will appear
+# before printing when the "Print selected fax" icon is pressed in the
+# Received Faxes or Sent Faxes lists.  The default is Yes.  Enter No
+# if you don't want a dialog (if you have specfied an external print
+# manager such as 'kprinter' in PRINT_CMD then you will want to say
+# No).  This setting has no effect if USE_GTKPRINT is specified as yes
+# (the GTK+ print dialog will be displayed instead).
+
+PRINT_POPUP: Yes
+
+
+# A postscript viewer is used to view sent and received faxes via the
+# fax lists, and also to view faxes to be sent identified via the
+# "Files to fax" file selector dialog.  Specify here the command to be
+# used to view postscript files.  If none is specified, the program
+# will default to 'gv'.  Other possibilities you may want to specify
+# are 'evince' (the Gnome image viewer) or 'kghostview' (the KDE
+# postscript viewer). If using gv, you may need to use the '-media A4'
+# or '-media Letter' option to select correct paper size.  evince and
+# kghostview do this automatically
+
+PS_VIEWER: gv
+
+
+# This specifies whether a socket server is to be run to receive faxes
+# from the print system.  Specify 'Yes' if it is to run.  The default
+# is No.
+
+SOCK_SERVER: Yes
+
+
+# This specifies whether a pop-up dialog is to appear whenever a fax
+# is received by the socket server from the print system.  Specify
+# 'yes' if you want a dialog.  The default is No, and Yes has no
+# effect unless SOCK_SERVER is also specified as Yes.
+
+SOCK_POPUP: Yes
+
+
+# This specifies the port number on which the socket server is to
+# listen.  It should be between 1024 and 65535.
+
+SOCK_SERVER_PORT: 9900
+
+
+# This specifies the addresses from which a connection to the socket
+# will be accepted.  The options are "other" and "localhost".  Unless
+# you are behind a firewall or an appropriate router, choose
+# "localhost" (which will be fine in the usual case where efax-gtk and
+# the CUPS/lpd daemons are running on the same machine).
+
+SOCK_CLIENT_ADDRESS: localhost
+
+
+# This specifies the other addresses permitted to connect to the
+# socket when "other" is picked.  localhost and your machine's
+# hostname are always permitted, so you don't need to specify these.
+# Hostnames may be specified as an ordinary host name or in numeric
+# notation.  Numeric notation may have * as a trailing wildcard, so
+# for example 10.1.* will permit access for addresses 10.1.0.0 to
+# 10.1.255.255.  IPv6 numeric addresses may also have a trailing
+# wildcard, but if so '::' may not be used in the address (but other
+# forms of 0 suppression are acceptable).
+
+#SOCK_OTHER_ADDRESSES:
+
+
+# This specifies the IP family to be used by the socket server.  Valid
+# values are ipv4 and ipv6.  If none is specified, the program
+# defaults to ipv4.
+
+IP_FAMILY: ipv4
+
+
+# The following parameter specifies a log file to which progress on
+# negotiations and fax status, and errors and warnings, are logged.
+# If LOG_FILE is left commented out, or is given no value, then no log
+# file will be maintained.  (A log file can also be kept by
+# redirecting stdout and stderr -- see the README file for further
+# details).  If the log file is not specified with an absolute path
+# name, it will be maintained in the $HOME directory (as supplemented
+# by any WORK_SUBDIR parameter mentioned below).
+
+#LOG_FILE: 
+
+
+# This parameter specifies whether a pop-up dialog will appear when a
+# fax is received from a modem.  The default is No.  Specify Yes if
+# you want a pop-up.
+
+FAX_RECEIVED_POPUP: No
+
+
+# This specifies whether a program or script is to be executed when a
+# fax is received from a modem.  The default is No.  Specify Yes, and
+# provide the program name via the FAX_RECEIVED_PROG parameter, if a
+# program is to be executed.  efax-gtk comes with two scripts,
+# print_fax and mail_fax, which can be used automatically to print a
+# received fax or to mail it to a user (so to mail a fax you can enter
+# `mail_fax' for the FAX_RECEIVED_PROG parameter below).  See the README
+# file for further details.
+
+FAX_RECEIVED_EXEC: No
+
+
+# This parameter specifies the program to be executed if
+# FAX_RECEIVED_EXEC is set to Yes.  Uncomment the line and insert the
+# program or script to be executed.
+
+#FAX_RECEIVED_PROG: 
+
+
+# The following can be used to pass any other parameter to efax (do
+# `man efax' to see what is available).  Specify as many of these as
+# are needed, separated by spaces for different parameters -- eg
+# include `-or' to do a bit reversal during receive for Multitech
+# modems which require it.  Unless you have an unusual modem, leave
+# this blank or commented out
+
+#PARMS: 
+
+
+# A working sub-directory for the storage of .efax-gtk_addressbook,
+# .efax-gtk_mainwin_save and .efax-gtk_queued_server_files and the
+# faxin, faxout, faxsent and efax-gtk-server directories can be
+# specified with the WORK_SUBDIR: parameter.  This working
+# subdirectory will appear as a subdirectory of $HOME (so if
+# WORK_SUBDIR: is specified as efax-gtk, $HOME/efax-gtk will be the
+# working directory).  If none is specified then these
+# files/directories will be stored directly in $HOME (which was what
+# happened before this option was available, so past efax-gtk
+# installations will not be broken if this option is left blank).  If
+# a WORK_SUBDIR: parameter is specified, only .efax-gtkrc will appear
+# directly in $HOME.  Note that if you specify a value for
+# WORK_SUBDIR:, you will need to shift old versions of the files and
+# directories mentioned above into the new working directory or
+# efax-gtk will not be able to find them, so use this option with
+# caution.  In addition, if you wish to use the 'print_fax' or
+# 'mail_fax' scripts, you will need to set the WORK_SUBDIR option in
+# the relevant script.  Note also that if a log file is specified in
+# LOG_FILE above without an absolute path name, the file will be
+# placed in the working subdirectory, or if WORK_SUBDIR is left blank,
+# in the $HOME directory.
+
+#WORK_SUBDIR:
+
+
+## end of efax-gtkrc ##

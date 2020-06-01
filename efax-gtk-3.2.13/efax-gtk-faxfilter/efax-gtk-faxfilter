@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# usage of efax-gtk-socket-client:
+# efax-gtk-socket-client [hostname] [port]
+
+# you will almost certainly want hostname to be localhost - don't
+# change it unless you know what you are doing
+
+./efax-gtk-socket-client localhost 9900
+
+exit 0
