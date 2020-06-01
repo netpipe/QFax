@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -26,7 +26,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="4" column="2">
-         <widget class="QPushButton" name="pushButton_8">
+         <widget class="QPushButton" name="Stop">
           <property name="text">
            <string>Stop</string>
           </property>
@@ -40,7 +40,7 @@
          </widget>
         </item>
         <item row="3" column="0">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="sndFax">
           <property name="text">
            <string>Send Fax</string>
           </property>
@@ -53,62 +53,65 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
            <item row="0" column="2">
-            <widget class="QCheckBox" name="checkBox">
+            <widget class="QCheckBox" name="socketmode">
              <property name="text">
               <string>SocketMode</string>
              </property>
             </widget>
            </item>
            <item row="1" column="0">
-            <widget class="QPushButton" name="pushButton_2">
+            <widget class="QPushButton" name="SingleFile">
              <property name="text">
               <string>Single File</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QPushButton" name="pushButton_3">
+            <widget class="QPushButton" name="MultipleFiles">
              <property name="text">
               <string>MultipleFiles</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
-            <widget class="QPushButton" name="pushButton_4">
+            <widget class="QPushButton" name="SocketQue">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
               <string>SocketQue</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0" colspan="2">
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QLineEdit" name="sendnumber"/>
            </item>
           </layout>
          </widget>
         </item>
         <item row="3" column="2">
-         <widget class="QPushButton" name="pushButton_6">
+         <widget class="QPushButton" name="TakeOverCall">
           <property name="text">
            <string>Take Over Call</string>
           </property>
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QPushButton" name="pushButton_5">
+         <widget class="QPushButton" name="answerCall">
           <property name="text">
            <string>Answer Call</string>
           </property>
          </widget>
         </item>
         <item row="4" column="0">
-         <widget class="QPushButton" name="pushButton_7">
+         <widget class="QPushButton" name="Standby">
           <property name="text">
            <string>Standby</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0" colspan="2">
-         <widget class="QListWidget" name="listWidget_2"/>
+         <widget class="QListWidget" name="debug"/>
         </item>
         <item row="1" column="2">
          <widget class="QLabel" name="label_16">
@@ -118,7 +121,7 @@
          </widget>
         </item>
         <item row="2" column="1" colspan="2">
-         <widget class="QLineEdit" name="lineEdit_2"/>
+         <widget class="QLineEdit" name="callnumber"/>
         </item>
        </layout>
       </widget>
@@ -135,7 +138,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="QListWidget" name="listWidget"/>
+         <widget class="QListWidget" name="que"/>
         </item>
         <item row="1" column="0">
          <widget class="QPushButton" name="pushButton_20">
@@ -152,14 +155,14 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="1" column="1">
-         <widget class="QPushButton" name="pushButton_9">
+         <widget class="QPushButton" name="btnSave">
           <property name="text">
            <string>Save</string>
           </property>
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton_11">
+         <widget class="QPushButton" name="btnReset">
           <property name="text">
            <string>Reset</string>
           </property>
@@ -168,7 +171,7 @@
         <item row="0" column="0" colspan="2">
          <widget class="QTabWidget" name="tabWidget_2">
           <property name="currentIndex">
-           <number>5</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_3">
            <attribute name="title">
@@ -183,7 +186,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_3"/>
+             <widget class="QLineEdit" name="settingsIdentity"/>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_3">
@@ -193,7 +196,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="lineEdit_4"/>
+             <widget class="QLineEdit" name="settingsNumber"/>
             </item>
            </layout>
           </widget>
@@ -210,7 +213,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_5"/>
+             <widget class="QLineEdit" name="settingsSerialDevice"/>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_5">
@@ -220,7 +223,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="lineEdit_6"/>
+             <widget class="QLineEdit" name="settingsLockFile"/>
             </item>
             <item row="2" column="0">
              <widget class="QLabel" name="label_6">
@@ -230,7 +233,7 @@
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QLineEdit" name="lineEdit_7"/>
+             <widget class="QLineEdit" name="SettingsCapabilities"/>
             </item>
             <item row="3" column="0">
              <widget class="QLabel" name="label_7">
@@ -252,28 +255,28 @@
             <item row="4" column="0" colspan="3">
              <layout class="QHBoxLayout" name="horizontalLayout">
               <item>
-               <widget class="QRadioButton" name="radioButton">
+               <widget class="QRadioButton" name="classauto">
                 <property name="text">
                  <string>Auto</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_2">
+               <widget class="QRadioButton" name="class1">
                 <property name="text">
                  <string>Class 1</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_3">
+               <widget class="QRadioButton" name="class2">
                 <property name="text">
                  <string>Class 2</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_4">
+               <widget class="QRadioButton" name="class20">
                 <property name="text">
                  <string>Class 2.0</string>
                 </property>
@@ -319,14 +322,14 @@
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_5">
+               <widget class="QRadioButton" name="dialmodetone">
                 <property name="text">
                  <string>Tone</string>
                 </property>
                </widget>
               </item>
               <item>
-               <widget class="QRadioButton" name="radioButton_6">
+               <widget class="QRadioButton" name="dialmodepulse">
                 <property name="text">
                  <string>Pulse</string>
                 </property>
@@ -342,7 +345,7 @@
            </attribute>
            <layout class="QGridLayout" name="gridLayout_7">
             <item row="1" column="1">
-             <widget class="QLineEdit" name="lineEdit_9"/>
+             <widget class="QLineEdit" name="settingsResetParams"/>
             </item>
             <item row="2" column="0">
              <widget class="QLabel" name="label_11">
@@ -354,12 +357,12 @@
             <item row="0" column="0">
              <widget class="QLabel" name="label_9">
               <property name="text">
-               <string>name</string>
+               <string>Name</string>
               </property>
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QLineEdit" name="lineEdit_10"/>
+             <widget class="QLineEdit" name="settingsOtherParams"/>
             </item>
             <item row="1" column="0">
              <widget class="QLabel" name="label_10">
@@ -369,7 +372,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_8"/>
+             <widget class="QLineEdit" name="settingsName"/>
             </item>
             <item row="0" column="2">
              <widget class="QPushButton" name="pushButton_12">
@@ -400,7 +403,7 @@
            </attribute>
            <layout class="QGridLayout" name="gridLayout_8">
             <item row="0" column="0" colspan="2">
-             <widget class="QCheckBox" name="checkBox_2">
+             <widget class="QCheckBox" name="gtkprintsystem">
               <property name="text">
                <string>Use GTK Print System</string>
               </property>
@@ -414,7 +417,7 @@
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QLineEdit" name="lineEdit_11"/>
+             <widget class="QLineEdit" name="PrintProgram"/>
             </item>
             <item row="2" column="0">
              <widget class="QLabel" name="label_12">
@@ -424,14 +427,14 @@
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QSpinBox" name="spinBox_2">
+             <widget class="QSpinBox" name="printshrink">
               <property name="value">
                <number>50</number>
               </property>
              </widget>
             </item>
             <item row="3" column="0" colspan="2">
-             <widget class="QCheckBox" name="checkBox_3">
+             <widget class="QCheckBox" name="printpopupbeforeprint">
               <property name="text">
                <string>Popup Confirmation Dialog before printing</string>
               </property>
@@ -452,7 +455,7 @@
              </widget>
             </item>
             <item row="0" column="1">
-             <widget class="QLineEdit" name="lineEdit_12"/>
+             <widget class="QLineEdit" name="postscriptviewer"/>
             </item>
            </layout>
           </widget>
@@ -469,21 +472,21 @@
              </widget>
             </item>
             <item row="0" column="3">
-             <widget class="QCheckBox" name="checkBox_4">
+             <widget class="QCheckBox" name="chksettingsrunsocket">
               <property name="text">
                <string>Run Socket Server</string>
               </property>
              </widget>
             </item>
             <item row="1" column="0" colspan="2">
-             <widget class="QCheckBox" name="checkBox_7">
+             <widget class="QCheckBox" name="chkIP64">
               <property name="text">
                <string>check for IPv6 else IPv4</string>
               </property>
              </widget>
             </item>
             <item row="1" column="3">
-             <widget class="QCheckBox" name="checkBox_5">
+             <widget class="QCheckBox" name="chksocketpopupreceived">
               <property name="text">
                <string>Popup when fax received</string>
               </property>
@@ -497,17 +500,17 @@
              </widget>
             </item>
             <item row="3" column="3">
-             <widget class="QCheckBox" name="checkBox_6">
+             <widget class="QCheckBox" name="chksocketlocalhost">
               <property name="text">
                <string>Localhost</string>
               </property>
              </widget>
             </item>
             <item row="3" column="0" colspan="3">
-             <widget class="QLineEdit" name="lineEdit_13"/>
+             <widget class="QLineEdit" name="allowedaddresses"/>
             </item>
             <item row="0" column="1">
-             <widget class="QSpinBox" name="spinBox_3">
+             <widget class="QSpinBox" name="settingsport">
               <property name="maximum">
                <number>10000</number>
               </property>
