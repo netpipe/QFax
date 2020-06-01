@@ -474,7 +474,7 @@ enum {
 
 extern char *modem_command, *dial_number;
 
-int main(int argc, char **argv)
+extern int mainLM(int argc, char **argv)
 {
     int c, mode, calling;
     

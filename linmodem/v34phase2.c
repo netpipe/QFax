@@ -50,8 +50,8 @@ void V34_send_info0(V34State *s, int ack)
 
     put_bits(&p, 4, 0xf); /* fill bits */
 
-    for(q=buf;q<p;q++) {
-        put_sym(s, buf[i], 0);
+    for(int q=buf;q<p;q++) {
+        put_sym(s, buf[q], 0); /// used to be i
     }
 }
 
@@ -70,7 +70,7 @@ void V34_send_info1c(V34State *s)
     put_bits(&p, 3, 1); /* additional power reduction (XXX) */
     put_bits(&p, 7, 0); /* length of MD sequence (35 ms incr) */
 
-    for(i=0;i<6;i++) {
+    for(int i=0;i<6;i++) {
         /* for each symbol speed (increasing order) */
         put_bits(&p, 1, 0); /* use high carrier ? (XXX) */
         put_bits(&p, 4, 0); /* pre emphasis filter (XXX) */
@@ -129,8 +129,8 @@ void V34_send_L1(V34State *s, int rep)
         /*3150 */ -1,-1,-1, 1,
         /*3750 */  1 };
 
-    for(n=0;n<rep;n++) {
-        for(i=0;i<25;i++) {
+    for(int n=0;n<rep;n++) {
+        for(int i=0;i<25;i++) {
             if (ph[i]) {
                 put_sym(s, i * 150 + 150, ph[i]);
             }
@@ -146,13 +146,13 @@ int V34P2_process(V34State *s, s16 *output, s16 *input, int nb_samples)
     case V34_P2_INFO0_SEND:
         V34_send_info0(
         
-    }
+    };
     
     /* demodulation */
     switch(s->state) {
     case V34_P2_INFO0_SEND:
         
         
-    }
+    };
 }
 

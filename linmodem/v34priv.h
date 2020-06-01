@@ -4,6 +4,16 @@
 #define MAX_MAPPING_FRAME_SIZE 79
 #define M_MAX 18
 
+
+typedef signed char s8;
+typedef unsigned char u8;
+typedef short s16;
+typedef unsigned short u16;
+typedef int s32;
+typedef unsigned int u32;
+typedef long long s64;
+typedef unsigned long long u64;
+
 /* symbol rate */
 enum {
   V34_S2400,
@@ -61,7 +71,7 @@ typedef struct V34DSPState {
   s16 h[3][2]; /* precoding coefficients (14 bits fractional part) */
 
     void *opaque;
-    get_bit_func get_bit;  
+    get_bit_func get_bit;
     
     put_bit_func put_bit;  
   

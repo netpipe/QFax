@@ -11,6 +11,11 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = QFax
 TEMPLATE = app
 
+#QMAKE_CXXFLAGS += -fpermissive #-std=c++11
+#CONFIG += c++11
+#CONFIG += C++11
+
+LIBS += -lm -L/usr/X11R6/lib -lX11
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -25,10 +30,43 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    linmodem/atparser.c \
+    linmodem/dsp.c \
+    linmodem/fsk.c \
+    linmodem/lmreal.c \
+    linmodem/lmsim.c \
+    linmodem/lmsoundcard.c \
+    linmodem/nodisplay.c \
+    linmodem/serial.c \
+    linmodem/v8.c \
+    linmodem/v21.c \
+    linmodem/v22.c \
+    linmodem/v23.c \
+    linmodem/v34.c \
+    linmodem/v34eq.c \
+    linmodem/v90.c \
+    linmodem/v34table.c \
+    linmodem/v90table.c \
+    linmodem/dtmf.c \
+    linmodem/lm.c
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    linmodem/dsp.h \
+    linmodem/dtmf.h \
+    linmodem/fsk.h \
+    linmodem/lmstates.h \
+    linmodem/v8.h \
+    linmodem/v21.h \
+    linmodem/v22.h \
+    linmodem/v23.h \
+    linmodem/v34.h \
+    linmodem/v90.h \
+    linmodem/v90priv.h \
+    linmodem/lm.h \
+    linmodem/v34priv.h \
+    linmodem/display.h
 
 FORMS += \
         mainwindow.ui

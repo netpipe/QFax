@@ -44,6 +44,7 @@ static icomplex tabPP_fft[V34_PP_SIZE];
    not the most efficient, but it is simple. Each stage of the fft
    normalize the result: it is divided by 2 (for fft2) or 4 (for fft3)
    at each stage. For 144, the renormalization is 2^8 */
+
 static void fft23(icomplex *output, icomplex *tab, unsigned int n)
 {
     unsigned int s, i, j, k;
@@ -504,3 +505,4 @@ void V34_fast_equalize(V34DSPState *s, s16 *input)
         s->eq_filter[i][1] = (int)(tab[i].im * FRAC * FRAC / 12) << 16;
     }
 }
+

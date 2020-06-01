@@ -8,6 +8,8 @@ typedef unsigned int u32;
 typedef long long s64;
 typedef unsigned long long u64;
 
+#include <math.h>
+
 #define PHASE_BITS 16
 #define PHASE_BASE (1 << PHASE_BITS)
 
