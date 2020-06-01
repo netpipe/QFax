@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>572</width>
-    <height>417</height>
+    <height>437</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,16 +18,13 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>FAX</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEdit_2"/>
-        </item>
         <item row="4" column="2">
          <widget class="QPushButton" name="pushButton_8">
           <property name="text">
@@ -55,9 +52,6 @@
            <string>Fax To Send</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="0">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
            <item row="0" column="2">
             <widget class="QCheckBox" name="checkBox">
              <property name="text">
@@ -75,16 +69,19 @@
            <item row="1" column="1">
             <widget class="QPushButton" name="pushButton_3">
              <property name="text">
-              <string>Single File</string>
+              <string>MultipleFiles</string>
              </property>
             </widget>
            </item>
            <item row="1" column="2">
             <widget class="QPushButton" name="pushButton_4">
              <property name="text">
-              <string>Single File</string>
+              <string>SocketQue</string>
              </property>
             </widget>
+           </item>
+           <item row="0" column="0" colspan="2">
+            <widget class="QLineEdit" name="lineEdit"/>
            </item>
           </layout>
          </widget>
@@ -120,15 +117,32 @@
           </property>
          </widget>
         </item>
+        <item row="2" column="1" colspan="2">
+         <widget class="QLineEdit" name="lineEdit_2"/>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_9">
        <attribute name="title">
-        <string>Sent/Received</string>
+        <string>Sent/Received/Qued</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_11">
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pushButton_19">
+          <property name="text">
+           <string>Send/Retry</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0">
          <widget class="QListWidget" name="listWidget"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QPushButton" name="pushButton_20">
+          <property name="text">
+           <string>Remove</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
