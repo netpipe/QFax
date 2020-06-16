@@ -1,6 +1,6 @@
 # QFax
 GPL for now
-Qt fax machine based on linmodem, can use soundcard with optoisolator. or usb HSF modem from ebay if the drivers work.
+Qt fax machine based on linmodem, can use soundcard with optoisolator. or usb HSF modem from ebay if the drivers work. or even a speaker + mic taped onto regular pots phone.
 
 UNDER CONSTRUCTION still
 impliment GUI
